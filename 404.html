@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found | RoadMaster CDL</title>
+    <meta name="description" content="Page not found. The page you're looking for doesn't exist or has been moved.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>(function(){try{if(localStorage.getItem('cdl-dark')==='1'){document.documentElement.classList.add('dark')}if(localStorage.getItem('cdl-rtl')==='1'){document.documentElement.setAttribute('dir','rtl')}}catch(e){}})();</script>
+</head>
+<body class="fullscreen-page">
+
+<div class="fullscreen-topbar">
+    <a href="index.html" class="nav-logo" aria-label="RoadMaster CDL Home">
+        <svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0F2A4A"/><stop offset="100%" stop-color="#1A3D6D"/></linearGradient></defs>
+            <rect width="100" height="100" rx="18" fill="url(#logoBg)"/>
+            <path d="M20 62 L20 48 Q20 38 30 38 L70 38 Q80 38 80 48 L80 62 Z" fill="none" stroke="#D97706" stroke-width="4"/>
+            <circle cx="32" cy="66" r="8" fill="none" stroke="#D97706" stroke-width="3.5"/>
+            <circle cx="68" cy="66" r="8" fill="none" stroke="#D97706" stroke-width="3.5"/>
+            <rect x="24" y="44" width="16" height="10" rx="2" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
+            <path d="M44 44 L56 44 L60 54 L44 54 Z" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
+        </svg>
+        <div class="nav-logo-text">
+            <span class="brand-top">CDL Training</span>
+            <span class="brand-bottom">RoadMaster</span>
+        </div>
+    </a>
+    <div style="display:flex;gap:0.5rem;align-items:center;">
+        <button onclick="toggleDir()" class="auth-toggle-btn" title="Toggle Direction" aria-label="Toggle layout direction">
+            <span class="dir-label" style="font-size:0.625rem;font-weight:700;">LTR</span>
+        </button>
+        <button onclick="toggleTheme()" class="auth-toggle-btn" title="Toggle Theme" aria-label="Toggle dark mode">
+            <span class="theme-icon-wrap"><i class="fas fa-moon"></i></span>
+        </button>
+    </div>
+</div>
+
+<div class="fullscreen-content">
+    <div style="position:relative;max-width:540px;width:100%;min-width:0;margin:0 auto;">
+        <div class="error-illustration">
+            <svg class="error-spin-bg" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="70" cy="70" r="62" stroke="currentColor" stroke-width="2" stroke-dasharray="10 6" opacity="0.5"/>
+                <circle cx="70" cy="70" r="46" stroke="currentColor" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.75"/>
+                <circle cx="70" cy="70" r="30" stroke="currentColor" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+            </svg>
+            <div class="error-code">404</div>
+        </div>
+
+        <div class="error-subtitle">Wrong Turn!</div>
+        <p class="error-desc">
+            Looks like you've taken a detour! The page you're looking for has been moved, removed, or may never have existed. Let's get you back on the right route.
+        </p>
+
+        <div class="fullscreen-actions" style="margin-bottom:2.25rem;">
+            <a href="index.html" class="btn btn-primary btn-lg"><i class="fas fa-home"></i> Back to Home</a>
+            <a href="contact.html" class="btn btn-secondary btn-lg">Contact Support</a>
+        </div>
+
+        <div class="error-quick-links">
+            <span>Popular pages:</span>
+            <a href="programs.html">Programs</a>
+            <span>•</span>
+            <a href="instructors.html">Instructors</a>
+            <span>•</span>
+            <a href="job-placement.html">Job Placement</a>
+            <span>•</span>
+            <a href="login.html">Student Portal</a>
+        </div>
+    </div>
+</div>
+
+<script src="components.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { initAuthPage(); });</script>
+</body>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard — RoadMaster CDL Training</title>
+    <meta name="description" content="RoadMaster CDL Student Dashboard: Track training progress, view schedules, access course materials, and manage your CDL training journey.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>(function(){try{if(localStorage.getItem('cdl-dark')==='1'){document.documentElement.classList.add('dark')}if(localStorage.getItem('cdl-rtl')==='1'){document.documentElement.setAttribute('dir','rtl')}}catch(e){}})();</script>
+    <style>.dark input[type="date"] { color-scheme: dark; }</style>
+</head>
+<body>
+
+<div class="dash-layout">
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="dash-sidebar-overlay" id="dashSidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="dash-sidebar" id="dashSidebar">
+        <div class="dash-sidebar-header">
+            <a href="index.html" class="nav-logo" aria-label="RoadMaster CDL Home">
+                <svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs><linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0F2A4A"/><stop offset="100%" stop-color="#1A3D6D"/></linearGradient></defs>
+                    <rect width="100" height="100" rx="18" fill="url(#logoBg)"/>
+                    <path d="M20 62 L20 48 Q20 38 30 38 L70 38 Q80 38 80 48 L80 62 Z" fill="none" stroke="#D97706" stroke-width="4"/>
+                    <circle cx="32" cy="66" r="8" fill="none" stroke="#D97706" stroke-width="3.5"/>
+                    <circle cx="68" cy="66" r="8" fill="none" stroke="#D97706" stroke-width="3.5"/>
+                    <rect x="24" y="44" width="16" height="10" rx="2" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
+                    <path d="M44 44 L56 44 L60 54 L44 54 Z" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
+                </svg>
+                <div class="nav-logo-text">
+                    <span class="brand-top">CDL Training</span>
+                    <span class="brand-bottom">RoadMaster</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="dash-sidebar-nav">
+            <div class="dash-nav-label">Main</div>
+            <button class="dash-nav-item active" data-tab="overview"><i class="fas fa-chart-pie"></i> Overview</button>
+            <button class="dash-nav-item" data-tab="training"><i class="fas fa-road"></i> Training Hours</button>
+            <button class="dash-nav-item" data-tab="schedule"><i class="fas fa-calendar-days"></i> Schedule & Tests</button>
+            <button class="dash-nav-item" data-tab="materials"><i class="fas fa-book-open"></i> Course Materials</button>
+
+            <div class="dash-nav-label">Account</div>
+            <button class="dash-nav-item" data-tab="payments"><i class="fas fa-credit-card"></i> Payments</button>
+            <button class="dash-nav-item" data-tab="settings"><i class="fas fa-gear"></i> Settings</button>
+        </nav>
+
+        <div class="dash-sidebar-footer">
+            <button type="button" class="dash-nav-item dash-logout-btn" onclick="if(confirm('Are you sure you want to log out?')) window.location.href='login.html';"><i class="fas fa-right-from-bracket"></i> Logout</button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dash-main">
+        <!-- Header -->
+        <header class="dash-header">
+            <div class="dash-header-left">
+                <button class="dash-mobile-toggle" id="dashMobileToggle" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="dash-header-title" id="dashHeaderTitle"><span class="dash-title-prefix">Dashboard </span>Overview</h1>
+            </div>
+            <div class="dash-header-right">
+                <button class="nav-icon-btn" id="rtlToggleNav" onclick="toggleDir()" aria-label="Toggle RTL" title="Toggle RTL">
+                    <span class="dir-indicator" style="font-size:0.65rem;font-weight:700;">LTR</span>
+                </button>
+                <button class="nav-icon-btn" id="darkToggleNav" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div style="position:relative;">
+                    <button class="dash-notif-btn" id="notifBtn" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="dash-notif-dot"></span>
+                    </button>
+                    <div class="dash-notif-dropdown" id="notifDropdown">
+                        <div class="dash-notif-header">
+                            <h4>Notifications</h4>
+                            <button style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:0.75rem;" onclick="document.getElementById('notifDropdown').classList.remove('open')">Clear all</button>
+                        </div>
+                        <div class="dash-notif-list">
+                            <div class="dash-notif-item">
+                                <h5>Schedule Updated</h5>
+                                <p>Your behind-the-wheel session has been moved to Tuesday 9:00 AM.</p>
+                                <div class="dash-notif-time">15 minutes ago</div>
+                            </div>
+                            <div class="dash-notif-item">
+                                <h5>Test Results Available</h5>
+                                <p>Your pre-trip inspection quiz results are now available. Score: 94%</p>
+                                <div class="dash-notif-time">2 hours ago</div>
+                            </div>
+                            <div class="dash-notif-item">
+                                <h5>Payment Confirmed</h5>
+                                <p>Your installment payment of $1,200 has been processed successfully.</p>
+                                <div class="dash-notif-time">Yesterday</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="dash-profile-btn" title="John Doe">JD</button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dash-content">
+
+            <!-- TAB: OVERVIEW -->
+            <div class="dash-tab active" id="tab-overview">
+                <div class="dash-welcome">
+                    <h2>Welcome back, John! 👋</h2>
+                    <p>Here's an overview of your CDL training progress. Keep up the great work!</p>
+                </div>
+
+                <div class="dash-metrics">
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top">
+                            <div class="dash-metric-icon"><i class="fas fa-road"></i></div>
+                            <span class="dash-metric-badge up">+12 hrs</span>
+                        </div>
+                        <div class="dash-metric-value">86</div>
+                        <div class="dash-metric-label">Behind-the-Wheel Hours</div>
+                    </div>
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top">
+                            <div class="dash-metric-icon"><i class="fas fa-book"></i></div>
+                            <span class="dash-metric-badge up">+5 hrs</span>
+                        </div>
+                        <div class="dash-metric-value">42</div>
+                        <div class="dash-metric-label">Classroom Hours</div>
+                    </div>
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top">
+                            <div class="dash-metric-icon"><i class="fas fa-clipboard-check"></i></div>
+                            <span class="dash-metric-badge up">94%</span>
+                        </div>
+                        <div class="dash-metric-value">7/9</div>
+                        <div class="dash-metric-label">Tests Passed</div>
+                    </div>
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top">
+                            <div class="dash-metric-icon"><i class="fas fa-dollar-sign"></i></div>
+                        </div>
+                        <div class="dash-metric-value">$3,600</div>
+                        <div class="dash-metric-label">Paid of $4,800 Tuition</div>
+                    </div>
+                </div>
+
+                <div class="dash-grid-2">
+                    <div class="dash-panel">
+                        <div class="dash-panel-header">
+                            <h3>Training Progress</h3>
+                            <span style="font-size:0.8125rem;color:var(--secondary);font-weight:600;">Week 3 of 4</span>
+                        </div>
+                        <div class="dash-panel-body">
+                            <div class="progress-bar-container">
+                                <div class="progress-label"><span>Behind-the-Wheel</span><span>86/160 hrs</span></div>
+                                <div class="progress-track"><div class="progress-fill" style="width:54%;"></div></div>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-label"><span>Classroom Instruction</span><span>42/48 hrs</span></div>
+                                <div class="progress-track"><div class="progress-fill" style="width:88%;"></div></div>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-label"><span>Pre-Trip Inspection</span><span>Passed</span></div>
+                                <div class="progress-track"><div class="progress-fill" style="width:100%;"></div></div>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-label"><span>Backing Maneuvers</span><span>In Progress</span></div>
+                                <div class="progress-track"><div class="progress-fill" style="width:65%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dash-panel">
+                        <div class="dash-panel-header">
+                            <h3>Upcoming Schedule</h3>
+                        </div>
+                        <div class="dash-panel-body">
+                            <table class="dash-table">
+                                <thead><tr><th>Date</th><th>Activity</th><th>Time</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Oct 28</td><td>Highway Driving</td><td>7:00 AM</td></tr>
+                                    <tr><td>Oct 29</td><td>Classroom — HOS Rules</td><td>9:00 AM</td></tr>
+                                    <tr><td>Oct 30</td><td>Offset Backing Practice</td><td>7:00 AM</td></tr>
+                                    <tr><td>Nov 1</td><td>Night Driving Session</td><td>6:00 PM</td></tr>
+                                    <tr><td>Nov 3</td><td>Mock CDL Skills Test</td><td>8:00 AM</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-panel">
+                    <div class="dash-panel-header">
+                        <h3>Recent Test Results</h3>
+                    </div>
+                    <div class="dash-panel-body" style="overflow-x:auto;">
+                        <table class="dash-table">
+                            <thead><tr><th>Test</th><th>Date</th><th>Score</th><th>Status</th></tr></thead>
+                            <tbody>
+                                <tr><td>Pre-Trip Inspection Quiz</td><td>Oct 24, 2026</td><td>94%</td><td><span class="dash-status active">Passed</span></td></tr>
+                                <tr><td>Air Brake Systems</td><td>Oct 22, 2026</td><td>88%</td><td><span class="dash-status active">Passed</span></td></tr>
+                                <tr><td>General Knowledge Test</td><td>Oct 18, 2026</td><td>92%</td><td><span class="dash-status active">Passed</span></td></tr>
+                                <tr><td>Cargo Securement</td><td>Oct 15, 2026</td><td>86%</td><td><span class="dash-status active">Passed</span></td></tr>
+                                <tr><td>Combination Vehicles</td><td>Oct 12, 2026</td><td>90%</td><td><span class="dash-status active">Passed</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: TRAINING HOURS -->
+            <div class="dash-tab" id="tab-training">
+                <div class="dash-welcome">
+                    <h2>Behind-the-Wheel Hours</h2>
+                    <p>Track your driving hours logged during training. You need 160 total hours to complete the program.</p>
+                </div>
+
+                <div class="dash-metrics">
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top"><div class="dash-metric-icon"><i class="fas fa-steering-wheel"></i></div></div>
+                        <div class="dash-metric-value">86</div>
+                        <div class="dash-metric-label">Total Hours Logged</div>
+                    </div>
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top"><div class="dash-metric-icon"><i class="fas fa-bullseye"></i></div></div>
+                        <div class="dash-metric-value">74</div>
+                        <div class="dash-metric-label">Hours Remaining</div>
+                    </div>
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top"><div class="dash-metric-icon"><i class="fas fa-gauge-high"></i></div></div>
+                        <div class="dash-metric-value">54%</div>
+                        <div class="dash-metric-label">Progress Complete</div>
+                    </div>
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top"><div class="dash-metric-icon"><i class="fas fa-moon"></i></div></div>
+                        <div class="dash-metric-value">8</div>
+                        <div class="dash-metric-label">Night Driving Hours</div>
+                    </div>
+                </div>
+
+                <div class="dash-panel">
+                    <div class="dash-panel-header">
+                        <h3>Hours Log</h3>
+                    </div>
+                    <div class="dash-panel-body" style="overflow-x:auto;">
+                        <table class="dash-table">
+                            <thead><tr><th>Date</th><th>Activity</th><th>Instructor</th><th>Hours</th><th>Type</th></tr></thead>
+                            <tbody>
+                                <tr><td>Oct 25</td><td>Highway Driving — I-40</td><td>Mike Reynolds</td><td>4.0</td><td><span class="dash-status active">Road</span></td></tr>
+                                <tr><td>Oct 24</td><td>Offset Backing Practice</td><td>Robert Garcia</td><td>3.0</td><td><span class="dash-status pending">Range</span></td></tr>
+                                <tr><td>Oct 23</td><td>City Driving — Downtown</td><td>Sarah Mitchell</td><td>3.5</td><td><span class="dash-status active">Road</span></td></tr>
+                                <tr><td>Oct 22</td><td>Straight-line Backing</td><td>Robert Garcia</td><td>2.5</td><td><span class="dash-status pending">Range</span></td></tr>
+                                <tr><td>Oct 21</td><td>Night Driving Session</td><td>Mike Reynolds</td><td>4.0</td><td><span class="dash-status completed">Night</span></td></tr>
+                                <tr><td>Oct 20</td><td>Pre-Trip Inspection</td><td>Sarah Mitchell</td><td>2.0</td><td><span class="dash-status pending">Range</span></td></tr>
+                                <tr><td>Oct 18</td><td>Highway Driving — I-55</td><td>Mike Reynolds</td><td>4.0</td><td><span class="dash-status active">Road</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: SCHEDULE & TESTS -->
+            <div class="dash-tab" id="tab-schedule">
+                <div class="dash-welcome">
+                    <h2>Schedule & Test Results</h2>
+                    <p>View your upcoming training sessions, test dates, and past exam results.</p>
+                </div>
+
+                <div class="dash-grid-2">
+                    <div class="dash-panel">
+                        <div class="dash-panel-header"><h3>Upcoming Sessions</h3></div>
+                        <div class="dash-panel-body">
+                            <table class="dash-table">
+                                <thead><tr><th>Date</th><th>Session</th><th>Instructor</th><th>Time</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Oct 28</td><td>Highway Driving</td><td>Mike R.</td><td>7:00 AM</td></tr>
+                                    <tr><td>Oct 29</td><td>Classroom — HOS</td><td>David P.</td><td>9:00 AM</td></tr>
+                                    <tr><td>Oct 30</td><td>Offset Backing</td><td>Robert G.</td><td>7:00 AM</td></tr>
+                                    <tr><td>Nov 1</td><td>Night Driving</td><td>Mike R.</td><td>6:00 PM</td></tr>
+                                    <tr><td>Nov 3</td><td>Mock Skills Test</td><td>Sarah M.</td><td>8:00 AM</td></tr>
+                                    <tr><td>Nov 5</td><td>CDL Skills Test</td><td>Examiner</td><td>8:30 AM</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="dash-panel">
+                        <div class="dash-panel-header"><h3>Test Results</h3></div>
+                        <div class="dash-panel-body">
+                            <table class="dash-table">
+                                <thead><tr><th>Test</th><th>Score</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <tr><td>General Knowledge</td><td>92%</td><td><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td>Air Brakes</td><td>88%</td><td><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td>Combination Vehicles</td><td>90%</td><td><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td>Pre-Trip Inspection</td><td>94%</td><td><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td>Cargo Securement</td><td>86%</td><td><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td>Defensive Driving</td><td>—</td><td><span class="dash-status pending">Upcoming</span></td></tr>
+                                    <tr><td>CDL Skills Test</td><td>—</td><td><span class="dash-status pending">Scheduled</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: COURSE MATERIALS -->
+            <div class="dash-tab" id="tab-materials">
+                <div class="dash-welcome">
+                    <h2>Course Materials</h2>
+                    <p>Access your training manuals, study guides, and supplemental resources.</p>
+                </div>
+
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
+                    <div class="dash-panel" style="margin-bottom:0;">
+                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
+                            <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
+                            <h4 style="margin-bottom:0.375rem;">CDL General Knowledge Manual</h4>
+                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">Complete study guide for the general knowledge written test.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel" style="margin-bottom:0;">
+                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
+                            <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
+                            <h4 style="margin-bottom:0.375rem;">Air Brake Systems Guide</h4>
+                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">Detailed study material for the air brake endorsement exam.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel" style="margin-bottom:0;">
+                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
+                            <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
+                            <h4 style="margin-bottom:0.375rem;">Pre-Trip Inspection Checklist</h4>
+                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">Step-by-step checklist for the pre-trip inspection component.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel" style="margin-bottom:0;">
+                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
+                            <i class="fas fa-video" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
+                            <h4 style="margin-bottom:0.375rem;">Backing Maneuvers Video</h4>
+                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">Video tutorials for straight-line, offset, and parallel backing.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Watch Video</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel" style="margin-bottom:0;">
+                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
+                            <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
+                            <h4 style="margin-bottom:0.375rem;">Hours of Service Rules</h4>
+                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">FMCSA hours of service regulations and ELD compliance guide.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel" style="margin-bottom:0;">
+                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
+                            <i class="fas fa-clipboard-list" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
+                            <h4 style="margin-bottom:0.375rem;">Practice Test Bank</h4>
+                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">500+ practice questions covering all CDL written test topics.</p>
+                            <button class="btn btn-primary btn-sm w-full"><i class="fas fa-play"></i> Start Practice</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: PAYMENTS -->
+            <div class="dash-tab" id="tab-payments">
+                <div class="dash-welcome">
+                    <h2>Payments & Billing</h2>
+                    <p>Manage your tuition payments, view invoices, and track your payment history.</p>
+                </div>
+
+                <div class="dash-metrics">
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top"><div class="dash-metric-icon"><i class="fas fa-receipt"></i></div></div>
+                        <div class="dash-metric-value">$4,800</div>
+                        <div class="dash-metric-label">Total Tuition</div>
+                    </div>
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top"><div class="dash-metric-icon"><i class="fas fa-check-circle"></i></div></div>
+                        <div class="dash-metric-value">$3,600</div>
+                        <div class="dash-metric-label">Amount Paid</div>
+                    </div>
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top"><div class="dash-metric-icon"><i class="fas fa-clock"></i></div></div>
+                        <div class="dash-metric-value">$1,200</div>
+                        <div class="dash-metric-label">Balance Remaining</div>
+                    </div>
+                    <div class="dash-metric-card">
+                        <div class="dash-metric-top"><div class="dash-metric-icon"><i class="fas fa-calendar-check"></i></div></div>
+                        <div class="dash-metric-value">Nov 1</div>
+                        <div class="dash-metric-label">Next Payment Due</div>
+                    </div>
+                </div>
+
+                <div class="dash-panel">
+                    <div class="dash-panel-header">
+                        <h3>Payment History</h3>
+                        <button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Make Payment</button>
+                    </div>
+                    <div class="dash-panel-body" style="overflow-x:auto;">
+                        <table class="dash-table">
+                            <thead><tr><th>Date</th><th>Description</th><th>Amount</th><th>Method</th><th>Status</th></tr></thead>
+                            <tbody>
+                                <tr><td>Oct 1, 2026</td><td>Installment 3 of 4</td><td>$1,200</td><td>Visa •••• 4242</td><td><span class="dash-status active">Paid</span></td></tr>
+                                <tr><td>Sep 1, 2026</td><td>Installment 2 of 4</td><td>$1,200</td><td>Visa •••• 4242</td><td><span class="dash-status active">Paid</span></td></tr>
+                                <tr><td>Aug 1, 2026</td><td>Installment 1 of 4</td><td>$1,200</td><td>Visa •••• 4242</td><td><span class="dash-status active">Paid</span></td></tr>
+                                <tr><td>Nov 1, 2026</td><td>Installment 4 of 4</td><td>$1,200</td><td>—</td><td><span class="dash-status pending">Upcoming</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: SETTINGS -->
+            <div class="dash-tab" id="tab-settings">
+                <div class="dash-welcome">
+                    <h2>Account Settings</h2>
+                    <p>Manage your personal information, notification preferences, and account security.</p>
+                </div>
+
+                <div class="dash-grid-2">
+                    <div class="dash-panel">
+                        <div class="dash-panel-header"><h3>Personal Information</h3></div>
+                        <div class="dash-panel-body">
+                            <form onsubmit="event.preventDefault(); alert('Profile updated successfully!');">
+                                <div class="form-group">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-input" value="John">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-input" value="Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-input" value="john.doe@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone</label>
+                                    <input type="tel" class="form-input" value="(555) 123-4567">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="dash-panel">
+                        <div class="dash-panel-header"><h3>Program Details</h3></div>
+                        <div class="dash-panel-body">
+                            <div style="display:flex;flex-direction:column;gap:1rem;">
+                                <div>
+                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Program</p>
+                                    <p style="font-weight:600;">Class A CDL — Tractor-Trailer Training</p>
+                                </div>
+                                <div>
+                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Enrollment Date</p>
+                                    <p style="font-weight:600;">August 1, 2026</p>
+                                </div>
+                                <div>
+                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Expected Completion</p>
+                                    <p style="font-weight:600;">November 7, 2026</p>
+                                </div>
+                                <div>
+                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Student ID</p>
+                                    <p style="font-weight:600;">RM-2026-04521</p>
+                                </div>
+                                <div>
+                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Primary Instructor</p>
+                                    <p style="font-weight:600;">Mike Reynolds</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /dash-content -->
+    </div><!-- /dash-main -->
+</div><!-- /dash-layout -->
+
+<script src="components.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab switching
+    const tabBtns = document.querySelectorAll('.dash-nav-item[data-tab]');
+    const tabs = document.querySelectorAll('.dash-tab');
+    const titleEl = document.getElementById('dashHeaderTitle');
+
+    const titleMap = {
+        overview: 'Overview',
+        training: 'Training Hours',
+        schedule: 'Schedule & Tests',
+        materials: 'Course Materials',
+        payments: 'Payments',
+        settings: 'Settings'
+    };
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tab = btn.getAttribute('data-tab');
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            tabs.forEach(t => t.classList.remove('active'));
+            const targetTab = document.getElementById('tab-' + tab);
+            if (targetTab) targetTab.classList.add('active');
+            if (titleEl) titleEl.innerHTML = '<span class="dash-title-prefix">Dashboard </span>' + (titleMap[tab] || tab);
+
+            // Close mobile sidebar
+            const sidebar = document.getElementById('dashSidebar');
+            const overlay = document.getElementById('dashSidebarOverlay');
+            if (sidebar) sidebar.classList.remove('open');
+            if (overlay) overlay.classList.remove('open');
+        });
+    });
+
+    // Mobile sidebar toggle
+    const mobileToggle = document.getElementById('dashMobileToggle');
+    const sidebar = document.getElementById('dashSidebar');
+    const overlay = document.getElementById('dashSidebarOverlay');
+
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        });
+    }
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('open');
+        });
+    }
+
+    // Notification toggle
+    const notifBtn = document.getElementById('notifBtn');
+    const notifDropdown = document.getElementById('notifDropdown');
+    if (notifBtn && notifDropdown) {
+        notifBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            notifDropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', () => {
+            notifDropdown.classList.remove('open');
+        });
+    }
+
+    // Init theme icons
+    const isDark = document.documentElement.classList.contains('dark');
+    const darkBtn = document.getElementById('darkToggleNav');
+    if (darkBtn) {
+        darkBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+
+    // RTL indicator
+    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    document.querySelectorAll('.dir-indicator').forEach(el => {
+        el.textContent = isRTL ? 'RTL' : 'LTR';
+    });
+});
+
+// Override toggleTheme for dashboard
+const origToggleTheme = window.toggleTheme;
+window.toggleTheme = function() {
+    origToggleTheme();
+    const isDark = document.documentElement.classList.contains('dark');
+    const darkBtn = document.getElementById('darkToggleNav');
+    if (darkBtn) darkBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+};
+
+const origToggleDir = window.toggleDir;
+window.toggleDir = function() {
+    origToggleDir();
+    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    document.querySelectorAll('.dir-indicator').forEach(el => {
+        el.textContent = isRTL ? 'RTL' : 'LTR';
+    });
+};
+</script>
+</body>
+</html>

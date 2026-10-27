@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="root-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — RoadMaster CDL Training School</title>
+    <meta name="description" content="Contact RoadMaster CDL Training School for enrollment information, campus tours, and career guidance. We're here to help you start your trucking career.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>(function(){try{if(localStorage.getItem('cdl-dark')==='1'){document.documentElement.classList.add('dark')}if(localStorage.getItem('cdl-rtl')==='1'){document.documentElement.setAttribute('dir','rtl')}}catch(e){}})();</script>
+</head>
+<body>
+<div id="navbar-placeholder"></div>
+
+<!-- SECTION 1: PAGE BANNER -->
+<section class="page-banner">
+    <h1>Contact Us</h1>
+    <p>Have questions about CDL training? We're here to help. Reach out to our admissions team or visit our campus.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">Contact</span></div>
+</section>
+
+<!-- SECTION 2: CONTACT FORM + INFO -->
+<section class="section">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info-card fade-up">
+                <h3>Get in Touch</h3>
+                <p>Our admissions team is available Monday–Saturday to answer your questions and help you get started.</p>
+                <ul class="contact-info-list">
+                    <li>
+                        <i class="fas fa-location-dot"></i>
+                        <span>4520 Highway 61 South<br>Memphis, TN 38109</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>(800) 555-0123</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>admissions@roadmastercdl.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Mon — Fri: 7:00 AM – 6:00 PM<br>Saturday: 8:00 AM – 2:00 PM<br>Sunday: Closed</span>
+                    </li>
+                </ul>
+                <div style="display:flex;gap:0.75rem;margin-top:2rem;">
+                    <a href="#" style="width:36px;height:36px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:0.3s;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="width:36px;height:36px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:0.3s;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="width:36px;height:36px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:0.3s;" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="contact-form-card fade-up">
+                <h3>Send Us a Message</h3>
+                <form onsubmit="event.preventDefault(); alert('Thank you! Our admissions team will contact you within 24 hours.');">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="contact-first">First Name</label>
+                            <input type="text" id="contact-first" class="form-input" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="contact-last">Last Name</label>
+                            <input type="text" id="contact-last" class="form-input" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-phone">Phone Number</label>
+                        <input type="tel" id="contact-phone" class="form-input" placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-program">Program of Interest</label>
+                        <select id="contact-program" class="form-input">
+                            <option value="">Select a program</option>
+                            <option value="class-a">Class A CDL</option>
+                            <option value="class-b">Class B CDL</option>
+                            <option value="hazmat">HazMat Endorsement</option>
+                            <option value="tanker">Tanker Endorsement</option>
+                            <option value="passenger">Passenger Endorsement</option>
+                            <option value="refresher">Refresher Course</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-message">Message</label>
+                        <textarea id="contact-message" class="form-textarea" placeholder="Tell us about your goals or ask any questions..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full btn-lg">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 3: MAP -->
+<section style="padding:0;">
+    <div style="width:100%;height:360px;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div style="text-align:center;">
+            <i class="fas fa-map-location-dot" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:1rem;display:block;"></i>
+            <p style="color:var(--text-muted);font-size:0.9375rem;font-weight:500;">Interactive Map — 4520 Highway 61 S, Memphis, TN 38109</p>
+            <p style="color:var(--text-muted);font-size:0.8125rem;margin-top:0.25rem;">Embed your Google Maps iframe here</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 4: QUICK CONTACT CARDS -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-label">Quick Contact</span>
+            <h2>Reach the Right Department</h2>
+            <p>Connect directly with the team that can best help you.</p>
+        </div>
+        <div class="offset-features" style="grid-template-columns:repeat(3,1fr);">
+            <div class="offset-feature fade-up">
+                <div class="of-icon"><i class="fas fa-user-plus"></i></div>
+                <h4>Admissions</h4>
+                <p>Questions about enrollment, requirements, or scheduling?</p>
+                <a href="tel:8005550123" class="link-primary" style="margin-top:0.5rem;display:inline-block;">(800) 555-0123 ext. 1</a>
+            </div>
+            <div class="offset-feature fade-up">
+                <div class="of-icon"><i class="fas fa-briefcase"></i></div>
+                <h4>Career Services</h4>
+                <p>Job placement assistance and career opportunity questions?</p>
+                <a href="tel:8005550123" class="link-primary" style="margin-top:0.5rem;display:inline-block;">(800) 555-0123 ext. 2</a>
+            </div>
+            <div class="offset-feature fade-up">
+                <div class="of-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h4>Financial Aid</h4>
+                <p>Tuition financing, payment plans, VA benefits, or grants?</p>
+                <a href="tel:8005550123" class="link-primary" style="margin-top:0.5rem;display:inline-block;">(800) 555-0123 ext. 3</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 5: FAQ -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-label">Common Questions</span>
+            <h2>Before You Visit</h2>
+            <p>Answers to frequently asked questions about visiting our campus and the enrollment process.</p>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item fade-up">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                    Can I tour the facility before enrolling?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner">Absolutely! We encourage all prospective students to tour our campus. We offer free tours Monday through Friday at 10:00 AM and 2:00 PM, or by appointment on Saturdays.</div></div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                    How quickly can I start training?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner">New classes start every month. Depending on availability, you could begin training within 1-2 weeks of enrollment. Contact our admissions team to learn about the next available start date.</div></div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open'); const a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                    What should I bring on my first day?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner">Bring a valid driver's license, DOT physical card (or we can help schedule your physical), comfortable closed-toe shoes, and a positive attitude. All training materials are provided.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 6: CAMPUS VISIT — Split -->
+<section class="section">
+    <div class="container">
+        <div class="split-content">
+            <div class="split-image slide-left">
+                <img src="assets/images/placeholder-student-lounge.svg" alt="RoadMaster CDL campus student lounge and classroom building">
+            </div>
+            <div class="split-text slide-right">
+                <span class="section-label">Visit Our Campus</span>
+                <h2>See Our Facility in Person</h2>
+                <p>Located on a spacious 20-acre campus, our training facility features dedicated driving ranges, modern classrooms, and a fleet of 30+ commercial vehicles.</p>
+                <ul class="check-list">
+                    <li><i class="fas fa-check"></i> Free guided campus tours available daily</li>
+                    <li><i class="fas fa-check"></i> Meet instructors and current students</li>
+                    <li><i class="fas fa-check"></i> View our training vehicles and equipment</li>
+                    <li><i class="fas fa-check"></i> Same-day enrollment available after tour</li>
+                </ul>
+                <a href="tel:8005550123" class="btn btn-primary"><i class="fas fa-calendar"></i> Schedule a Tour</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 7: CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2 class="fade-up">Ready to Take the First Step?</h2>
+        <p class="fade-up">Contact our admissions team today. We'll answer all your questions and help you find the right program.</p>
+        <div class="cta-actions fade-up">
+            <a href="tel:8005550123" class="btn btn-primary btn-lg"><i class="fas fa-phone"></i> Call (800) 555-0123</a>
+            <a href="programs.html" class="btn btn-secondary btn-lg"><i class="fas fa-graduation-cap"></i> View Programs</a>
+        </div>
+    </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="components.js"></script>
+</body>
+</html>
