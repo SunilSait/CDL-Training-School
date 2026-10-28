@@ -41,17 +41,17 @@
 const LOGO_SVG = `<svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0F2A4A"/>
-      <stop offset="100%" stop-color="#1A3D6D"/>
+      <stop offset="0%" stop-color="#151210"/>
+      <stop offset="100%" stop-color="#231E1B"/>
     </linearGradient>
   </defs>
   <rect width="100" height="100" rx="18" fill="url(#logoBg)"/>
-  <path d="M20 62 L20 48 Q20 38 30 38 L70 38 Q80 38 80 48 L80 62 Z" fill="none" stroke="#D97706" stroke-width="4"/>
-  <circle cx="32" cy="66" r="8" fill="none" stroke="#D97706" stroke-width="3.5"/>
-  <circle cx="68" cy="66" r="8" fill="none" stroke="#D97706" stroke-width="3.5"/>
+  <path d="M20 62 L20 48 Q20 38 30 38 L70 38 Q80 38 80 48 L80 62 Z" fill="none" stroke="#C2410C" stroke-width="4"/>
+  <circle cx="32" cy="66" r="8" fill="none" stroke="#C2410C" stroke-width="3.5"/>
+  <circle cx="68" cy="66" r="8" fill="none" stroke="#C2410C" stroke-width="3.5"/>
   <rect x="24" y="44" width="16" height="10" rx="2" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
   <path d="M44 44 L56 44 L60 54 L44 54 Z" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
-  <path d="M25 34 L75 34" stroke="#D97706" stroke-width="2" stroke-dasharray="4 3" opacity="0.5"/>
+  <path d="M25 34 L75 34" stroke="#C2410C" stroke-width="2" stroke-dasharray="4 3" opacity="0.5"/>
 </svg>`;
 
 /* ---- Icon Helper ---- */
@@ -361,6 +361,7 @@ function toggleDir() {
     html.setAttribute('dir', newDir);
     try { localStorage.setItem('cdl-rtl', newDir === 'rtl' ? '1' : '0'); } catch(e) {}
     updateRTLIndicators();
+    window.dispatchEvent(new Event('directionchange'));
 }
 window.toggleDir = toggleDir;
 
@@ -381,9 +382,7 @@ function togglePasswordVisibility(inputId, btn) {
     input.type = isPassword ? 'text' : 'password';
     const iconEl = btn.querySelector('.pw-icon');
     if (iconEl) {
-        iconEl.innerHTML = isPassword
-            ? `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
-            : `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+        iconEl.innerHTML = isPassword ? ICONS.eyeOff : ICONS.eye;
     }
 }
 window.togglePasswordVisibility = togglePasswordVisibility;
@@ -437,6 +436,357 @@ function animateCounters() {
     counters.forEach(c => observer.observe(c));
 }
 
+/* ---- TESTIMONIALS INTERACTIVE CAROUSEL, FILTERS & 3D TILT ---- */
+function initTestimonialsSection() {
+    const track = document.getElementById('testimonialsTrack');
+    if (!track) return;
+
+    const cards = Array.from(track.querySelectorAll('.testimonial-card'));
+    const prevBtn = document.getElementById('prevTestiBtn');
+    const nextBtn = document.getElementById('nextTestiBtn');
+    const paginationContainer = document.getElementById('testiPagination');
+    const filterTabs = document.querySelectorAll('.testi-tab');
+
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    let isHovered = false;
+
+    // Get number of visible cards based on viewport
+    function getVisibleCardsCount() {
+        if (window.innerWidth <= 680) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+    }
+
+    // Get list of active cards (not hidden by category filter)
+    function getActiveCards() {
+        return cards.filter(card => !card.classList.contains('testi-hidden'));
+    }
+
+    // Render pagination dots
+    function renderPagination() {
+        if (!paginationContainer) return;
+        const activeCards = getActiveCards();
+        const visible = getVisibleCardsCount();
+        const maxSlides = Math.max(1, activeCards.length - visible + 1);
+
+        paginationContainer.innerHTML = '';
+        for (let i = 0; i < maxSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = `testi-dot ${i === currentIndex ? 'active' : ''}`;
+            dot.setAttribute('data-index', i);
+            dot.setAttribute('aria-label', `Go to testimonial slide ${i + 1}`);
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+                resetAutoPlay();
+            });
+            paginationContainer.appendChild(dot);
+        }
+    }
+
+    function updateDots() {
+        if (!paginationContainer) return;
+        const dots = paginationContainer.querySelectorAll('.testi-dot');
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === currentIndex);
+        });
+    }
+
+    function goToSlide(index) {
+        const activeCards = getActiveCards();
+        const visible = getVisibleCardsCount();
+        const maxIndex = Math.max(0, activeCards.length - visible);
+
+        if (index > maxIndex) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = maxIndex;
+        } else {
+            currentIndex = index;
+        }
+
+        const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+        const cardEl = activeCards[0];
+        if (cardEl) {
+            const cardWidth = cardEl.offsetWidth;
+            const gap = 28; // 1.75rem gap
+            const offset = currentIndex * (cardWidth + gap);
+            track.style.transform = isRTL ? `translateX(${offset}px)` : `translateX(-${offset}px)`;
+        } else {
+            track.style.transform = 'none';
+        }
+
+        updateDots();
+    }
+
+    // Prev / Next button listeners
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            goToSlide(currentIndex - 1);
+            resetAutoPlay();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            goToSlide(currentIndex + 1);
+            resetAutoPlay();
+        });
+    }
+
+    // Story Filter Tabs
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            filterTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const filterValue = tab.getAttribute('data-filter');
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filterValue === 'all' || category === filterValue) {
+                    card.classList.remove('testi-hidden');
+                    card.style.opacity = '1';
+                } else {
+                    card.classList.add('testi-hidden');
+                }
+            });
+
+            currentIndex = 0;
+            renderPagination();
+            goToSlide(0);
+            resetAutoPlay();
+        });
+    });
+
+    // Auto Play with Pause on Hover
+    function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayTimer = setInterval(() => {
+            if (!isHovered) {
+                const activeCards = getActiveCards();
+                const visible = getVisibleCardsCount();
+                const maxIndex = Math.max(0, activeCards.length - visible);
+                if (maxIndex > 0) {
+                    goToSlide(currentIndex + 1);
+                }
+            }
+        }, 5500);
+    }
+
+    function stopAutoPlay() {
+        if (autoPlayTimer) {
+            clearInterval(autoPlayTimer);
+            autoPlayTimer = null;
+        }
+    }
+
+    function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+    }
+
+    const viewport = track.closest('.testimonials-slider-viewport') || track;
+    viewport.addEventListener('mouseenter', () => { isHovered = true; });
+    viewport.addEventListener('mouseleave', () => { isHovered = false; });
+
+    // Touch / Swipe
+    let touchStartX = 0;
+    viewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+        if (Math.abs(diff) > 40) {
+            if ((diff > 0 && !isRTL) || (diff < 0 && isRTL)) {
+                goToSlide(currentIndex + 1);
+            } else {
+                goToSlide(currentIndex - 1);
+            }
+            resetAutoPlay();
+        }
+    }, { passive: true });
+
+    // 3D Perspective Tilt on Desktop Mousemove
+    if (window.matchMedia('(min-width: 1025px)').matches) {
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((centerY - y) / centerY) * 4.5;
+                const rotateY = ((x - centerX) / centerX) * 4.5;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        renderPagination();
+        goToSlide(currentIndex);
+    });
+
+    window.addEventListener('directionchange', () => {
+        goToSlide(currentIndex);
+    });
+
+    // Initial setup
+    renderPagination();
+    goToSlide(0);
+    startAutoPlay();
+}
+
+/* ---- HERO 3-SLIDE CAROUSEL (5s Interval) ---- */
+function initHeroSlider() {
+    const slider = document.getElementById('heroSlider');
+    if (!slider) return;
+
+    const slides = Array.from(slider.querySelectorAll('.hero-slide'));
+    const indicators = Array.from(slider.querySelectorAll('.hero-indicator'));
+    const prevBtn = document.getElementById('heroPrevBtn');
+    const nextBtn = document.getElementById('heroNextBtn');
+
+    if (slides.length === 0) return;
+
+    let currentIndex = 0;
+    let timer = null;
+    let isHovered = false;
+    const SLIDE_DURATION = 5000;
+
+    function goToSlide(index) {
+        if (index < 0) {
+            currentIndex = slides.length - 1;
+        } else if (index >= slides.length) {
+            currentIndex = 0;
+        } else {
+            currentIndex = index;
+        }
+
+        slides.forEach((slide, idx) => {
+            const isActive = idx === currentIndex;
+            slide.classList.toggle('active', isActive);
+            slide.setAttribute('aria-hidden', !isActive);
+        });
+
+        indicators.forEach((ind, idx) => {
+            const isActive = idx === currentIndex;
+            ind.classList.toggle('active', isActive);
+            const fill = ind.querySelector('.hero-indicator-fill');
+            if (fill) {
+                fill.style.animation = 'none';
+                void fill.offsetWidth; // Reflow to restart keyframe
+                if (isActive) {
+                    fill.style.animation = '';
+                }
+            }
+        });
+
+        // Animate counter values on active slide
+        const activeSlide = slides[currentIndex];
+        if (activeSlide) {
+            const counters = activeSlide.querySelectorAll('[data-count]');
+            counters.forEach(el => {
+                const target = parseInt(el.getAttribute('data-count'), 10);
+                const suffix = el.getAttribute('data-suffix') || '';
+                const prefix = el.getAttribute('data-prefix') || '';
+                if (isNaN(target)) return;
+                let current = 0;
+                const increment = Math.max(1, Math.ceil(target / 25));
+                const counterTimer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(counterTimer);
+                    }
+                    el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+                }, 24);
+            });
+        }
+    }
+
+    function startTimer() {
+        stopTimer();
+        timer = setInterval(() => {
+            if (!isHovered) {
+                goToSlide(currentIndex + 1);
+            }
+        }, SLIDE_DURATION);
+    }
+
+    function stopTimer() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    function resetTimer() {
+        stopTimer();
+        startTimer();
+    }
+
+    // Indicator navigation
+    indicators.forEach((ind, idx) => {
+        ind.addEventListener('click', () => {
+            goToSlide(idx);
+            resetTimer();
+        });
+    });
+
+    // Arrow navigation
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+            goToSlide(isRTL ? currentIndex + 1 : currentIndex - 1);
+            resetTimer();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+            goToSlide(isRTL ? currentIndex - 1 : currentIndex + 1);
+            resetTimer();
+        });
+    }
+
+    // Pause on hover
+    slider.addEventListener('mouseenter', () => { isHovered = true; });
+    slider.addEventListener('mouseleave', () => { isHovered = false; });
+
+    // Touch swipe
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+        if (Math.abs(diff) > 40) {
+            if ((diff > 0 && !isRTL) || (diff < 0 && isRTL)) {
+                goToSlide(currentIndex + 1);
+            } else {
+                goToSlide(currentIndex - 1);
+            }
+            resetTimer();
+        }
+    }, { passive: true });
+
+    // Initial trigger
+    goToSlide(0);
+    startTimer();
+}
+
 /* ---- DOMContentLoaded ---- */
 document.addEventListener('DOMContentLoaded', function() {
     const page = getCurrentPage();
@@ -450,4 +800,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initScrollAnimations();
     animateCounters();
+    initTestimonialsSection();
+    initHeroSlider();
 });
+

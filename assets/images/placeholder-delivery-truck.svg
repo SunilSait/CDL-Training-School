@@ -1,6 +1,6 @@
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <rect width="800" height="500" fill="#091D36"/>
-  <rect x="50" y="50" width="700" height="400" rx="16" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="8 4" opacity="0.4"/>
-  <text x="400" y="230" text-anchor="middle" fill="#F59E0B" font-family="Inter,sans-serif" font-size="28" font-weight="600" opacity="0.8">Delivery Truck</text>
-  <text x="400" y="280" text-anchor="middle" fill="#F59E0B" font-family="Inter,sans-serif" font-size="14" font-weight="400" opacity="0.5">Placeholder Image — Replace with real photo</text>
+  <rect width="800" height="500" fill="#0B0908"/>
+  <rect x="50" y="50" width="700" height="400" rx="16" fill="none" stroke="#EA580C" stroke-width="2" stroke-dasharray="8 4" opacity="0.4"/>
+  <text x="400" y="230" text-anchor="middle" fill="#EA580C" font-family="Inter,sans-serif" font-size="28" font-weight="600" opacity="0.8">Delivery Truck</text>
+  <text x="400" y="280" text-anchor="middle" fill="#EA580C" font-family="Inter,sans-serif" font-size="14" font-weight="400" opacity="0.5">Placeholder Image — Replace with real photo</text>
 </svg>

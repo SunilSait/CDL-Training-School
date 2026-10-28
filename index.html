@@ -16,50 +16,179 @@
 <body>
 <div id="navbar-placeholder"></div>
 
-<!-- SECTION 1: HERO — Diagonal Split Layout -->
-<section class="hero-diagonal">
+<!-- SECTION 1: HERO — Interactive 3-Slide Carousel (5s Auto-Switch) -->
+<section class="hero-diagonal" id="heroCarouselSection">
     <div class="container">
-        <div class="hero-d-grid">
-            <div class="hero-d-content">
-                <div class="hero-d-badge">
-                    <i class="fas fa-star"></i> #1 CDL Training School in Tennessee
-                </div>
-                <h1 class="hero-d-title">
-                    Launch Your <span class="highlight">Trucking Career</span> in Just 4 Weeks
-                </h1>
-                <p class="hero-d-desc">
-                    Get behind the wheel of your future. RoadMaster CDL Training School offers hands-on, career-focused programs designed to get you licensed, hired, and on the road fast.
-                </p>
-                <div class="hero-d-actions">
-                    <a href="programs.html" class="btn btn-primary btn-lg"><i class="fas fa-graduation-cap"></i> Explore Programs</a>
-                    <a href="contact.html" class="btn btn-secondary btn-lg"><i class="fas fa-calendar"></i> Book a Tour</a>
-                </div>
-                <div class="hero-d-metrics">
-                    <div class="hero-d-metric">
-                        <h3 data-count="96" data-suffix="%">0</h3>
-                        <p>Job Placement</p>
+        <div class="hero-slider" id="heroSlider" aria-roledescription="carousel" aria-label="RoadMaster Featured Programs">
+            <div class="hero-slides-wrapper">
+                
+                <!-- SLIDE 1: Career Acceleration -->
+                <div class="hero-slide active" data-slide="0" role="tabpanel" aria-label="Slide 1 of 3: Career Acceleration">
+                    <div class="hero-d-grid">
+                        <div class="hero-d-content">
+                            <div class="hero-d-badge">
+                                <i class="fas fa-star"></i> #1 CDL Training School in Tennessee
+                            </div>
+                            <h1 class="hero-d-title">
+                                Launch Your <span class="highlight">Trucking Career</span> in Just 4 Weeks
+                            </h1>
+                            <p class="hero-d-desc">
+                                Get behind the wheel of your future. RoadMaster CDL Training School offers hands-on, career-focused programs designed to get you licensed, hired, and on the road fast.
+                            </p>
+                            <div class="hero-d-actions">
+                                <a href="programs.html" class="btn btn-primary btn-lg"><i class="fas fa-graduation-cap"></i> Explore Programs</a>
+                                <a href="contact.html" class="btn btn-secondary btn-lg"><i class="fas fa-calendar"></i> Book a Tour</a>
+                            </div>
+                            <div class="hero-d-metrics">
+                                <div class="hero-d-metric">
+                                    <h3 data-count="96" data-suffix="%">96%</h3>
+                                    <p>Job Placement</p>
+                                </div>
+                                <div class="hero-d-metric">
+                                    <h3 data-count="5200" data-suffix="+">5,200+</h3>
+                                    <p>Graduates Hired</p>
+                                </div>
+                                <div class="hero-d-metric">
+                                    <h3 data-count="200" data-suffix="+">200+</h3>
+                                    <p>Carrier Partners</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-d-visual">
+                            <div class="hero-d-img-main">
+                                <img src="assets/images/hero-highway-sunset.jpg" alt="Red semi-truck driving on a highway at sunset representing CDL career opportunities" loading="eager">
+                            </div>
+                            <div class="hero-d-float-card">
+                                <i class="fas fa-shield-halved"></i>
+                                <div>
+                                    <div class="float-val">ELDT Certified</div>
+                                    <div class="float-label">FMCSA Approved</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="hero-d-metric">
-                        <h3 data-count="5200" data-suffix="+">0</h3>
-                        <p>Graduates Hired</p>
-                    </div>
-                    <div class="hero-d-metric">
-                        <h3 data-count="200" data-suffix="+">0</h3>
-                        <p>Carrier Partners</p>
+                </div>
+
+                <!-- SLIDE 2: Modern Fleet & Facility -->
+                <div class="hero-slide" data-slide="1" role="tabpanel" aria-label="Slide 2 of 3: Modern Rigs and Facility">
+                    <div class="hero-d-grid">
+                        <div class="hero-d-content">
+                            <div class="hero-d-badge">
+                                <i class="fas fa-truck-front"></i> 20-Acre Private Driving Facility
+                            </div>
+                            <h1 class="hero-d-title">
+                                Master Modern <span class="highlight">Heavy Equipment</span> & Live Highway Routes
+                            </h1>
+                            <p class="hero-d-desc">
+                                Step directly into late-model Freightliner and Kenworth rigs. Train on real backing pads, regional routes, and master pre-trip inspections with patient, veteran instructors.
+                            </p>
+                            <div class="hero-d-actions">
+                                <a href="instructors.html" class="btn btn-primary btn-lg"><i class="fas fa-users"></i> Meet Instructors</a>
+                                <a href="programs.html" class="btn btn-secondary btn-lg"><i class="fas fa-road"></i> Training Facility</a>
+                            </div>
+                            <div class="hero-d-metrics">
+                                <div class="hero-d-metric">
+                                    <h3 data-count="4" data-prefix="" data-suffix=":1">4:1</h3>
+                                    <p>Student-To-Instructor</p>
+                                </div>
+                                <div class="hero-d-metric">
+                                    <h3 data-count="160" data-suffix="+">160+</h3>
+                                    <p>Dedicated Hours</p>
+                                </div>
+                                <div class="hero-d-metric">
+                                    <h3 data-count="100" data-suffix="%">100%</h3>
+                                    <p>Hands-On Behind Wheel</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-d-visual">
+                            <div class="hero-d-img-main">
+                                <img src="assets/images/training-yard.jpg" alt="Lineup of modern commercial training trucks on the RoadMaster 20-acre driving range" loading="lazy">
+                            </div>
+                            <div class="hero-d-float-card">
+                                <i class="fas fa-truck-moving"></i>
+                                <div>
+                                    <div class="float-val">Late-Model Rigs</div>
+                                    <div class="float-label">Auto & Manual Transmissions</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- SLIDE 3: Guaranteed Placement & High Earnings -->
+                <div class="hero-slide" data-slide="2" role="tabpanel" aria-label="Slide 3 of 3: Career Placement and Earning Potential">
+                    <div class="hero-d-grid">
+                        <div class="hero-d-content">
+                            <div class="hero-d-badge">
+                                <i class="fas fa-briefcase"></i> Guaranteed Carrier Pre-Hires
+                            </div>
+                            <h1 class="hero-d-title">
+                                Earn Up To <span class="highlight">$75,000+</span> In Your Very First Year
+                            </h1>
+                            <p class="hero-d-desc">
+                                Secure pre-hire job offers before you even test for your CDL. Our lifetime career placement team partners with 200+ national and regional carriers to get you top pay from day one.
+                            </p>
+                            <div class="hero-d-actions">
+                                <a href="job-placement.html" class="btn btn-primary btn-lg"><i class="fas fa-briefcase"></i> Placement Network</a>
+                                <a href="contact.html" class="btn btn-secondary btn-lg"><i class="fas fa-phone"></i> Call Admissions</a>
+                            </div>
+                            <div class="hero-d-metrics">
+                                <div class="hero-d-metric">
+                                    <h3 data-count="72" data-prefix="$" data-suffix="K+">$72K+</h3>
+                                    <p>Avg. 1st Year Salary</p>
+                                </div>
+                                <div class="hero-d-metric">
+                                    <h3 data-count="3" data-suffix="+">3+</h3>
+                                    <p>Job Offers Per Grad</p>
+                                </div>
+                                <div class="hero-d-metric">
+                                    <h3 data-count="100" data-suffix="%">100%</h3>
+                                    <p>Lifetime Support</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-d-visual">
+                            <div class="hero-d-img-main">
+                                <img src="assets/images/job-placement.jpg" alt="CDL career counselor and student reviewing pre-hire carrier contract offers" loading="lazy">
+                            </div>
+                            <div class="hero-d-float-card">
+                                <i class="fas fa-handshake-angle"></i>
+                                <div>
+                                    <div class="float-val">Pre-Hire Offers</div>
+                                    <div class="float-label">200+ Carrier Network</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="hero-d-visual">
-                <div class="hero-d-img-main">
-                    <img src="assets/images/hero-highway-sunset.jpg" alt="Red semi-truck driving on a highway at sunset representing CDL career opportunities">
+
+            <!-- Hero Slider Navigation Arrows & Indicators -->
+            <div class="hero-slider-controls">
+                <button class="hero-slider-btn hero-prev" id="heroPrevBtn" aria-label="Previous slide" title="Previous Slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="hero-indicators" id="heroIndicators">
+                    <button class="hero-indicator active" data-slide-to="0" aria-label="Go to Slide 1: Career Acceleration">
+                        <span class="hero-indicator-track"><span class="hero-indicator-fill"></span></span>
+                        <span class="hero-indicator-text"><span class="hero-ind-num">01</span><span>Career Launch</span></span>
+                    </button>
+                    <button class="hero-indicator" data-slide-to="1" aria-label="Go to Slide 2: Modern Rigs & Facility">
+                        <span class="hero-indicator-track"><span class="hero-indicator-fill"></span></span>
+                        <span class="hero-indicator-text"><span class="hero-ind-num">02</span><span>Modern Fleet</span></span>
+                    </button>
+                    <button class="hero-indicator" data-slide-to="2" aria-label="Go to Slide 3: Placement & Salary">
+                        <span class="hero-indicator-track"><span class="hero-indicator-fill"></span></span>
+                        <span class="hero-indicator-text"><span class="hero-ind-num">03</span><span>$75K+ Placement</span></span>
+                    </button>
                 </div>
-                <div class="hero-d-float-card">
-                    <i class="fas fa-shield-halved"></i>
-                    <div>
-                        <div class="float-val">ELDT Certified</div>
-                        <div class="float-label">FMCSA Approved</div>
-                    </div>
-                </div>
+
+                <button class="hero-slider-btn hero-next" id="heroNextBtn" aria-label="Next slide" title="Next Slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -132,6 +261,57 @@
     </div>
 </section>
 
+
+<!-- SECTION 4B: MODERN TRAINING FLEET & EQUIPMENT -->
+<section class="section">
+    <div class="container">
+        <div class="simulator-showcase">
+            <div class="simulator-visual fade-up">
+                <img src="assets/images/home-fleet-specs.jpg" alt="Modern late-model Freightliner Cascadia and Peterbilt training fleet" loading="lazy">
+                <div class="simulator-badge-card">
+                    <div class="sim-stat">
+                        <h4>Late-Model Fleet</h4>
+                        <p>Freightliner & Peterbilt Class A Tractors</p>
+                    </div>
+                    <div class="sim-stat" style="text-align:right;">
+                        <h4>100% Prepped</h4>
+                        <p>Air-Ride, Automated & 10-Speed Manual</p>
+                    </div>
+                </div>
+            </div>
+            <div class="simulator-content fade-up">
+                <span class="section-label">Fleet Excellence</span>
+                <h2>Train on the Modern Rigs Carriers Actually Drive</h2>
+                <p>Don't spend tuition training on twenty-year-old retired trucks. RoadMaster invests in late-model, DOT-certified commercial tractors equipped with active safety systems and modern ergonomic controls.</p>
+                <div class="sim-feature-list">
+                    <div class="sim-feature-item">
+                        <div class="sim-feature-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="sim-feature-text">
+                            <h4>Dual Transmission Training</h4>
+                            <p>Train on both 10-speed Eaton Fuller manuals and automated manuals to ensure zero license transmission restrictions.</p>
+                        </div>
+                    </div>
+                    <div class="sim-feature-item">
+                        <div class="sim-feature-icon"><i class="fas fa-shield-virus"></i></div>
+                        <div class="sim-feature-text">
+                            <h4>Collision Mitigation & Air Brakes</h4>
+                            <p>Master modern radar cruise control, lane-departure sensors, and air-brake diagnostics used across commercial freight.</p>
+                        </div>
+                    </div>
+                    <div class="sim-feature-item">
+                        <div class="sim-feature-icon"><i class="fas fa-trailer"></i></div>
+                        <div class="sim-feature-text">
+                            <h4>Full-Length 53-Foot Trailers</h4>
+                            <p>Practice realistic alley-docking and backing with 53-ft dry vans and refrigerated trailers, not cut-down training stubs.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="programs.html" class="btn btn-primary"><i class="fas fa-truck-moving"></i> View Fleet Details</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- SECTION 5: TRAINING PROGRAMS — Cards with Images -->
 <section class="section">
     <div class="container">
@@ -184,25 +364,52 @@
     </div>
 </section>
 
-<!-- SECTION 6: STATS BANNER -->
-<section class="stats-banner">
+
+<!-- SECTION 5B: HIGH-TECH SIMULATOR LAB & VR -->
+<section class="section section-alt">
     <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item fade-up">
-                <h3 data-count="5200" data-suffix="+">0</h3>
-                <p>Licensed Graduates</p>
+        <div class="simulator-showcase" style="grid-template-columns: 1fr 1.1fr;">
+            <div class="simulator-content fade-up">
+                <span class="section-label">Virtual Reality & Simulation</span>
+                <h2>Master Dangerous Scenarios with Zero Risk</h2>
+                <p>Before our students encounter unpredictable highway weather, steep mountain grades, or tire blowouts, they build instinctive muscle memory inside our multi-screen, full-motion simulation lab.</p>
+                <div class="sim-feature-list">
+                    <div class="sim-feature-item">
+                        <div class="sim-feature-icon"><i class="fas fa-snowflake"></i></div>
+                        <div class="sim-feature-text">
+                            <h4>Severe Weather Physics Engine</h4>
+                            <p>Experience real-time tire traction loss on black ice, torrential rain hydroplaning, and zero-visibility dense mountain fog.</p>
+                        </div>
+                    </div>
+                    <div class="sim-feature-item">
+                        <div class="sim-feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="sim-feature-text">
+                            <h4>Hazard Anticipation & Avoidance</h4>
+                            <p>React safely to sudden four-wheeler cutoffs, brake failures on 6% mountain downgrades, and steer-tire blowouts.</p>
+                        </div>
+                    </div>
+                    <div class="sim-feature-item">
+                        <div class="sim-feature-icon"><i class="fas fa-clock"></i></div>
+                        <div class="sim-feature-text">
+                            <h4>Unlimited Seat Time & Telemetry</h4>
+                            <p>Detailed telemetry recording tracks shift timing, lane discipline, and fuel efficiency scoring after every run.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="contact.html" class="btn btn-secondary"><i class="fas fa-vr-cardboard"></i> Tour Our Tech Lab</a>
             </div>
-            <div class="stat-item fade-up">
-                <h3 data-count="96" data-suffix="%">0</h3>
-                <p>Job Placement Rate</p>
-            </div>
-            <div class="stat-item fade-up">
-                <h3 data-count="65" data-prefix="$" data-suffix="K">0</h3>
-                <p>Avg. Starting Salary</p>
-            </div>
-            <div class="stat-item fade-up">
-                <h3 data-count="20" data-suffix=" Years">0</h3>
-                <p>Training Excellence</p>
+            <div class="simulator-visual fade-up">
+                <img src="assets/images/home-simulator-lab.jpg" alt="High-tech CDL truck driving simulator cockpit with wrap-around displays" loading="lazy">
+                <div class="simulator-badge-card">
+                    <div class="sim-stat">
+                        <h4>Full-Cab Cockpit</h4>
+                        <p>Force-Feedback Steering & 4K Views</p>
+                    </div>
+                    <div class="sim-stat" style="text-align:right;">
+                        <h4>200+ Scenarios</h4>
+                        <p>DOT Hazard Reaction Testing</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -253,6 +460,67 @@
     </div>
 </section>
 
+
+<!-- SECTION 7B: HIGH-PAYING CAREER PATHWAYS & EARNING MATRIX -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-label">Career Outlook</span>
+            <h2>Choose Your Path to High Earnings</h2>
+            <p>A CDL opens the door to multiple lucrative career tracks. Whether you want to explore the nation or be home for dinner every night, there's a specialized route for you.</p>
+        </div>
+        <div class="career-matrix-grid">
+            <div class="career-path-card fade-up">
+                <span class="career-salary-pill">$75K - $95K / yr</span>
+                <h3>OTR Long-Haul</h3>
+                <p>Traverse the United States on open highways. Highest first-year mileage pay with complete travel freedom.</p>
+                <ul class="career-perks-list">
+                    <li><i class="fas fa-check"></i> Modern sleeper cab suites</li>
+                    <li><i class="fas fa-check"></i> Up to $0.65/mile starting</li>
+                    <li><i class="fas fa-check"></i> Consistent 2,500+ miles/week</li>
+                </ul>
+                <div class="career-partners-tag">Hiring: Swift • Schneider • Werner</div>
+            </div>
+            <div class="career-path-card fade-up">
+                <span class="career-salary-pill">$70K - $85K / yr</span>
+                <h3>Regional Dedicated</h3>
+                <p>Run dedicated corridors within 3 to 4 neighboring states with predictable schedules and regular home time.</p>
+                <ul class="career-perks-list">
+                    <li><i class="fas fa-check"></i> Home every 5–7 days</li>
+                    <li><i class="fas fa-check"></i> Dedicated customer accounts</li>
+                    <li><i class="fas fa-check"></i> Paid layover & detention</li>
+                </ul>
+                <div class="career-partners-tag">Hiring: J.B. Hunt • Heartland Express</div>
+            </div>
+            <div class="career-path-card fade-up">
+                <span class="career-salary-pill">$65K - $80K / yr</span>
+                <h3>Local P&D / Delivery</h3>
+                <p>Deliver food, retail, and manufacturing freight locally with set daily shift hours and zero overnights.</p>
+                <ul class="career-perks-list">
+                    <li><i class="fas fa-check"></i> Home every single night</li>
+                    <li><i class="fas fa-check"></i> Hourly pay + overtime options</li>
+                    <li><i class="fas fa-check"></i> Full healthcare & 401(k)</li>
+                </ul>
+                <div class="career-partners-tag">Hiring: Sysco • US Foods • Old Dominion</div>
+            </div>
+            <div class="career-path-card fade-up">
+                <span class="career-salary-pill">$85K - $110K / yr</span>
+                <h3>HazMat & Tanker</h3>
+                <p>Specialized transport of bulk liquids, fuel, and chemical cargo commanding the highest wage premiums in trucking.</p>
+                <ul class="career-perks-list">
+                    <li><i class="fas fa-check"></i> Elite pay rates & bonuses</li>
+                    <li><i class="fas fa-check"></i> Specialized equipment certs</li>
+                    <li><i class="fas fa-check"></i> Immediate industry demand</li>
+                </ul>
+                <div class="career-partners-tag">Hiring: Kenan Advantage • Quality Carriers</div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:2.5rem;" class="fade-up">
+            <a href="job-placement.html" class="btn btn-primary"><i class="fas fa-chart-line"></i> Explore Career Placement</a>
+        </div>
+    </div>
+</section>
+
 <!-- SECTION 8: JOB PLACEMENT — Image Right + Text Left -->
 <section class="section">
     <div class="container">
@@ -276,45 +544,305 @@
     </div>
 </section>
 
-<!-- SECTION 9: TESTIMONIALS -->
+
+<!-- SECTION 8B: TUITION ASSISTANCE & VETERAN GI BILL® FUNDING -->
 <section class="section section-alt">
     <div class="container">
         <div class="section-header fade-up">
-            <span class="section-label">Success Stories</span>
-            <h2>What Our Graduates Say</h2>
-            <p>Hear from real students who earned their CDL at RoadMaster and launched rewarding trucking careers.</p>
+            <span class="section-label">Financial Aid & Sponsorship</span>
+            <h2>Affordable Funding Options For Every Student</h2>
+            <p>Financial barriers should never stand between you and a high-paying driving career. We offer multiple funding pathways to make training accessible.</p>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card fade-up">
-                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="testimonial-text">"I went from working retail to making $72K my first year as a regional driver. RoadMaster's instructors were patient and the job placement team had offers lined up before I even graduated."</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">BH</div>
-                    <div class="testimonial-info"><h5>Brian Howard</h5><p>Class A Graduate, 2024</p></div>
+        <div class="funding-bento-grid">
+            <div class="funding-card highlight fade-up">
+                <span class="funding-badge">Most Popular</span>
+                <div class="funding-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                <h3>Carrier Tuition Sponsorship</h3>
+                <p>Many of our 200+ freight carrier partners offer up to 100% tuition reimbursement paid directly on your monthly paycheck once you start driving.</p>
+                <ul class="check-list" style="margin-bottom:1.5rem;">
+                    <li><i class="fas fa-check"></i> Up to $7,000 in tuition reimbursement</li>
+                    <li><i class="fas fa-check"></i> Pre-hire commitment before graduation</li>
+                    <li><i class="fas fa-check"></i> Immediate job placement upon testing</li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary btn-sm"><i class="fas fa-file-invoice-dollar"></i> Apply for Sponsorship</a>
+            </div>
+            <div class="funding-card fade-up">
+                <div class="funding-icon"><i class="fas fa-medal"></i></div>
+                <h3>Military Veterans & GI Bill®</h3>
+                <p>We proudly honor those who served. RoadMaster is an approved training institution for VA educational benefits, Post-9/11 GI Bill®, and VR&E.</p>
+                <ul class="check-list" style="margin-bottom:1.5rem;">
+                    <li><i class="fas fa-check"></i> Chapter 33 Post-9/11 GI Bill® approved</li>
+                    <li><i class="fas fa-check"></i> Housing allowance (MHA) during school</li>
+                    <li><i class="fas fa-check"></i> Fast-track military skills waiver assistance</li>
+                </ul>
+                <a href="contact.html" class="btn btn-secondary btn-sm"><i class="fas fa-flag-usa"></i> Veteran Benefits Info</a>
+            </div>
+            <div class="funding-card fade-up">
+                <div class="funding-icon"><i class="fas fa-wallet"></i></div>
+                <h3>Grants & Flexible $0-Down Financing</h3>
+                <p>Qualify for state workforce grants (WIOA, TAA) or enroll with flexible low monthly payment installment plans with zero penalties for early payoff.</p>
+                <ul class="check-list" style="margin-bottom:1.5rem;">
+                    <li><i class="fas fa-check"></i> State workforce development grant partner</li>
+                    <li><i class="fas fa-check"></i> $0 down payment financing available</li>
+                    <li><i class="fas fa-check"></i> Simple, fast 10-minute online pre-approval</li>
+                </ul>
+                <a href="contact.html" class="btn btn-secondary btn-sm"><i class="fas fa-calculator"></i> Check Payment Plans</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 9: TESTIMONIALS -->
+<section class="section section-alt testimonials-section" id="testimonials">
+    <div class="container">
+        <!-- Section Header with Glowing Trust Tag -->
+        <div class="section-header fade-up">
+            <div class="section-tag-glow">
+                <span class="live-pulse-dot"></span>
+                <span class="section-label">Verified CDL Alumni Reviews</span>
+            </div>
+            <h2>What Our Graduates Say</h2>
+            <p>Real stories from everyday drivers who earned their CDL at RoadMaster and stepped straight into high-paying, independent trucking careers.</p>
+        </div>
+
+        <!-- Trust Stats Ribbon -->
+        <div class="testimonials-trust-ribbon fade-up">
+            <div class="trust-ribbon-item">
+                <div class="trust-rating-head">
+                    <span class="trust-big-score">4.9</span>
+                    <div class="trust-stars-glow">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="trust-caption">Over 1,200+ Verified Reviews</div>
+            </div>
+            <div class="trust-ribbon-divider"></div>
+            <div class="trust-ribbon-item">
+                <div class="trust-stat-val"><span data-count="98" data-suffix=".4%">98.4%</span></div>
+                <div class="trust-caption">1st-Time CDL Exam Pass Rate</div>
+            </div>
+            <div class="trust-ribbon-divider"></div>
+            <div class="trust-ribbon-item">
+                <div class="trust-stat-val"><span data-count="72" data-prefix="$" data-suffix=",500">$72,500</span></div>
+                <div class="trust-caption">Avg. First-Year Earning Power</div>
+            </div>
+            <div class="trust-ribbon-divider"></div>
+            <div class="trust-ribbon-item">
+                <div class="trust-partners-tag">
+                    <span class="partner-hire-label"><i class="fas fa-briefcase"></i> Direct Carrier Placement</span>
+                    <span class="partner-logos-text">Schneider • Swift • Werner • Sysco</span>
                 </div>
             </div>
-            <div class="testimonial-card fade-up">
-                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="testimonial-text">"As a veteran transitioning to civilian life, RoadMaster made it seamless. They accepted my VA benefits and the instructors understood discipline-based learning. Highly recommended."</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">MJ</div>
-                    <div class="testimonial-info"><h5>Marcus Johnson</h5><p>Class A Graduate, 2025</p></div>
-                </div>
+        </div>
+
+        <!-- Carousel Navigation & Filter Controls -->
+        <div class="testimonials-toolbar fade-up">
+            <div class="testimonials-tabs" role="tablist" aria-label="Filter stories by program">
+                <button class="testi-tab active" data-filter="all"><i class="fas fa-layer-group"></i> All Stories</button>
+                <button class="testi-tab" data-filter="class-a"><i class="fas fa-truck"></i> Class A Regional</button>
+                <button class="testi-tab" data-filter="veteran"><i class="fas fa-medal"></i> Military Veterans</button>
+                <button class="testi-tab" data-filter="local"><i class="fas fa-house-chimney"></i> Local Routes</button>
             </div>
-            <div class="testimonial-card fade-up">
-                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="testimonial-text">"I wanted local work so I could be home daily. RoadMaster connected me with a food delivery company — great hours, great pay, and I'm home for dinner every night."</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">MR</div>
-                    <div class="testimonial-info"><h5>Maria Ramirez</h5><p>Class B Graduate, 2024</p></div>
+            <div class="testimonials-slider-arrows">
+                <button class="testi-arrow-btn prev-btn" id="prevTestiBtn" aria-label="Previous testimonial" title="Previous story">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="testi-arrow-btn next-btn" id="nextTestiBtn" aria-label="Next testimonial" title="Next story">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Carousel Viewport & Cards Track -->
+        <div class="testimonials-slider-viewport">
+            <div class="testimonials-grid testimonials-track" id="testimonialsTrack">
+                
+                <!-- CARD 1: Brian Howard -->
+                <div class="testimonial-card fade-up" data-category="class-a">
+                    <div class="testimonial-card-ambient"></div>
+                    <div class="quote-watermark"><i class="fas fa-quote-right"></i></div>
+                    
+                    <div class="testimonial-top">
+                        <div class="testimonial-stars-group">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                        <span class="outcome-badge salary-badge">
+                            <i class="fas fa-arrow-trend-up"></i> $72K 1st Year
+                        </span>
+                    </div>
+
+                    <p class="testimonial-text">
+                        "I went from working retail to <span class="quote-highlight">making $72K my first year</span> as a regional driver. RoadMaster's instructors were patient and the job placement team had <span class="quote-highlight">offers lined up before I even graduated</span>."
+                    </p>
+
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar-wrap">
+                            <div class="testimonial-avatar">
+                                <img src="assets/images/grad-brian-howard.jpg" alt="Brian Howard - Class A CDL Graduate" loading="lazy">
+                            </div>
+                            <span class="avatar-verified" title="Verified CDL Graduate"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Brian Howard</h5>
+                            <p class="author-program">Class A CDL Graduate • 2024</p>
+                            <span class="carrier-pill"><i class="fas fa-truck-moving"></i> Hired at Schneider National</span>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- CARD 2: Marcus Johnson -->
+                <div class="testimonial-card fade-up" data-category="veteran">
+                    <div class="testimonial-card-ambient"></div>
+                    <div class="quote-watermark"><i class="fas fa-quote-right"></i></div>
+
+                    <div class="testimonial-top">
+                        <div class="testimonial-stars-group">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                        <span class="outcome-badge veteran-badge">
+                            <i class="fas fa-shield-halved"></i> VA Chapter 33
+                        </span>
+                    </div>
+
+                    <p class="testimonial-text">
+                        "As a veteran transitioning to civilian life, RoadMaster made it seamless. They <span class="quote-highlight">accepted my full VA benefits</span> and the instructors understood <span class="quote-highlight">discipline-based, structured learning</span>. Best career move of my life."
+                    </p>
+
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar-wrap">
+                            <div class="testimonial-avatar">
+                                <img src="assets/images/grad-marcus-johnson.jpg" alt="Marcus Johnson - U.S. Army Veteran, Class A CDL Graduate" loading="lazy">
+                            </div>
+                            <span class="avatar-verified" title="Verified CDL Graduate"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Marcus Johnson</h5>
+                            <p class="author-program">U.S. Army Vet • Class A Graduate, 2025</p>
+                            <span class="carrier-pill"><i class="fas fa-truck-moving"></i> Hired at Werner Enterprises</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3: Maria Ramirez -->
+                <div class="testimonial-card fade-up" data-category="local">
+                    <div class="testimonial-card-ambient"></div>
+                    <div class="quote-watermark"><i class="fas fa-quote-right"></i></div>
+
+                    <div class="testimonial-top">
+                        <div class="testimonial-stars-group">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                        <span class="outcome-badge local-badge">
+                            <i class="fas fa-house-chimney"></i> Home Daily
+                        </span>
+                    </div>
+
+                    <p class="testimonial-text">
+                        "I wanted local work so I could be home daily with family. RoadMaster connected me with a food distribution carrier — <span class="quote-highlight">$65K starting salary, great benefits</span>, and <span class="quote-highlight">I'm home for dinner every night</span>."
+                    </p>
+
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar-wrap">
+                            <div class="testimonial-avatar">
+                                <img src="assets/images/grad-maria-ramirez.jpg" alt="Maria Ramirez - Class B Commercial Graduate" loading="lazy">
+                            </div>
+                            <span class="avatar-verified" title="Verified CDL Graduate"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Maria Ramirez</h5>
+                            <p class="author-program">Class B Commercial • Graduate, 2024</p>
+                            <span class="carrier-pill"><i class="fas fa-truck-moving"></i> Hired at Sysco Foods</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 4: Derek Phillips -->
+                <div class="testimonial-card fade-up" data-category="class-a">
+                    <div class="testimonial-card-ambient"></div>
+                    <div class="quote-watermark"><i class="fas fa-quote-right"></i></div>
+
+                    <div class="testimonial-top">
+                        <div class="testimonial-stars-group">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                        <span class="outcome-badge tanker-badge">
+                            <i class="fas fa-fire-flame-curved"></i> $85K Tanker Route
+                        </span>
+                    </div>
+
+                    <p class="testimonial-text">
+                        "After completing RoadMaster's <span class="quote-highlight">HazMat and Tanker endorsements</span>, I was recruited by a premier liquid transport carrier. Earning <span class="quote-highlight">$85K straight out of school</span> paid for tuition in month one."
+                    </p>
+
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar-wrap">
+                            <div class="testimonial-avatar">
+                                <img src="assets/images/grad-derek-phillips.jpg" alt="Derek Phillips - Tanker & HazMat Driver Graduate" loading="lazy">
+                            </div>
+                            <span class="avatar-verified" title="Verified CDL Graduate"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Derek Phillips</h5>
+                            <p class="author-program">Class A + HazMat/Tanker • 2024</p>
+                            <span class="carrier-pill"><i class="fas fa-truck-moving"></i> Hired at Kenan Advantage</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Carousel Pagination Dots -->
+        <div class="testimonials-pagination" id="testiPagination">
+            <button class="testi-dot active" data-index="0" aria-label="Go to story slide 1"></button>
+            <button class="testi-dot" data-index="1" aria-label="Go to story slide 2"></button>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECTION 9B: FMCSA ELDT SAFETY & INSPECTION STANDARDS -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-label">Safety & Compliance</span>
+            <h2>FMCSA ELDT Certified Safety Standards</h2>
+            <p>Every RoadMaster graduate exceeds Federal Motor Carrier Safety Administration (FMCSA) Entry-Level Driver Training regulations with hands-on mechanical mastery.</p>
+        </div>
+        <div class="safety-standards-grid">
+            <div class="safety-pillar-card fade-up">
+                <div class="safety-shield-icon"><i class="fas fa-clipboard-check"></i></div>
+                <h3>100-Point Pre-Trip Mastery</h3>
+                <p>Master every component of the pre-trip vehicle inspection: steering linkages, air brake leak-down tests, tire tread depths, and fifth-wheel locking jaws.</p>
+            </div>
+            <div class="safety-pillar-card fade-up">
+                <div class="safety-shield-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>FMCSA Registry Verified</h3>
+                <p>As an officially registered TPR training provider, your graduation hours are instantly uploaded to the FMCSA federal database for fast-track state testing.</p>
+            </div>
+            <div class="safety-pillar-card fade-up">
+                <div class="safety-shield-icon"><i class="fas fa-road"></i></div>
+                <h3>Defensive Driving Mastery</h3>
+                <p>Trained in the proven Smith System 5-Keys defensive driving philosophy, giving you the anticipation skills needed to maintain a pristine, accident-free CDL record.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- SECTION 10: CTA -->
-<section class="cta-section">
+<section class="cta-section cta-section-home">
     <div class="container">
         <h2 class="fade-up">Ready to Start Your CDL Career?</h2>
         <p class="fade-up">New classes start every month. Contact our admissions team today to learn about enrollment, financing, and available start dates.</p>
