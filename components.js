@@ -484,7 +484,7 @@ function initTestimonialsSection() {
 
     // Get number of visible cards based on viewport
     function getVisibleCardsCount() {
-        if (window.innerWidth <= 680) return 1;
+        if (window.innerWidth <= 768) return 1;
         if (window.innerWidth <= 1024) return 2;
         return 3;
     }
@@ -818,11 +818,29 @@ function initHeroSlider() {
     startTimer();
 }
 
+
+/* ---- HOME 2 HERO FAST-TRACK CDL SELECTOR ---- */
+function initHome2HeroSwitcher() {
+    var btnA = document.getElementById('btnTrackClassA');
+    var btnB = document.getElementById('btnTrackClassB');
+    if (!btnA || !btnB) return;
+
+    btnA.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.setHeroTrack) window.setHeroTrack('A');
+    });
+
+    btnB.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.setHeroTrack) window.setHeroTrack('B');
+    });
+}
+
 /* ---- DOMContentLoaded ---- */
 document.addEventListener('DOMContentLoaded', function() {
     const page = getCurrentPage();
     const authPages = ['login.html', 'signup.html', '404.html', 'coming-soon.html'];
-    const isDashboard = page === 'dashboard.html';
+    const isDashboard = page === 'dashboard.html' || page.startsWith('dashboard') || !!document.querySelector('.dash-layout');
 
     if (!authPages.includes(page) && !isDashboard) {
         renderNavbar();
@@ -833,5 +851,6 @@ document.addEventListener('DOMContentLoaded', function() {
     animateCounters();
     initTestimonialsSection();
     initHeroSlider();
+    initHome2HeroSwitcher();
 });
 

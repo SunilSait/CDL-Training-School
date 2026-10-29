@@ -90,7 +90,7 @@
         </nav>
 
         <div class="dash-sidebar-footer">
-            <button type="button" class="dash-nav-item dash-logout-btn" onclick="if(confirm('Are you sure you want to log out?')) window.location.href='login.html';"><i class="fas fa-right-from-bracket"></i> Logout</button>
+            <button type="button" class="dash-nav-item dash-logout-btn" onclick="openLogoutModal()" aria-haspopup="dialog" aria-controls="logoutModal"><i class="fas fa-right-from-bracket"></i> Logout</button>
         </div>
     </aside>
 
@@ -150,8 +150,56 @@
             <!-- TAB: OVERVIEW -->
             <div class="dash-tab active" id="tab-overview">
                 <div class="dash-welcome">
-                    <h2>Welcome back, John! 👋</h2>
-                    <p>Here's an overview of your CDL training progress. Keep up the great work!</p>
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
+                        <div>
+                            <h2>Welcome back, John! <i class="fas fa-hand" style="color:#EA580C;font-size:1.25rem;"></i></h2>
+                            <p>Here's an overview of your Class A CDL training progress. You're on track for the Nov 5 state exam!</p>
+                        </div>
+                        <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(234,88,12,0.1);border:1px solid rgba(234,88,12,0.25);padding:0.4rem 0.85rem;border-radius:var(--radius-full);font-size:0.8125rem;font-weight:600;color:var(--secondary);">
+                            <span style="width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 6px #10b981;"></span>
+                            Cohort 2026-A4 &bull; Week 3 of 4
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Action Shortcuts -->
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem;">
+                    <button onclick="document.querySelector('[data-tab=\'schedule\']').click();" class="dash-panel" style="margin-bottom:0;text-align:left;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;cursor:pointer;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition);" onmouseover="this.style.borderColor='var(--secondary)';this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';">
+                        <div style="width:42px;height:42px;border-radius:10px;background:rgba(234,88,12,0.12);display:flex;align-items:center;justify-content:center;color:var(--secondary);font-size:1.1rem;flex-shrink:0;">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                        <div>
+                            <strong style="display:block;font-size:0.875rem;color:var(--text);">Book Driving Slot</strong>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">Reserve road or yard bay</span>
+                        </div>
+                    </button>
+                    <button onclick="document.querySelector('[data-tab=\'materials\']').click();" class="dash-panel" style="margin-bottom:0;text-align:left;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;cursor:pointer;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition);" onmouseover="this.style.borderColor='var(--secondary)';this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';">
+                        <div style="width:42px;height:42px;border-radius:10px;background:rgba(59,130,246,0.12);display:flex;align-items:center;justify-content:center;color:#3b82f6;font-size:1.1rem;flex-shrink:0;">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <strong style="display:block;font-size:0.875rem;color:var(--text);">Practice Exam Bank</strong>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">50-question mock test</span>
+                        </div>
+                    </button>
+                    <button onclick="document.querySelector('[data-tab=\'training\']').click();" class="dash-panel" style="margin-bottom:0;text-align:left;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;cursor:pointer;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition);" onmouseover="this.style.borderColor='var(--secondary)';this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';">
+                        <div style="width:42px;height:42px;border-radius:10px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;color:#10b981;font-size:1.1rem;flex-shrink:0;">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div>
+                            <strong style="display:block;font-size:0.875rem;color:var(--text);">Pre-Trip Checklist</strong>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">100-pt in-cab & engine</span>
+                        </div>
+                    </button>
+                    <button onclick="document.querySelector('[data-tab=\'payments\']').click();" class="dash-panel" style="margin-bottom:0;text-align:left;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;cursor:pointer;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition);" onmouseover="this.style.borderColor='var(--secondary)';this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';">
+                        <div style="width:42px;height:42px;border-radius:10px;background:rgba(168,85,247,0.12);display:flex;align-items:center;justify-content:center;color:#a855f7;font-size:1.1rem;flex-shrink:0;">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <strong style="display:block;font-size:0.875rem;color:var(--text);">Carrier Pre-Hires</strong>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">2 tuition reimbursement</span>
+                        </div>
+                    </button>
                 </div>
 
                 <div class="dash-metrics">
@@ -188,6 +236,59 @@
                     </div>
                 </div>
 
+                <!-- FMCSA ELDT Graduation Milestone Roadmap -->
+                <div class="dash-panel">
+                    <div class="dash-panel-header">
+                        <h3>FMCSA ELDT Certification Roadmap</h3>
+                        <span style="font-size:0.8125rem;color:#10b981;font-weight:600;"><i class="fas fa-shield-halved"></i> TPR Registry Verified</span>
+                    </div>
+                    <div class="dash-panel-body">
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;">
+                            <div style="background:var(--bg-input);padding:1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
+                                    <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);">STEP 1</span>
+                                    <span class="dash-status active" style="font-size:0.7rem;padding:0.15rem 0.45rem;">Verified</span>
+                                </div>
+                                <strong style="display:block;font-size:0.875rem;margin-bottom:0.25rem;">DOT Physical </strong>
+                                <span style="font-size:0.75rem;color:var(--text-muted);">Completed Aug 2</span>
+                            </div>
+                            <div style="background:var(--bg-input);padding:1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
+                                    <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);">STEP 2</span>
+                                    <span class="dash-status active" style="font-size:0.7rem;padding:0.15rem 0.45rem;">Issued</span>
+                                </div>
+                                <strong style="display:block;font-size:0.875rem;margin-bottom:0.25rem;">Commercial Permit</strong>
+                                <span style="font-size:0.75rem;color:var(--text-muted);">Class A + Air Brakes</span>
+                            </div>
+                            <div style="background:var(--bg-input);padding:1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
+                                    <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);">STEP 3</span>
+                                    <span class="dash-status active" style="font-size:0.7rem;padding:0.15rem 0.45rem;">Passed</span>
+                                </div>
+                                <strong style="display:block;font-size:0.875rem;margin-bottom:0.25rem;">ELDT Theory</strong>
+                                <span style="font-size:0.75rem;color:var(--text-muted);">Score: 94% (Sep 14)</span>
+                            </div>
+                            <div style="background:var(--bg-input);padding:1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
+                                    <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);">STEP 4</span>
+                                    <span class="dash-status pending" style="font-size:0.7rem;padding:0.15rem 0.45rem;">82% Done</span>
+                                </div>
+                                <strong style="display:block;font-size:0.875rem;margin-bottom:0.25rem;">Yard Backing</strong>
+                                <span style="font-size:0.75rem;color:var(--text-muted);">Alley Dock & Parallel</span>
+                            </div>
+                            <div style="background:var(--bg-input);padding:1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
+                                    <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);">STEP 5</span>
+                                    <span class="dash-status pending" style="font-size:0.7rem;padding:0.15rem 0.45rem;">54% Done</span>
+                                </div>
+                                <strong style="display:block;font-size:0.875rem;margin-bottom:0.25rem;">Road & Night Driving</strong>
+                                <span style="font-size:0.75rem;color:var(--text-muted);">I-40 / I-55 Routes</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
                 <div class="dash-grid-2">
                     <div class="dash-panel">
                         <div class="dash-panel-header">
@@ -204,12 +305,16 @@
                                 <div class="progress-track"><div class="progress-fill" style="width:88%;"></div></div>
                             </div>
                             <div class="progress-bar-container">
-                                <div class="progress-label"><span>Pre-Trip Inspection</span><span>Passed</span></div>
+                                <div class="progress-label"><span>Pre-Trip Inspection</span><span>Passed (96%)</span></div>
                                 <div class="progress-track"><div class="progress-fill" style="width:100%;"></div></div>
                             </div>
                             <div class="progress-bar-container">
                                 <div class="progress-label"><span>Backing Maneuvers</span><span>In Progress</span></div>
-                                <div class="progress-track"><div class="progress-fill" style="width:65%;"></div></div>
+                                <div class="progress-track"><div class="progress-fill" style="width:82%;"></div></div>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-label"><span>Night Operations</span><span>8/10 hrs</span></div>
+                                <div class="progress-track"><div class="progress-fill" style="width:80%;"></div></div>
                             </div>
                         </div>
                     </div>
@@ -219,35 +324,74 @@
                             <h3>Upcoming Schedule</h3>
                         </div>
                         <div class="dash-panel-body">
-                            <table class="dash-table">
+                            <div class="dash-table-wrap">
+<table class="dash-table dash-table-cards">
                                 <thead><tr><th>Date</th><th>Activity</th><th>Time</th></tr></thead>
                                 <tbody>
-                                    <tr><td>Oct 28</td><td>Highway Driving</td><td>7:00 AM</td></tr>
-                                    <tr><td>Oct 29</td><td>Classroom — HOS Rules</td><td>9:00 AM</td></tr>
-                                    <tr><td>Oct 30</td><td>Offset Backing Practice</td><td>7:00 AM</td></tr>
-                                    <tr><td>Nov 1</td><td>Night Driving Session</td><td>6:00 PM</td></tr>
-                                    <tr><td>Nov 3</td><td>Mock CDL Skills Test</td><td>8:00 AM</td></tr>
+                                    <tr><td data-label="Date">Oct 28</td><td data-label="Activity">Highway Driving &bull; I-40</td><td data-label="Time">7:00 AM</td></tr>
+                                    <tr><td data-label="Date">Oct 29</td><td data-label="Activity">Classroom &bull; HOS & Logbooks</td><td data-label="Time">9:00 AM</td></tr>
+                                    <tr><td data-label="Date">Oct 30</td><td data-label="Activity">90-Degree Alley Docking</td><td data-label="Time">7:00 AM</td></tr>
+                                    <tr><td data-label="Date">Nov 1</td><td data-label="Activity">Night Driving Session 3</td><td data-label="Time">6:00 PM</td></tr>
+                                    <tr><td data-label="Date">Nov 3</td><td data-label="Activity">Full Mock CDL Skills Exam</td><td data-label="Time">8:00 AM</td></tr>
                                 </tbody>
                             </table>
+</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="dash-panel">
-                    <div class="dash-panel-header">
-                        <h3>Recent Test Results</h3>
+                <div class="dash-grid-2">
+                    <div class="dash-panel">
+                        <div class="dash-panel-header">
+                            <h3>Recent Test Results</h3>
+                        </div>
+                        <div class="dash-panel-body">
+                            <div class="dash-table-wrap">
+<table class="dash-table dash-table-cards">
+                                <thead><tr><th>Test</th><th>Score</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <tr><td data-label="Test">General Knowledge</td><td data-label="Score">92%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Test">Air Brakes Exam</td><td data-label="Score">88%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Test">Combination Vehicles</td><td data-label="Score">90%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Test">100-Pt Pre-Trip Walkaround</td><td data-label="Score">96%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Test">Cargo Securement & Flatbed</td><td data-label="Score">86%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
+                                </tbody>
+                            </table>
+</div>
+                        </div>
                     </div>
-                    <div class="dash-panel-body" style="overflow-x:auto;">
-                        <table class="dash-table">
-                            <thead><tr><th>Test</th><th>Date</th><th>Score</th><th>Status</th></tr></thead>
-                            <tbody>
-                                <tr><td>Pre-Trip Inspection Quiz</td><td>Oct 24, 2026</td><td>94%</td><td><span class="dash-status active">Passed</span></td></tr>
-                                <tr><td>Air Brake Systems</td><td>Oct 22, 2026</td><td>88%</td><td><span class="dash-status active">Passed</span></td></tr>
-                                <tr><td>General Knowledge Test</td><td>Oct 18, 2026</td><td>92%</td><td><span class="dash-status active">Passed</span></td></tr>
-                                <tr><td>Cargo Securement</td><td>Oct 15, 2026</td><td>86%</td><td><span class="dash-status active">Passed</span></td></tr>
-                                <tr><td>Combination Vehicles</td><td>Oct 12, 2026</td><td>90%</td><td><span class="dash-status active">Passed</span></td></tr>
-                            </tbody>
-                        </table>
+
+                    <div class="dash-panel">
+                        <div class="dash-panel-header">
+                            <h3>Assigned Rig & Yard Hub</h3>
+                        </div>
+                        <div class="dash-panel-body">
+                            <div style="display:flex;flex-direction:column;gap:0.85rem;">
+                                <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:0.6rem;">
+                                    <span style="font-size:0.8125rem;color:var(--text-muted);">Assigned Tractor</span>
+                                    <strong style="font-size:0.875rem;color:var(--text);">2024 Freightliner Cascadia #104</strong>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:0.6rem;">
+                                    <span style="font-size:0.8125rem;color:var(--text-muted);">Transmission</span>
+                                    <strong style="font-size:0.875rem;color:var(--text);">10-Speed Eaton Fuller Manual</strong>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:0.6rem;">
+                                    <span style="font-size:0.8125rem;color:var(--text-muted);">Trailer Unit</span>
+                                    <strong style="font-size:0.875rem;color:var(--text);">53-ft Wabash Duraplate #T-22</strong>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;">
+                                    <span style="font-size:0.8125rem;color:var(--text-muted);">Lead Instructor</span>
+                                    <strong style="font-size:0.875rem;color:var(--secondary);"><i class="fas fa-user-check"></i> Mike Reynolds</strong>
+                                </div>
+                            </div>
+                            <div style="margin-top:1.15rem;position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
+                                <img src="assets/images/dashboard-assigned-rig-104.jpg" alt="2024 Freightliner Cascadia Rig 104 in Training Bay 4" style="width:100%;height:155px;object-fit:cover;display:block;">
+                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent, rgba(0,0,0,0.85));padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;">
+                                    <span style="color:#FFFFFF;font-size:0.8125rem;font-weight:600;"><i class="fas fa-truck-front" style="color:var(--secondary);margin-right:0.4rem;"></i> Assigned Rig #104 &bull; Bay 4</span>
+                                    <span class="dash-status active" style="font-size:0.7rem;background:rgba(16,185,129,0.25);border:none;color:#34d399;">Inspected</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -255,8 +399,8 @@
             <!-- TAB: TRAINING HOURS -->
             <div class="dash-tab" id="tab-training">
                 <div class="dash-welcome">
-                    <h2>Behind-the-Wheel Hours</h2>
-                    <p>Track your driving hours logged during training. You need 160 total hours to complete the program.</p>
+                    <h2>Behind-the-Wheel & Range Hours</h2>
+                    <p>Track your federally mandated FMCSA ELDT driving categories, skill evaluations, and daily tractor-trailer logs.</p>
                 </div>
 
                 <div class="dash-metrics">
@@ -282,23 +426,118 @@
                     </div>
                 </div>
 
+                <!-- FMCSA ELDT Category Breakdown -->
                 <div class="dash-panel">
                     <div class="dash-panel-header">
-                        <h3>Hours Log</h3>
+                        <h3>FMCSA ELDT Curriculum Category Hours Breakdown</h3>
+                        <span style="font-size:0.8125rem;color:var(--text-muted);font-weight:600;">132.0 / 182 Total Hours (72%)</span>
+                    </div>
+                    <div class="dash-panel-body">
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
+                            <div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-label"><span>Behind-the-Wheel (Public Roads & Highway)</span><span>44.0 / 70 hrs (63%)</span></div>
+                                    <div class="progress-track"><div class="progress-fill" style="width:63%;"></div></div>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-label"><span>Range & Yard Backing Maneuvers</span><span>34.0 / 50 hrs (68%)</span></div>
+                                    <div class="progress-track"><div class="progress-fill" style="width:68%;"></div></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-label"><span>Classroom Instruction & ELDT Theory</span><span>42.0 / 48 hrs (88%)</span></div>
+                                    <div class="progress-track"><div class="progress-fill" style="width:88%;"></div></div>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-label"><span>Night & Twilight Driving Operations</span><span>8.0 / 10 hrs (80%)</span></div>
+                                    <div class="progress-track"><div class="progress-fill" style="width:80%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competency Evaluation Matrix & Instructor Feedback -->
+                <div class="dash-grid-2">
+                    <div class="dash-panel">
+                        <div class="dash-panel-header">
+                            <h3>Driving Competency Evaluation Matrix</h3>
+                        </div>
+                        <div class="dash-panel-body" style="overflow-x:auto;">
+                            <div class="dash-table-wrap">
+<table class="dash-table dash-table-cards">
+                                <thead><tr><th>Maneuver / Skill</th><th>Score</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <tr><td data-label="Maneuver / Skill">100-Pt Pre-Trip & Air Brake Test</td><td data-label="Score">96 / 100</td><td data-label="Status"><span class="dash-status active">Certified</span></td></tr>
+                                    <tr><td data-label="Maneuver / Skill">Straight-Line Backing (100 ft)</td><td data-label="Score">100 / 100</td><td data-label="Status"><span class="dash-status active">Certified</span></td></tr>
+                                    <tr><td data-label="Maneuver / Skill">Offset Backing (Left & Right)</td><td data-label="Score">94 / 100</td><td data-label="Status"><span class="dash-status active">Certified</span></td></tr>
+                                    <tr><td data-label="Maneuver / Skill">90-Degree Alley Docking</td><td data-label="Score">88 / 100</td><td data-label="Status"><span class="dash-status active">Proficient</span></td></tr>
+                                    <tr><td data-label="Maneuver / Skill">Conventional Parallel Parking</td><td data-label="Score">82 / 100</td><td data-label="Status"><span class="dash-status pending">In Practice</span></td></tr>
+                                    <tr><td data-label="Maneuver / Skill">5th-Wheel Coupling & Air Lines</td><td data-label="Score">98 / 100</td><td data-label="Status"><span class="dash-status active">Certified</span></td></tr>
+                                    <tr><td data-label="Maneuver / Skill">Mountain Grade / Jake Brake</td><td data-label="Score">92 / 100</td><td data-label="Status"><span class="dash-status active">Proficient</span></td></tr>
+                                </tbody>
+                            </table>
+</div>
+                        </div>
+                    </div>
+
+                    <div class="dash-panel">
+                        <div class="dash-panel-header">
+                            <h3>Instructor Coaching Notes</h3>
+                        </div>
+                        <div class="dash-panel-body">
+                            <div style="display:flex;flex-direction:column;gap:1rem;">
+                                <div style="background:var(--bg-input);padding:0.9rem 1rem;border-radius:var(--radius);border-left:3px solid var(--secondary);">
+                                    <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;">
+                                        <strong style="font-size:0.875rem;">Mike Reynolds &bull; Lead Road Coach</strong>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);">Oct 25</span>
+                                    </div>
+                                    <p style="font-size:0.8125rem;color:var(--text-secondary);margin:0;line-height:1.5;">"Excellent mirror check rhythm (every 5-8 seconds) and crisp double-clutch downshifting on the I-40 interchange. Maintained safe following distance in heavy rain."</p>
+                                </div>
+                                <div style="background:var(--bg-input);padding:0.9rem 1rem;border-radius:var(--radius);border-left:3px solid #3b82f6;">
+                                    <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;">
+                                        <strong style="font-size:0.875rem;">Robert Garcia &bull; Range Specialist</strong>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);">Oct 24</span>
+                                    </div>
+                                    <p style="font-size:0.8125rem;color:var(--text-secondary);margin:0;line-height:1.5;">"Solid 45-degree angle setup on alley docking today. Remember to make your G.O.A.L. (Get Out And Look) stop before final trailer entry to check the rear pivot cone."</p>
+                                </div>
+                                <div style="background:var(--bg-input);padding:0.9rem 1rem;border-radius:var(--radius);border-left:3px solid #10b981;">
+                                    <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;">
+                                        <strong style="font-size:0.875rem;">Sarah Mitchell &bull; Technical Proctor</strong>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);">Oct 20</span>
+                                    </div>
+                                    <p style="font-size:0.8125rem;color:var(--text-secondary);margin:0;line-height:1.5;">"Pre-trip walkaround timing clocked in at 24 minutes, well under the 40-minute state ceiling. Identified all slack adjusters and brake chamber pushrods flawlessly."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Hours Log -->
+                <div class="dash-panel">
+                    <div class="dash-panel-header">
+                        <h3>Detailed Hours Log</h3>
+                        <button class="btn btn-secondary btn-sm"><i class="fas fa-file-arrow-down"></i> Export Official Log (PDF)</button>
                     </div>
                     <div class="dash-panel-body" style="overflow-x:auto;">
-                        <table class="dash-table">
-                            <thead><tr><th>Date</th><th>Activity</th><th>Instructor</th><th>Hours</th><th>Type</th></tr></thead>
+                        <div class="dash-table-wrap">
+<table class="dash-table dash-table-cards">
+                            <thead><tr><th>Date</th><th>Activity / Route</th><th>Instructor</th><th>Hours</th><th>Miles</th><th>Weather</th><th>Type</th></tr></thead>
                             <tbody>
-                                <tr><td>Oct 25</td><td>Highway Driving — I-40</td><td>Mike Reynolds</td><td>4.0</td><td><span class="dash-status active">Road</span></td></tr>
-                                <tr><td>Oct 24</td><td>Offset Backing Practice</td><td>Robert Garcia</td><td>3.0</td><td><span class="dash-status pending">Range</span></td></tr>
-                                <tr><td>Oct 23</td><td>City Driving — Downtown</td><td>Sarah Mitchell</td><td>3.5</td><td><span class="dash-status active">Road</span></td></tr>
-                                <tr><td>Oct 22</td><td>Straight-line Backing</td><td>Robert Garcia</td><td>2.5</td><td><span class="dash-status pending">Range</span></td></tr>
-                                <tr><td>Oct 21</td><td>Night Driving Session</td><td>Mike Reynolds</td><td>4.0</td><td><span class="dash-status completed">Night</span></td></tr>
-                                <tr><td>Oct 20</td><td>Pre-Trip Inspection</td><td>Sarah Mitchell</td><td>2.0</td><td><span class="dash-status pending">Range</span></td></tr>
-                                <tr><td>Oct 18</td><td>Highway Driving — I-55</td><td>Mike Reynolds</td><td>4.0</td><td><span class="dash-status active">Road</span></td></tr>
+                                <tr><td data-label="Date">Oct 25</td><td data-label="Activity / Route">Highway Driving &bull; I-40 East Corridor</td><td data-label="Instructor">Mike Reynolds</td><td data-label="Hours">4.0</td><td data-label="Miles">142 mi</td><td data-label="Weather">Light Rain</td><td data-label="Type"><span class="dash-status active">Road</span></td></tr>
+                                <tr><td data-label="Date">Oct 24</td><td data-label="Activity / Route">90-Degree Alley Docking Practice</td><td data-label="Instructor">Robert Garcia</td><td data-label="Hours">3.0</td><td data-label="Miles">8 mi</td><td data-label="Weather">Clear</td><td data-label="Type"><span class="dash-status pending">Range</span></td></tr>
+                                <tr><td data-label="Date">Oct 23</td><td data-label="Activity / Route">City Driving &bull; Downtown Memphis & US-61</td><td data-label="Instructor">Sarah Mitchell</td><td data-label="Hours">3.5</td><td data-label="Miles">54 mi</td><td data-label="Weather">Overcast</td><td data-label="Type"><span class="dash-status active">Road</span></td></tr>
+                                <tr><td data-label="Date">Oct 22</td><td data-label="Activity / Route">Straight-line & Offset Backing</td><td data-label="Instructor">Robert Garcia</td><td data-label="Hours">2.5</td><td data-label="Miles">6 mi</td><td data-label="Weather">Clear</td><td data-label="Type"><span class="dash-status pending">Range</span></td></tr>
+                                <tr><td data-label="Date">Oct 21</td><td data-label="Activity / Route">Night Operations & Glare Discipline</td><td data-label="Instructor">Mike Reynolds</td><td data-label="Hours">4.0</td><td data-label="Miles">110 mi</td><td data-label="Weather">Dark / Clear</td><td data-label="Type"><span class="dash-status completed">Night</span></td></tr>
+                                <tr><td data-label="Date">Oct 20</td><td data-label="Activity / Route">100-Point Pre-Trip & Air Brake Lab</td><td data-label="Instructor">Sarah Mitchell</td><td data-label="Hours">2.0</td><td data-label="Miles">&mdash;</td><td data-label="Weather">Shop / Indoor</td><td data-label="Type"><span class="dash-status pending">Range</span></td></tr>
+                                <tr><td data-label="Date">Oct 18</td><td data-label="Activity / Route">Highway Driving &bull; I-55 South to Hernando</td><td data-label="Instructor">Mike Reynolds</td><td data-label="Hours">4.0</td><td data-label="Miles">128 mi</td><td data-label="Weather">Windy</td><td data-label="Type"><span class="dash-status active">Road</span></td></tr>
+                                <tr><td data-label="Date">Oct 16</td><td data-label="Activity / Route">Fifth-Wheel Coupling & Air Line Hookup</td><td data-label="Instructor">Robert Garcia</td><td data-label="Hours">3.0</td><td data-label="Miles">4 mi</td><td data-label="Weather">Clear</td><td data-label="Type"><span class="dash-status pending">Range</span></td></tr>
+                                <tr><td data-label="Date">Oct 14</td><td data-label="Activity / Route">Skid Simulator & Adverse Weather Lab</td><td data-label="Instructor">Sarah Mitchell</td><td data-label="Hours">4.0</td><td data-label="Miles">&mdash;</td><td data-label="Weather">Simulated Wet</td><td data-label="Type"><span class="dash-status completed">Sim</span></td></tr>
+                                <tr><td data-label="Date">Oct 11</td><td data-label="Activity / Route">Shifting & Transmission Lab (10-Speed)</td><td data-label="Instructor">Mike Reynolds</td><td data-label="Hours">3.5</td><td data-label="Miles">45 mi</td><td data-label="Weather">Clear</td><td data-label="Type"><span class="dash-status active">Road</span></td></tr>
                             </tbody>
                         </table>
+</div>
                     </div>
                 </div>
             </div>
@@ -306,42 +545,154 @@
             <!-- TAB: SCHEDULE & TESTS -->
             <div class="dash-tab" id="tab-schedule">
                 <div class="dash-welcome">
-                    <h2>Schedule & Test Results</h2>
-                    <p>View your upcoming training sessions, test dates, and past exam results.</p>
+                    <h2>Schedule & Testing Center</h2>
+                    <p>Manage upcoming behind-the-wheel slots, view mock evaluation critiques, and track your state licensing exam date.</p>
                 </div>
 
-                <div class="dash-grid-2">
-                    <div class="dash-panel">
-                        <div class="dash-panel-header"><h3>Upcoming Sessions</h3></div>
-                        <div class="dash-panel-body">
-                            <table class="dash-table">
-                                <thead><tr><th>Date</th><th>Session</th><th>Instructor</th><th>Time</th></tr></thead>
+                <!-- State CDL Skills Test Appointment Card -->
+                <div class="dash-panel" style="border: 2px solid rgba(234,88,12,0.4);background:linear-gradient(135deg, var(--bg-card) 0%, rgba(234,88,12,0.06) 100%);">
+                    <div class="dash-panel-header" style="border-bottom:1px solid rgba(234,88,12,0.2);">
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <div style="width:36px;height:36px;border-radius:50%;background:rgba(234,88,12,0.15);display:flex;align-items:center;justify-content:center;color:var(--secondary);font-size:1rem;">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin:0;font-size:1.0625rem;">Official State CDL Practical Exam Scheduled</h3>
+                                <span style="font-size:0.75rem;color:var(--text-muted);">Confirmed with Tennessee Department of Safety & Homeland Security</span>
+                            </div>
+                        </div>
+                        <span class="dash-status completed" style="font-size:0.8125rem;"><i class="fas fa-calendar-check"></i> Nov 5, 2026 @ 8:30 AM</span>
+                    </div>
+                    <div class="dash-panel-body">
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">
+                            <div>
+                                <strong style="display:block;font-size:0.8125rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.25rem;">Testing Station</strong>
+                                <p style="font-size:0.9375rem;color:var(--text);margin:0 0 0.75rem;font-weight:600;">Tennessee Driver Services Center<br><span style="font-size:0.8125rem;font-weight:400;color:var(--text-secondary);">6340 Summer Ave, Memphis, TN 38134</span></p>
+                                
+                                <strong style="display:block;font-size:0.8125rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.25rem;">Assigned Rig & Escort Coach</strong>
+                                <p style="font-size:0.875rem;color:var(--text);margin:0;font-weight:500;">RoadMaster Cascadia #104 &bull; Escort: Sarah Mitchell</p>
+                            </div>
+                            <div>
+                                <strong style="display:block;font-size:0.8125rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.5rem;">Required Checklist for Test Day</strong>
+                                <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.8125rem;">
+                                    <div style="display:flex;align-items:center;gap:0.5rem;color:#10b981;"><i class="fas fa-circle-check"></i> <span>Valid TN Class D Driver's License</span></div>
+                                    <div style="display:flex;align-items:center;gap:0.5rem;color:#10b981;"><i class="fas fa-circle-check"></i> <span>Unexpired DOT Medical Card (Form MCSA-5876)</span></div>
+                                    <div style="display:flex;align-items:center;gap:0.5rem;color:#10b981;"><i class="fas fa-circle-check"></i> <span>Commercial Learner Permit (CLP)</span></div>
+                                    <div style="display:flex;align-items:center;gap:0.5rem;color:#10b981;"><i class="fas fa-circle-check"></i> <span>RoadMaster ELDT Graduation Certificate (Auto-Uploaded to TPR)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Width Panel: Upcoming Training Sessions (Eliminates Sidescroll) -->
+                <div class="dash-panel">
+                    <div class="dash-panel-header">
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <i class="fas fa-calendar-days" style="color:var(--secondary);font-size:1.15rem;"></i>
+                            <h3 style="margin:0;">Upcoming Behind-the-Wheel &amp; Range Training Sessions</h3>
+                        </div>
+                        <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
+                            <span class="dash-status active" style="font-size:0.75rem;"><i class="fas fa-circle-check"></i> 7 Sessions Confirmed</span>
+                            <button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Request Session</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel-body">
+                        <div class="dash-table-wrap">
+                            <table class="dash-table dash-table-cards">
+                                <thead>
+                                    <tr>
+                                        <th style="width:90px;">Date</th>
+                                        <th>Session Focus</th>
+                                        <th style="width:130px;">Instructor</th>
+                                        <th style="width:140px;">Location</th>
+                                        <th style="width:100px;text-align:right;">Time</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                    <tr><td>Oct 28</td><td>Highway Driving</td><td>Mike R.</td><td>7:00 AM</td></tr>
-                                    <tr><td>Oct 29</td><td>Classroom — HOS</td><td>David P.</td><td>9:00 AM</td></tr>
-                                    <tr><td>Oct 30</td><td>Offset Backing</td><td>Robert G.</td><td>7:00 AM</td></tr>
-                                    <tr><td>Nov 1</td><td>Night Driving</td><td>Mike R.</td><td>6:00 PM</td></tr>
-                                    <tr><td>Nov 3</td><td>Mock Skills Test</td><td>Sarah M.</td><td>8:00 AM</td></tr>
-                                    <tr><td>Nov 5</td><td>CDL Skills Test</td><td>Examiner</td><td>8:30 AM</td></tr>
+                                    <tr><td data-label="Date"><strong>Oct 28</strong></td><td data-label="Session Focus">Highway &amp; Ramp Merging</td><td data-label="Instructor"><i class="fas fa-user" style="color:var(--text-muted);font-size:0.75rem;margin-right:0.25rem;"></i> Mike R.</td><td data-label="Location"><i class="fas fa-location-dot" style="color:var(--secondary);font-size:0.75rem;margin-right:0.25rem;"></i> I-40 East</td><td data-label="Time" style="text-align:right;"><strong>7:00 AM</strong></td></tr>
+                                    <tr><td data-label="Date"><strong>Oct 29</strong></td><td data-label="Session Focus">Classroom &bull; ELD &amp; HOS Compliance</td><td data-label="Instructor"><i class="fas fa-user" style="color:var(--text-muted);font-size:0.75rem;margin-right:0.25rem;"></i> David P.</td><td data-label="Location"><i class="fas fa-location-dot" style="color:var(--secondary);font-size:0.75rem;margin-right:0.25rem;"></i> Room 102</td><td data-label="Time" style="text-align:right;"><strong>9:00 AM</strong></td></tr>
+                                    <tr><td data-label="Date"><strong>Oct 30</strong></td><td data-label="Session Focus">90&deg; Alley Docking Range Practice</td><td data-label="Instructor"><i class="fas fa-user" style="color:var(--text-muted);font-size:0.75rem;margin-right:0.25rem;"></i> Robert G.</td><td data-label="Location"><i class="fas fa-location-dot" style="color:var(--secondary);font-size:0.75rem;margin-right:0.25rem;"></i> Bay 4 Range</td><td data-label="Time" style="text-align:right;"><strong>7:00 AM</strong></td></tr>
+                                    <tr><td data-label="Date"><strong>Nov 1</strong></td><td data-label="Session Focus">Night Operations Driving Run 3</td><td data-label="Instructor"><i class="fas fa-user" style="color:var(--text-muted);font-size:0.75rem;margin-right:0.25rem;"></i> Mike R.</td><td data-label="Location"><i class="fas fa-location-dot" style="color:var(--secondary);font-size:0.75rem;margin-right:0.25rem;"></i> US-61 South</td><td data-label="Time" style="text-align:right;"><strong>6:00 PM</strong></td></tr>
+                                    <tr><td data-label="Date"><strong>Nov 2</strong></td><td data-label="Session Focus">Tanker &amp; HazMat Endorsement Review</td><td data-label="Instructor"><i class="fas fa-user" style="color:var(--text-muted);font-size:0.75rem;margin-right:0.25rem;"></i> Sarah M.</td><td data-label="Location"><i class="fas fa-location-dot" style="color:var(--secondary);font-size:0.75rem;margin-right:0.25rem;"></i> Room 104</td><td data-label="Time" style="text-align:right;"><strong>10:00 AM</strong></td></tr>
+                                    <tr><td data-label="Date"><strong>Nov 3</strong></td><td data-label="Session Focus">Full Mock CDL Skills Exam Simulation</td><td data-label="Instructor"><i class="fas fa-user" style="color:var(--text-muted);font-size:0.75rem;margin-right:0.25rem;"></i> Sarah M.</td><td data-label="Location"><i class="fas fa-location-dot" style="color:var(--secondary);font-size:0.75rem;margin-right:0.25rem;"></i> Test Range</td><td data-label="Time" style="text-align:right;"><strong>8:00 AM</strong></td></tr>
+                                    <tr><td data-label="Date"><strong>Nov 4</strong></td><td data-label="Session Focus">Pre-Test Vehicle Walkaround Inspection</td><td data-label="Instructor"><i class="fas fa-user" style="color:var(--text-muted);font-size:0.75rem;margin-right:0.25rem;"></i> Robert G.</td><td data-label="Location"><i class="fas fa-location-dot" style="color:var(--secondary);font-size:0.75rem;margin-right:0.25rem;"></i> Shop Bay 1</td><td data-label="Time" style="text-align:right;"><strong>1:00 PM</strong></td></tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="dash-panel">
-                        <div class="dash-panel-header"><h3>Test Results</h3></div>
-                        <div class="dash-panel-body">
-                            <table class="dash-table">
-                                <thead><tr><th>Test</th><th>Score</th><th>Status</th></tr></thead>
+                </div>
+
+                <!-- Full Width Panel: Test & Exam Results (Eliminates Sidescroll) -->
+                <div class="dash-panel">
+                    <div class="dash-panel-header">
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <i class="fas fa-square-poll-vertical" style="color:var(--secondary);font-size:1.15rem;"></i>
+                            <h3 style="margin:0;">Official FMCSA ELDT &amp; State Written Exam Results</h3>
+                        </div>
+                        <div style="display:flex;gap:0.75rem;align-items:center;">
+                            <span class="dash-status active" style="font-size:0.75rem;"><i class="fas fa-shield-check"></i> 7 of 9 Passed &bull; 92.4% Avg</span>
+                        </div>
+                    </div>
+                    <div class="dash-panel-body">
+                        <div class="dash-table-wrap">
+                            <table class="dash-table dash-table-cards">
+                                <thead>
+                                    <tr>
+                                        <th>Exam Module</th>
+                                        <th style="width:110px;">Date</th>
+                                        <th style="width:100px;">Score</th>
+                                        <th style="width:120px;text-align:right;">Status</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                    <tr><td>General Knowledge</td><td>92%</td><td><span class="dash-status active">Passed</span></td></tr>
-                                    <tr><td>Air Brakes</td><td>88%</td><td><span class="dash-status active">Passed</span></td></tr>
-                                    <tr><td>Combination Vehicles</td><td>90%</td><td><span class="dash-status active">Passed</span></td></tr>
-                                    <tr><td>Pre-Trip Inspection</td><td>94%</td><td><span class="dash-status active">Passed</span></td></tr>
-                                    <tr><td>Cargo Securement</td><td>86%</td><td><span class="dash-status active">Passed</span></td></tr>
-                                    <tr><td>Defensive Driving</td><td>—</td><td><span class="dash-status pending">Upcoming</span></td></tr>
-                                    <tr><td>CDL Skills Test</td><td>—</td><td><span class="dash-status pending">Scheduled</span></td></tr>
+                                    <tr><td data-label="Exam Module"><strong>General Knowledge Theory Exam</strong></td><td data-label="Date">Sep 14</td><td data-label="Score"><strong>92%</strong></td><td data-label="Status" style="text-align:right;"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Exam Module"><strong>Air Brakes Systems Written Test</strong></td><td data-label="Date">Sep 18</td><td data-label="Score"><strong>88%</strong></td><td data-label="Status" style="text-align:right;"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Exam Module"><strong>Combination Vehicles Endorsement Exam</strong></td><td data-label="Date">Sep 22</td><td data-label="Score"><strong>90%</strong></td><td data-label="Status" style="text-align:right;"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Exam Module"><strong>100-Point Pre-Trip Inspection Practical</strong></td><td data-label="Date">Oct 05</td><td data-label="Score"><strong>96%</strong></td><td data-label="Status" style="text-align:right;"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Exam Module"><strong>Cargo Securement, Weight &amp; Axle Distribution</strong></td><td data-label="Date">Oct 12</td><td data-label="Score"><strong>86%</strong></td><td data-label="Status" style="text-align:right;"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Exam Module"><strong>Defensive Driving &amp; Smith 5-Keys Practical</strong></td><td data-label="Date">Oct 19</td><td data-label="Score"><strong>94%</strong></td><td data-label="Status" style="text-align:right;"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Exam Module"><strong>Hazardous Materials (H) Mock Certification</strong></td><td data-label="Date">Oct 26</td><td data-label="Score"><strong>88%</strong></td><td data-label="Status" style="text-align:right;"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Exam Module"><strong>Full Mock CDL Skills Exam (Pre-Trip + Range)</strong></td><td data-label="Date">Nov 03</td><td data-label="Score">&mdash;</td><td data-label="Status" style="text-align:right;"><span class="dash-status pending">Upcoming</span></td></tr>
+                                    <tr><td data-label="Exam Module"><strong>Official State CDL Practical Exam</strong></td><td data-label="Date">Nov 05</td><td data-label="Score">&mdash;</td><td data-label="Status" style="text-align:right;"><span class="dash-status completed">Scheduled</span></td></tr>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endorsement Readiness Hub -->
+                <div class="dash-panel">
+                    <div class="dash-panel-header">
+                        <h3>Endorsement Testing Readiness Hub</h3>
+                        <span style="font-size:0.8125rem;color:var(--text-muted);">Boost your starting salary by up to $15,000/yr with endorsements</span>
+                    </div>
+                    <div class="dash-panel-body">
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
+                            <div style="background:var(--bg-input);padding:1.1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                                    <strong style="font-size:0.9375rem;"><i class="fas fa-radiation" style="color:#EA580C;margin-right:0.4rem;"></i> HazMat (H)</strong>
+                                    <span class="dash-status active" style="font-size:0.75rem;">88% Ready</span>
+                                </div>
+                                <p style="font-size:0.8125rem;color:var(--text-muted);margin:0 0 0.85rem;">49 CFR regulations, placarding, shipping papers, security plans.</p>
+                                <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Launch Practice Test</button>
+                            </div>
+                            <div style="background:var(--bg-input);padding:1.1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                                    <strong style="font-size:0.9375rem;"><i class="fas fa-droplet" style="color:#3b82f6;margin-right:0.4rem;"></i> Tanker (N)</strong>
+                                    <span class="dash-status active" style="font-size:0.75rem;">96% Ready</span>
+                                </div>
+                                <p style="font-size:0.8125rem;color:var(--text-muted);margin:0 0 0.85rem;">Surge dynamics, baffles vs smooth bore, outage space, emergency roll prevention.</p>
+                                <button class="btn btn-primary btn-sm w-full"><i class="fas fa-check"></i> Eligible for DMV Add-on</button>
+                            </div>
+                            <div style="background:var(--bg-input);padding:1.1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                                    <strong style="font-size:0.9375rem;"><i class="fas fa-trailer" style="color:#10b981;margin-right:0.4rem;"></i> Doubles / Triples (T)</strong>
+                                    <span class="dash-status active" style="font-size:0.75rem;">92% Ready</span>
+                                </div>
+                                <p style="font-size:0.8125rem;color:var(--text-muted);margin:0 0 0.85rem;">Converter dollies, crack-the-whip mitigation, coupling sequence. </p>
+                                <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Launch Practice Test</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -350,57 +701,130 @@
             <!-- TAB: COURSE MATERIALS -->
             <div class="dash-tab" id="tab-materials">
                 <div class="dash-welcome">
-                    <h2>Course Materials</h2>
-                    <p>Access your training manuals, study guides, and supplemental resources.</p>
+                    <h2>Course Materials & Training Library</h2>
+                    <p>Access your official FMCSA curriculum manuals, HD video masterclasses, pre-trip diagrams, and 500+ interactive test questions.</p>
                 </div>
 
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
-                    <div class="dash-panel" style="margin-bottom:0;">
-                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
-                            <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
-                            <h4 style="margin-bottom:0.375rem;">CDL General Knowledge Manual</h4>
-                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">Complete study guide for the general knowledge written test.</p>
-                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF</button>
+                <!-- Study Stats Ribbon -->
+                <div class="dash-study-stats-grid">
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;">
+                        <i class="fas fa-book-open" style="font-size:1.5rem;color:var(--secondary);"></i>
+                        <div>
+                            <strong style="display:block;font-size:1.125rem;color:var(--text);">12 Resources</strong>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">PDFs, Videos, and Interactive Tools</span>
                         </div>
                     </div>
-                    <div class="dash-panel" style="margin-bottom:0;">
-                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
-                            <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
-                            <h4 style="margin-bottom:0.375rem;">Air Brake Systems Guide</h4>
-                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">Detailed study material for the air brake endorsement exam.</p>
-                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF</button>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;">
+                        <i class="fas fa-circle-question" style="font-size:1.5rem;color:#3b82f6;"></i>
+                        <div>
+                            <strong style="display:block;font-size:1.125rem;color:var(--text);">480 / 650 Questions</strong>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">Practice Bank Attempted</span>
                         </div>
                     </div>
-                    <div class="dash-panel" style="margin-bottom:0;">
-                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
-                            <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
-                            <h4 style="margin-bottom:0.375rem;">Pre-Trip Inspection Checklist</h4>
-                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">Step-by-step checklist for the pre-trip inspection component.</p>
-                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF</button>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;">
+                        <i class="fas fa-chart-line" style="font-size:1.5rem;color:#10b981;"></i>
+                        <div>
+                            <strong style="display:block;font-size:1.125rem;color:var(--text);">94.2% Average Score</strong>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">Ready for DMV Written Exam</span>
                         </div>
                     </div>
-                    <div class="dash-panel" style="margin-bottom:0;">
-                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
-                            <i class="fas fa-video" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
-                            <h4 style="margin-bottom:0.375rem;">Backing Maneuvers Video</h4>
-                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">Video tutorials for straight-line, offset, and parallel backing.</p>
-                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Watch Video</button>
+                </div>
+
+                <div class="dash-material-grid">
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-file-pdf dash-material-icon" style="color:var(--secondary);"></i>
+                            <h4>CDL General Knowledge</h4>
+                            <p>Complete official FMCSA curriculum manual for the 50-question exam.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (4.2 MB)</button>
                         </div>
                     </div>
-                    <div class="dash-panel" style="margin-bottom:0;">
-                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
-                            <i class="fas fa-file-pdf" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
-                            <h4 style="margin-bottom:0.375rem;">Hours of Service Rules</h4>
-                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">FMCSA hours of service regulations and ELD compliance guide.</p>
-                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF</button>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-file-pdf dash-material-icon" style="color:var(--secondary);"></i>
+                            <h4>Air Brake Systems</h4>
+                            <p>Pneumatic piping diagrams, governor cut-in/out pressures, and low-air alarm tests.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (2.8 MB)</button>
                         </div>
                     </div>
-                    <div class="dash-panel" style="margin-bottom:0;">
-                        <div class="dash-panel-body" style="text-align:center;padding:2rem;">
-                            <i class="fas fa-clipboard-list" style="font-size:2rem;color:var(--secondary);margin-bottom:1rem;"></i>
-                            <h4 style="margin-bottom:0.375rem;">Practice Test Bank</h4>
-                            <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1rem;">500+ practice questions covering all CDL written test topics.</p>
-                            <button class="btn btn-primary btn-sm w-full"><i class="fas fa-play"></i> Start Practice</button>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-file-pdf dash-material-icon" style="color:var(--secondary);"></i>
+                            <h4>100-Point Pre-Trip Checklist</h4>
+                            <p>Engine compartment, coupling systems, and full-vehicle walkaround inspection guide.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (1.5 MB)</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-video dash-material-icon" style="color:var(--secondary);"></i>
+                            <h4>Backing Maneuvers Masterclass</h4>
+                            <p>In-cab and drone training for straight-line, offset backing, and 90-degree alley docking.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Watch Video (28 mins)</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-file-pdf dash-material-icon" style="color:var(--secondary);"></i>
+                            <h4>HOS &amp; ELD Compliance Workbook</h4>
+                            <p>FMCSA 11-hour driving limits, 14-hour duty windows, 34-hour restarts, and ELD logs.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (3.1 MB)</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-clipboard-question dash-material-icon" style="color:var(--secondary);"></i>
+                            <h4>Interactive Practice Test Bank</h4>
+                            <p>650+ simulated state questions with instant answer explanations and scoring.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Start Practice (50 Qs)</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-circle-play dash-material-icon" style="color:#3b82f6;"></i>
+                            <h4>In-Cab &amp; Air Brake 3-Step Video</h4>
+                            <p>Step-by-step video demonstration of mandatory governor, alarm, and button pop-out checks.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Watch Video (18 mins)</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-file-pdf dash-material-icon" style="color:#ea580c;"></i>
+                            <h4>HazMat &amp; Placarding Guide</h4>
+                            <p>Full 9-hazard class breakdown, ERG guidebook navigation, and emergency spill protocol.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (5.6 MB)</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-mountain dash-material-icon" style="color:#10b981;"></i>
+                            <h4>Mountain Driving &amp; Jake Brake</h4>
+                            <p>Steep downhill descent speeds, gear selection, brake fade mitigation, and runaway ramps.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (2.1 MB)</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-headphones dash-material-icon" style="color:#a855f7;"></i>
+                            <h4>CDL Audio Lectures &amp; Audiobooks</h4>
+                            <p>High-yield audio lessons and memory mnemonics for pre-trip components and braking.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-volume-high"></i> Listen to Audio (1 hr 12m)</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-droplet dash-material-icon" style="color:#0ea5e9;"></i>
+                            <h4>Tanker Surge &amp; Liquid Bulk</h4>
+                            <p>Liquid surge physics, baffle mechanics, outage allowances, and tanker steering safety.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (3.4 MB)</button>
+                        </div>
+                    </div>
+                    <div class="dash-panel dash-material-card">
+                        <div class="dash-panel-body">
+                            <i class="fas fa-map-location-dot dash-material-icon" style="color:#f59e0b;"></i>
+                            <h4>Commercial Atlas &amp; Routing</h4>
+                            <p>Low-clearance bridge charts, restricted truck routes, hazmat corridors, and weigh stations.</p>
+                            <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (4.8 MB)</button>
                         </div>
                     </div>
                 </div>
@@ -409,8 +833,8 @@
             <!-- TAB: PAYMENTS -->
             <div class="dash-tab" id="tab-payments">
                 <div class="dash-welcome">
-                    <h2>Payments & Billing</h2>
-                    <p>Manage your tuition payments, view invoices, and track your payment history.</p>
+                    <h2>Payments & Tuition Billing</h2>
+                    <p>Track your installment schedule, view tax receipts, and monitor your carrier tuition reimbursement status.</p>
                 </div>
 
                 <div class="dash-metrics">
@@ -432,25 +856,179 @@
                     <div class="dash-metric-card">
                         <div class="dash-metric-top"><div class="dash-metric-icon"><i class="fas fa-calendar-check"></i></div></div>
                         <div class="dash-metric-value">Nov 1</div>
-                        <div class="dash-metric-label">Next Payment Due</div>
+                        <div class="dash-metric-label">Final Installment Due</div>
                     </div>
                 </div>
 
+                <!-- Carrier Tuition Reimbursement Program Tracker -->
+                <div class="dash-panel" style="border: 2px solid rgba(16,185,129,0.35);background:linear-gradient(135deg, var(--bg-card) 0%, rgba(16,185,129,0.06) 100%);">
+                    <div class="dash-panel-header" style="border-bottom:1px solid rgba(16,185,129,0.2);">
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <div style="width:36px;height:36px;border-radius:50%;background:rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;color:#10b981;font-size:1rem;">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin:0;font-size:1.0625rem;">Contracted Carrier Tuition Reimbursement Active</h3>
+                                <span style="font-size:0.75rem;color:var(--text-muted);">Pre-hire verification confirmed with Werner Enterprises &amp; Swift Transportation</span>
+                            </div>
+                        </div>
+                        <span class="dash-status active" style="font-size:0.8125rem;"><i class="fas fa-circle-check"></i> Up to $7,000 Reimbursement</span>
+                    </div>
+                    <div class="dash-panel-body">
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">
+                            <div>
+                                <strong style="display:block;font-size:0.8125rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.25rem;">How It Works</strong>
+                                <p style="font-size:0.875rem;color:var(--text);margin:0;line-height:1.5;">Upon starting employment, your hiring carrier reimburses your tuition in monthly payments of <strong>$250 to $300/month</strong> directly in addition to your regular driver salary.</p>
+                            </div>
+                            <div>
+                                <strong style="display:block;font-size:0.8125rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.25rem;">Tuition Documentation</strong>
+                                <p style="font-size:0.875rem;color:var(--text);margin:0 0 0.5rem;line-height:1.5;">Your itemized proof-of-payment certificate will be auto-generated and emailed to carrier HR immediately following graduation.</p>
+                                <span style="font-size:0.75rem;color:#10b981;font-weight:600;"><i class="fas fa-check-double"></i> Student Pre-Hire Letter #WH-8491 On File</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Width Panel: Payment History & Receipts (Eliminates Sidescroll) -->
                 <div class="dash-panel">
                     <div class="dash-panel-header">
-                        <h3>Payment History</h3>
-                        <button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Make Payment</button>
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <i class="fas fa-receipt" style="color:var(--secondary);font-size:1.15rem;"></i>
+                            <h3 style="margin:0;">Payment History &amp; Receipts</h3>
+                        </div>
+                        <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
+                            <button class="btn btn-secondary btn-sm"><i class="fas fa-file-arrow-down"></i> Download All Receipts (PDF)</button>
+                            <button class="btn btn-primary btn-sm"><i class="fas fa-credit-card"></i> Pay Balance ($1,200)</button>
+                        </div>
                     </div>
                     <div class="dash-panel-body" style="overflow-x:auto;">
-                        <table class="dash-table">
-                            <thead><tr><th>Date</th><th>Description</th><th>Amount</th><th>Method</th><th>Status</th></tr></thead>
-                            <tbody>
-                                <tr><td>Oct 1, 2026</td><td>Installment 3 of 4</td><td>$1,200</td><td>Visa •••• 4242</td><td><span class="dash-status active">Paid</span></td></tr>
-                                <tr><td>Sep 1, 2026</td><td>Installment 2 of 4</td><td>$1,200</td><td>Visa •••• 4242</td><td><span class="dash-status active">Paid</span></td></tr>
-                                <tr><td>Aug 1, 2026</td><td>Installment 1 of 4</td><td>$1,200</td><td>Visa •••• 4242</td><td><span class="dash-status active">Paid</span></td></tr>
-                                <tr><td>Nov 1, 2026</td><td>Installment 4 of 4</td><td>$1,200</td><td>—</td><td><span class="dash-status pending">Upcoming</span></td></tr>
-                            </tbody>
-                        </table>
+                        <div class="dash-table-wrap">
+                            <table class="dash-table dash-table-cards">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>Payment Method</th>
+                                        <th>Status</th>
+                                        <th>Tax / Receipt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Date">Oct 1, 2026</td>
+                                        <td data-label="Description"><strong>Installment 3 of 4</strong></td>
+                                        <td data-label="Amount"><strong>$1,200.00</strong></td>
+                                        <td data-label="Payment Method"><i class="fab fa-cc-visa" style="color:#3b82f6;margin-right:0.35rem;"></i> Visa &bull;&bull;&bull;&bull; 4242</td>
+                                        <td data-label="Status"><span class="dash-status active">Paid</span></td>
+                                        <td data-label="Tax / Receipt"><a href="#" class="btn btn-secondary btn-sm" style="padding:0.25rem 0.65rem;font-size:0.75rem;"><i class="fas fa-download"></i> Receipt (PDF)</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Date">Sep 1, 2026</td>
+                                        <td data-label="Description"><strong>Installment 2 of 4</strong></td>
+                                        <td data-label="Amount"><strong>$1,200.00</strong></td>
+                                        <td data-label="Payment Method"><i class="fab fa-cc-visa" style="color:#3b82f6;margin-right:0.35rem;"></i> Visa &bull;&bull;&bull;&bull; 4242</td>
+                                        <td data-label="Status"><span class="dash-status active">Paid</span></td>
+                                        <td data-label="Tax / Receipt"><a href="#" class="btn btn-secondary btn-sm" style="padding:0.25rem 0.65rem;font-size:0.75rem;"><i class="fas fa-download"></i> Receipt (PDF)</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Date">Aug 1, 2026</td>
+                                        <td data-label="Description"><strong>Installment 1 of 4 (Tuition Deposit)</strong></td>
+                                        <td data-label="Amount"><strong>$1,200.00</strong></td>
+                                        <td data-label="Payment Method"><i class="fab fa-cc-visa" style="color:#3b82f6;margin-right:0.35rem;"></i> Visa &bull;&bull;&bull;&bull; 4242</td>
+                                        <td data-label="Status"><span class="dash-status active">Paid</span></td>
+                                        <td data-label="Tax / Receipt"><a href="#" class="btn btn-secondary btn-sm" style="padding:0.25rem 0.65rem;font-size:0.75rem;"><i class="fas fa-download"></i> Receipt (PDF)</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Date">Nov 1, 2026</td>
+                                        <td data-label="Description"><strong>Installment 4 of 4 (Final Balance)</strong></td>
+                                        <td data-label="Amount"><strong>$1,200.00</strong></td>
+                                        <td data-label="Payment Method"><i class="fas fa-calendar-check" style="color:#f59e0b;margin-right:0.35rem;"></i> Auto-Debit Scheduled</td>
+                                        <td data-label="Status"><span class="dash-status pending">Upcoming</span></td>
+                                        <td data-label="Tax / Receipt"><span style="color:var(--text-muted);font-size:0.8125rem;">Invoice Pending</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2-Column Split: Saved Methods & Tax Documentation -->
+                <div class="dash-grid-2">
+                    <!-- Panel 1: Saved Payment Methods -->
+                    <div class="dash-panel" style="margin-bottom:0;">
+                        <div class="dash-panel-header">
+                            <div style="display:flex;align-items:center;gap:0.75rem;">
+                                <i class="fas fa-wallet" style="color:var(--secondary);font-size:1.1rem;"></i>
+                                <h3 style="margin:0;">Saved Payment Methods</h3>
+                            </div>
+                            <button class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i> Add Method</button>
+                        </div>
+                        <div class="dash-panel-body">
+                            <div style="display:flex;flex-direction:column;gap:0.875rem;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg-input);padding:0.875rem 1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                    <div style="display:flex;align-items:center;gap:0.85rem;">
+                                        <i class="fab fa-cc-visa" style="font-size:1.75rem;color:#3b82f6;"></i>
+                                        <div>
+                                            <strong style="display:block;font-size:0.875rem;">Visa ending in 4242</strong>
+                                            <span style="font-size:0.75rem;color:var(--text-muted);">Expires 09/2028 &bull; Primary Card</span>
+                                        </div>
+                                    </div>
+                                    <span class="dash-status active" style="font-size:0.7rem;">Default</span>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg-input);padding:0.875rem 1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                    <div style="display:flex;align-items:center;gap:0.85rem;">
+                                        <i class="fas fa-building-columns" style="font-size:1.5rem;color:#10b981;"></i>
+                                        <div>
+                                            <strong style="display:block;font-size:0.875rem;">First Horizon Bank Checking</strong>
+                                            <span style="font-size:0.75rem;color:var(--text-muted);">Account ending in 8819 &bull; ACH Verified</span>
+                                        </div>
+                                    </div>
+                                    <span class="dash-status active" style="font-size:0.7rem;">Verified</span>
+                                </div>
+                                <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:var(--radius);padding:0.75rem 1rem;display:flex;align-items:center;justify-content:space-between;">
+                                    <div style="display:flex;align-items:center;gap:0.6rem;">
+                                        <i class="fas fa-circle-check" style="color:#10b981;"></i>
+                                        <span style="font-size:0.8125rem;color:var(--text);">Auto-Pay is <strong>Active</strong> for Nov 1 ($1,200)</span>
+                                    </div>
+                                    <span style="font-size:0.75rem;color:#10b981;font-weight:600;">Scheduled</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Tax Documents & Carrier Reimbursement Statements -->
+                    <div class="dash-panel" style="margin-bottom:0;">
+                        <div class="dash-panel-header">
+                            <div style="display:flex;align-items:center;gap:0.75rem;">
+                                <i class="fas fa-file-invoice" style="color:var(--secondary);font-size:1.1rem;"></i>
+                                <h3 style="margin:0;">Tax Documents &amp; Statements</h3>
+                            </div>
+                            <span class="dash-status active" style="font-size:0.7rem;"><i class="fas fa-shield-check"></i> IRS Form 1098-T</span>
+                        </div>
+                        <div class="dash-panel-body">
+                            <div style="display:flex;flex-direction:column;gap:0.875rem;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg-input);padding:0.875rem 1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                    <div>
+                                        <strong style="display:block;font-size:0.875rem;">Annual Form 1098-T</strong>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);">Tax year 2026 tuition tax credit statement</span>
+                                    </div>
+                                    <button class="btn btn-secondary btn-sm"><i class="fas fa-file-pdf"></i> Download</button>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg-input);padding:0.875rem 1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                    <div>
+                                        <strong style="display:block;font-size:0.875rem;">Carrier Tuition Reimbursement Packet</strong>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);">Certified payment records for carrier HR</span>
+                                    </div>
+                                    <button class="btn btn-secondary btn-sm"><i class="fas fa-download"></i> PDF Packet</button>
+                                </div>
+                                
+                                <div style="border-top:1px solid var(--border);padding-top:0.75rem;display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--text-muted);">
+                                    <i class="fas fa-circle-info" style="color:var(--secondary);"></i>
+                                    <span>Have tuition reimbursement questions? Call admissions at <strong>(800) 555-0123</strong>.</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -458,8 +1036,8 @@
             <!-- TAB: SETTINGS -->
             <div class="dash-tab" id="tab-settings">
                 <div class="dash-welcome">
-                    <h2>Account Settings</h2>
-                    <p>Manage your personal information, notification preferences, and account security.</p>
+                    <h2>Account Settings & Compliance Vault</h2>
+                    <p>Manage your profile, DOT compliance documents, automated SMS/email alerts, and security credentials.</p>
                 </div>
 
                 <div class="dash-grid-2">
@@ -467,49 +1045,153 @@
                         <div class="dash-panel-header"><h3>Personal Information</h3></div>
                         <div class="dash-panel-body">
                             <form onsubmit="event.preventDefault(); alert('Profile updated successfully!');">
-                                <div class="form-group">
-                                    <label class="form-label">First Name</label>
-                                    <input type="text" class="form-input" value="John">
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                                    <div class="form-group">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-input" value="John">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-input" value="Doe">
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-input" value="Doe">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Email</label>
+                                    <label class="form-label">Email Address</label>
                                     <input type="email" class="form-input" value="john.doe@email.com">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Phone</label>
+                                    <label class="form-label">Phone Number</label>
                                     <input type="tel" class="form-input" value="(555) 123-4567">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <div class="form-group">
+                                    <label class="form-label">Residential Address</label>
+                                    <input type="text" class="form-input" value="742 Evergreen Terrace, Memphis, TN 38116">
+                                </div>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Profile Changes</button>
                             </form>
                         </div>
                     </div>
+
                     <div class="dash-panel">
-                        <div class="dash-panel-header"><h3>Program Details</h3></div>
+                        <div class="dash-panel-header"><h3>Program & Cohort Details</h3></div>
                         <div class="dash-panel-body">
-                            <div style="display:flex;flex-direction:column;gap:1rem;">
-                                <div>
-                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Program</p>
-                                    <p style="font-weight:600;">Class A CDL — Tractor-Trailer Training</p>
+                            <div style="display:flex;flex-direction:column;gap:0.85rem;">
+                                <div style="border-bottom:1px solid var(--border);padding-bottom:0.5rem;">
+                                    <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;display:block;margin-bottom:0.2rem;">Enrolled Program</span>
+                                    <p style="font-weight:600;margin:0;font-size:0.9375rem;">Class A CDL &bull; 160-Hour Tractor-Trailer Training</p>
+                                </div>
+                                <div style="border-bottom:1px solid var(--border);padding-bottom:0.5rem;display:flex;justify-content:space-between;">
+                                    <div>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;display:block;margin-bottom:0.2rem;">Student ID</span>
+                                        <strong style="font-size:0.875rem;">RM-2026-04521</strong>
+                                    </div>
+                                    <div>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;display:block;margin-bottom:0.2rem;">Cohort</span>
+                                        <strong style="font-size:0.875rem;">2026-A4 (Full-Time)</strong>
+                                    </div>
+                                </div>
+                                <div style="border-bottom:1px solid var(--border);padding-bottom:0.5rem;display:flex;justify-content:space-between;">
+                                    <div>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;display:block;margin-bottom:0.2rem;">Enrollment Date</span>
+                                        <strong style="font-size:0.875rem;">August 1, 2026</strong>
+                                    </div>
+                                    <div>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;display:block;margin-bottom:0.2rem;">Target Graduation</span>
+                                        <strong style="font-size:0.875rem;color:#10b981;">November 7, 2026</strong>
+                                    </div>
                                 </div>
                                 <div>
-                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Enrollment Date</p>
-                                    <p style="font-weight:600;">August 1, 2026</p>
+                                    <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;display:block;margin-bottom:0.2rem;">Primary Instructor & Bay</span>
+                                    <strong style="font-size:0.875rem;">Mike Reynolds &bull; South Yard Bay 4</strong>
                                 </div>
-                                <div>
-                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Expected Completion</p>
-                                    <p style="font-weight:600;">November 7, 2026</p>
+                            </div>
+                            <div style="margin-top:1.15rem;position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
+                                <img src="assets/images/dashboard-student-cohort.jpg" alt="Cohort 2026-A4 Class A CDL Student Driver" style="width:100%;height:160px;object-fit:cover;display:block;">
+                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent, rgba(0,0,0,0.85));padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;">
+                                    <span style="color:#FFFFFF;font-size:0.8125rem;font-weight:600;"><i class="fas fa-graduation-cap" style="color:var(--secondary);margin-right:0.4rem;"></i> Cohort 2026-A4 &bull; Class A CDL</span>
+                                    <span class="dash-status active" style="font-size:0.7rem;background:rgba(16,185,129,0.25);border:none;color:#34d399;">On Track</span>
                                 </div>
-                                <div>
-                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Student ID</p>
-                                    <p style="font-weight:600;">RM-2026-04521</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-grid-2">
+                    <!-- DOT Compliance & License Vault -->
+                    <div class="dash-panel">
+                        <div class="dash-panel-header">
+                            <h3>DOT Compliance & License Vault</h3>
+                            <button class="btn btn-secondary btn-sm"><i class="fas fa-upload"></i> Upload</button>
+                        </div>
+                        <div class="dash-panel-body">
+                            <div style="display:flex;flex-direction:column;gap:0.85rem;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg-input);padding:0.75rem 1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                    <div>
+                                        <strong style="display:block;font-size:0.875rem;">Commercial Learner Permit (CLP)</strong>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);">TN #084920412 &bull; Exp: Feb 2027</span>
+                                    </div>
+                                    <span class="dash-status active" style="font-size:0.7rem;">Verified</span>
                                 </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg-input);padding:0.75rem 1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                    <div>
+                                        <strong style="display:block;font-size:0.875rem;">DOT Medical Certificate (Form MCSA-5876)</strong>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);">Dr. J. Henderson, MD &bull; Exp: Aug 2028</span>
+                                    </div>
+                                    <span class="dash-status active" style="font-size:0.7rem;">Active</span>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg-input);padding:0.75rem 1rem;border-radius:var(--radius);border:1px solid var(--border);">
+                                    <div>
+                                        <strong style="display:block;font-size:0.875rem;">State Driver's License</strong>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);">Tennessee Class D Operator License</span>
+                                    </div>
+                                    <span class="dash-status active" style="font-size:0.7rem;">Verified</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification & Security Preferences -->
+                    <div class="dash-panel">
+                        <div class="dash-panel-header">
+                            <h3>Alerts & Account Security</h3>
+                        </div>
+                        <div class="dash-panel-body">
+                            <div style="display:flex;flex-direction:column;gap:1.25rem;">
                                 <div>
-                                    <p style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;margin-bottom:0.25rem;">Primary Instructor</p>
-                                    <p style="font-weight:600;">Mike Reynolds</p>
+                                    <strong style="display:block;font-size:0.8125rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.6rem;">Automated Notifications</strong>
+                                    <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.875rem;">
+                                        <label style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;">
+                                            <input type="checkbox" checked style="accent-color:var(--secondary);width:16px;height:16px;">
+                                            <span>SMS session reminders 1 hour before dispatch</span>
+                                        </label>
+                                        <label style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;">
+                                            <input type="checkbox" checked style="accent-color:var(--secondary);width:16px;height:16px;">
+                                            <span>Email test score critiques &amp; instructor sign-offs</span>
+                                        </label>
+                                        <label style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;">
+                                            <input type="checkbox" checked style="accent-color:var(--secondary);width:16px;height:16px;">
+                                            <span>Carrier job placement &amp; pre-hire interview alerts</span>
+                                        </label>
+                                        <label style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;">
+                                            <input type="checkbox" checked style="accent-color:var(--secondary);width:16px;height:16px;">
+                                            <span>Tuition installment reminders &amp; receipt confirmations</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div style="border-top:1px solid var(--border);padding-top:1rem;">
+                                    <strong style="display:block;font-size:0.8125rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.6rem;">Password &amp; Two-Factor Security</strong>
+                                    <form onsubmit="event.preventDefault(); alert('Password updated successfully!');" style="display:flex;flex-direction:column;gap:0.75rem;">
+                                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+                                            <input type="password" class="form-input" placeholder="New Password" style="padding:0.55rem 0.75rem;font-size:0.8125rem;">
+                                            <input type="password" class="form-input" placeholder="Confirm Password" style="padding:0.55rem 0.75rem;font-size:0.8125rem;">
+                                        </div>
+                                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                                            <span style="font-size:0.75rem;color:#10b981;font-weight:600;"><i class="fas fa-shield-halved"></i> 2FA Active (SMS: ***-4567)</span>
+                                            <button type="submit" class="btn btn-secondary btn-sm">Update Password</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -555,6 +1237,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (overlay) overlay.classList.remove('open');
         });
     });
+
+    // Check URL hash on load (e.g. #materials, #training, #settings)
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && document.querySelector('.dash-nav-item[data-tab="' + initialHash + '"]')) {
+        document.querySelector('.dash-nav-item[data-tab="' + initialHash + '"]').click();
+    }
 
     // Mobile sidebar toggle
     const mobileToggle = document.getElementById('dashMobileToggle');
@@ -618,6 +1306,72 @@ window.toggleDir = function() {
         el.textContent = isRTL ? 'RTL' : 'LTR';
     });
 };
+</script>
+
+<!-- Logout Confirmation Modal -->
+<div class="dash-modal-backdrop" id="logoutModal" role="dialog" aria-modal="true" aria-labelledby="logoutModalTitle" aria-hidden="true">
+    <div class="dash-modal-card">
+        <div class="dash-modal-icon-wrap">
+            <div class="dash-modal-icon">
+                <i class="fas fa-right-from-bracket"></i>
+            </div>
+        </div>
+        <h3 id="logoutModalTitle">Confirm Logout</h3>
+        <p>Are you sure you want to log out of your student portal? Any unsaved progress will be saved automatically.</p>
+        <div class="dash-modal-actions">
+            <button type="button" class="btn btn-secondary" onclick="closeLogoutModal()" id="cancelLogoutBtn">
+                <i class="fas fa-xmark"></i> Cancel
+            </button>
+            <button type="button" class="btn btn-danger" onclick="confirmLogout()" id="confirmLogoutBtn">
+                <i class="fas fa-right-from-bracket"></i> Yes, Log Out
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Logout Modal Logic
+function openLogoutModal() {
+    const modal = document.getElementById('logoutModal');
+    if (modal) {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        setTimeout(() => {
+            const cancelBtn = document.getElementById('cancelLogoutBtn');
+            if (cancelBtn) cancelBtn.focus();
+        }, 50);
+    }
+}
+
+function closeLogoutModal() {
+    const modal = document.getElementById('logoutModal');
+    if (modal) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+}
+
+function confirmLogout() {
+    window.location.href = 'login.html';
+}
+
+// Close on backdrop click
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('logoutModal');
+    if (modal && modal.classList.contains('open') && e.target === modal) {
+        closeLogoutModal();
+    }
+});
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('logoutModal');
+        if (modal && modal.classList.contains('open')) {
+            closeLogoutModal();
+        }
+    }
+});
 </script>
 </body>
 </html>

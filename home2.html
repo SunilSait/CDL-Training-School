@@ -16,64 +16,161 @@
 <body>
 <div id="navbar-placeholder"></div>
 
-<!-- SECTION 1: HERO 2 — Fullscreen Cinematic -->
+<!-- SECTION 1: HERO 2 — Split High-Impact Experience -->
 <section class="hero-2">
-    <div class="hero-2-bg">
-        <img src="assets/images/night-driving.jpg" alt="Truck driver navigating highway at night with dashboard glow">
-    </div>
-    <div class="hero-2-overlay"></div>
-    <div class="hero-2-content">
-        <div class="hero-d-badge">
-            <i class="fas fa-shield-halved"></i> FMCSA ELDT Certified Training Provider
-        </div>
-        <h1>Drive Your Future.<br>We'll Pave the Way.</h1>
-        <p>RoadMaster CDL Training School delivers world-class commercial driver education with hands-on experience, modern equipment, and a 96% job placement guarantee.</p>
-        <div class="hero-d-actions" style="justify-content:center;">
-            <a href="programs.html" class="btn btn-primary btn-lg"><i class="fas fa-play"></i> Start Your Journey</a>
-            <a href="contact.html" class="btn btn-secondary btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.3);"><i class="fas fa-calendar"></i> Schedule a Tour</a>
-        </div>
-        <div class="hero-2-stats">
-            <div class="hero-d-metric">
-                <h3>96%</h3>
-                <p>Placement Rate</p>
-            </div>
-            <div class="hero-d-metric">
-                <h3>$65K+</h3>
-                <p>Avg. Starting Pay</p>
-            </div>
-            <div class="hero-d-metric">
-                <h3>4 Weeks</h3>
-                <p>To Your CDL</p>
-            </div>
-            <div class="hero-d-metric">
-                <h3>200+</h3>
-                <p>Carrier Partners</p>
-            </div>
-        </div>
-    </div>
-</section>
+    <div class="hero-2-ambient-glow top-right"></div>
+    <div class="hero-2-ambient-glow bottom-left"></div>
+    <div class="hero-2-grid-bg"></div>
 
-<!-- SECTION 2: STATS BANNER -->
-<section class="stats-banner">
     <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item fade-up">
-                <h3 data-count="85" data-suffix="+">0</h3>
-                <p>Years Combined Instructor Experience</p>
+        <div class="hero-2-split-grid">
+            
+            <!-- Left Column: Value Pitch & Social Proof -->
+            <div class="hero-2-col-left fade-up">
+                <div class="hero-2-live-badge">
+                    <span class="hero-2-pulse-dot"></span>
+                    <span>Next Class Starts Monday, Nov 10 • Limited Cab Seats</span>
+                </div>
+
+                <h1 class="hero-2-title">
+                    Drive Your Future.<br>
+                    <span class="text-gradient">We'll Pave the Way.</span>
+                </h1>
+
+                <p class="hero-2-desc">
+                    Fast-track your high-paying commercial driving career with Tennessee’s top-rated CDL training academy. Master late-model Freightliner Cascadias with 1-on-1 certified mentorship, $0 tuition options, and guaranteed carrier placement before graduation.
+                </p>
+
+                <div class="hero-2-perks-row">
+                    <div class="hero-2-perk"><i class="fas fa-circle-check"></i> <span>160-Hr FMCSA ELDT Certified</span></div>
+                    <div class="hero-2-perk"><i class="fas fa-circle-check"></i> <span>Up to $7,000 Tuition Reimbursement</span></div>
+                                    </div>
+
+                <div class="hero-2-actions">
+                    <a href="programs.html" class="btn btn-primary btn-lg hero-btn-glow"><i class="fas fa-truck-moving"></i> Explore Programs <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="btn btn-secondary btn-lg hero-btn-glass"><i class="fas fa-calendar-check"></i> Book Campus Tour</a>
+                </div>
+
+                <div class="hero-2-trust-strip">
+                    <div class="hero-2-trust-score-badge">
+                        <span class="hero-2-trust-score-num">4.9</span>
+                        <div class="hero-2-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="hero-2-trust-copy">
+                        <strong>Over 5,200+ Licensed Graduates Placed</strong>
+                        <span>96% Pre-Hire Contract Rate with Knight-Swift, Werner, Schneider & US Foods</span>
+                    </div>
+                </div>
             </div>
-            <div class="stat-item fade-up">
-                <h3 data-count="94" data-suffix="%">0</h3>
-                <p>First-Attempt Pass Rate</p>
+
+            <!-- Right Column: Interactive Fast-Track Selector & Showcase -->
+            <div class="hero-2-col-right fade-up">
+                <div class="hero-2-card-container">
+                    
+                    <!-- Floating Highlight Pill 1 -->
+                    <div class="hero-2-float-pill top-pill">
+                        <div class="float-pill-icon"><i class="fas fa-award"></i></div>
+                        <div>
+                            <strong>96% Job Placement</strong>
+                            <span>Direct Pre-Hire Contracts</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Interactive Glass Card -->
+                    <div class="hero-2-glass-card">
+                        <div class="hero-2-card-media">
+                            <img src="assets/images/home2-hero-cascadia.jpg" alt="Modern Freightliner Cascadia commercial training truck at RoadMaster training yard at dusk" loading="eager">
+                            <div class="hero-2-card-media-overlay"></div>
+                            <div class="hero-2-media-tags">
+                                <span class="hero-pill-tag"><i class="fas fa-shield-halved"></i> ELDT Registered</span>
+                                <span class="hero-fleet-tag" id="heroTrackFleetTag"><i class="fas fa-truck"></i> Freightliner Cascadia</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-2-card-content">
+                            <div class="hero-2-card-header">
+                                <span class="hero-2-card-eyebrow"><i class="fas fa-bolt"></i> FAST-TRACK CDL SELECTOR</span>
+                                <h3 id="heroTrackTitle">Class A Commercial Tractor-Trailer</h3>
+                            </div>
+
+                            <!-- Interactive Tabs -->
+                            <div class="hero-2-track-tabs" role="tablist">
+                                <button type="button" class="hero-2-track-btn active" id="btnTrackClassA" onclick="setHeroTrack('A')" role="tab" aria-selected="true">
+                                    <i class="fas fa-truck-moving"></i> Class A CDL
+                                </button>
+                                <button type="button" class="hero-2-track-btn" id="btnTrackClassB" onclick="setHeroTrack('B')" role="tab" aria-selected="false">
+                                    <i class="fas fa-truck-front"></i> Class B CDL
+                                </button>
+                            </div>
+
+                            <!-- Dynamic Specs Grid -->
+                            <div class="hero-2-specs-grid">
+                                <div class="hero-2-spec-box">
+                                    <span class="hero-2-spec-lbl">Program Duration</span>
+                                    <strong class="hero-2-spec-val" id="heroTrackDuration">4 Weeks (160h)</strong>
+                                </div>
+                                <div class="hero-2-spec-box">
+                                    <span class="hero-2-spec-lbl">Included Endorsements</span>
+                                    <strong class="hero-2-spec-val" id="heroTrackEndorse">Air Brakes, Tanker</strong>
+                                </div>
+                            </div>
+
+                            <!-- Pre-Hire Guarantee Banner -->
+                            <div class="hero-2-prehire-strip" id="heroTrackPrehire">
+                                <i class="fas fa-handshake"></i>
+                                <span><strong>Average 3.2 Pre-Hire Offers</strong> per student during Week 2</span>
+                            </div>
+
+                            <!-- Card Action -->
+                            <a href="contact.html" class="btn btn-primary btn-block hero-2-card-btn" id="heroTrackCta">
+                                <i class="fas fa-clipboard-check"></i> Check Pre-Hire Eligibility
+                            </a>
+                            <div class="hero-2-card-footnote">
+                                <i class="fas fa-check"></i> No obligation • Free MVR driving record review
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
-            <div class="stat-item fade-up">
-                <h3 data-count="30" data-suffix="+">0</h3>
-                <p>Training Vehicles</p>
+
+        </div>
+
+        <!-- Integrated Full-Width Hero Metric Ribbon -->
+        <div class="hero-2-metric-ribbon fade-up">
+            <div class="hero-2-ribbon-tile">
+                <div class="ribbon-icon"><i class="fas fa-briefcase"></i></div>
+                <div class="ribbon-data">
+                    <h3 data-count="96" data-suffix="%">0%</h3>
+                    <p>Verified Job Placement Rate</p>
+                </div>
             </div>
-            <div class="stat-item fade-up">
-                <h3 data-count="20" data-suffix=" Acres">0</h3>
-                <p>Training Campus</p>
+            <div class="hero-2-ribbon-tile">
+                <div class="ribbon-icon"><i class="fas fa-money-bill-wave"></i></div>
+                <div class="ribbon-data">
+                    <h3 data-count="68" data-prefix="$" data-suffix="K+">$0K+</h3>
+                    <p>Avg. First-Year Starting Pay</p>
+                </div>
+            </div>
+            <div class="hero-2-ribbon-tile">
+                <div class="ribbon-icon"><i class="fas fa-calendar-day"></i></div>
+                <div class="ribbon-data">
+                    <h3 data-count="4" data-suffix=" Weeks">0 Weeks</h3>
+                    <p>From Class to Commercial License</p>
+                </div>
+            </div>
+            <div class="hero-2-ribbon-tile">
+                <div class="ribbon-icon"><i class="fas fa-building"></i></div>
+                <div class="ribbon-data">
+                    <h3 data-count="200" data-suffix="+">0+</h3>
+                    <p>Direct Carrier Hiring Partners</p>
+                </div>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -179,34 +276,6 @@
 </section>
 
 
-<!-- SECTION 3B: STUDENT CAMPUS AMENITIES & TECH LOUNGE -->
-<section class="section">
-    <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-label">Campus Life</span>
-            <h2>Comfortable Amenities Designed for Student Success</h2>
-            <p>We provide a supportive, welcoming environment equipped with all the resources you need to focus, study, and thrive during your CDL training.</p>
-        </div>
-        <div class="campus-amenities-grid">
-            <div class="campus-amenity-card fade-up">
-                <div class="campus-amenity-icon"><i class="fas fa-laptop"></i></div>
-                <h3>Computer Study Lab</h3>
-                <p>Dedicated computer terminals preloaded with official state CDL practice tests, general knowledge prep, and endorsement study software.</p>
-            </div>
-            <div class="campus-amenity-card fade-up">
-                <div class="campus-amenity-icon"><i class="fas fa-coffee"></i></div>
-                <h3>Student Lounge & Cafe</h3>
-                <p>Relax between driving shifts in our student lounge featuring complimentary fresh coffee, microwave stations, and high-speed campus Wi-Fi.</p>
-            </div>
-            <div class="campus-amenity-card fade-up">
-                <div class="campus-amenity-icon"><i class="fas fa-book-reader"></i></div>
-                <h3>Quiet Study & Review Suites</h3>
-                <p>Quiet breakout rooms where instructors hold one-on-one tutoring sessions to reinforce pre-trip inspection memorization and logbook rules.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 
 <!-- SECTION 5: PRICING CARDS -->
 <section class="section section-alt">
@@ -279,7 +348,7 @@
                 </div>
                 <div class="endorsement-content">
                     <h4>HazMat Endorsement</h4>
-                    <p>Qualify to haul hazardous materials, chemicals, explosives, and industrial gases with complete TSA screening guidance.</p>
+                    <p>Qualify to haul hazardous materials, chemicals, explosives, and industrial gases with complete TSA guidance.</p>
                     <span class="endorsement-boost">+25% Earning Boost</span>
                 </div>
             </div>
@@ -343,8 +412,36 @@
     </div>
 </section>
 
-<!-- SECTION 7: INSTRUCTOR PREVIEW -->
+<!-- SECTION 3B: STUDENT CAMPUS AMENITIES & TECH LOUNGE -->
 <section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-label">Campus Life</span>
+            <h2>Comfortable Amenities Designed for Student Success</h2>
+            <p>We provide a supportive, welcoming environment equipped with all the resources you need to focus, study, and thrive during your CDL training.</p>
+        </div>
+        <div class="campus-amenities-grid">
+            <div class="campus-amenity-card fade-up">
+                <div class="campus-amenity-icon"><i class="fas fa-laptop"></i></div>
+                <h3>Computer Study Lab</h3>
+                <p>Dedicated computer terminals preloaded with official state CDL practice tests, general knowledge prep, and endorsement study software.</p>
+            </div>
+            <div class="campus-amenity-card fade-up">
+                <div class="campus-amenity-icon"><i class="fas fa-coffee"></i></div>
+                <h3>Student Lounge & Cafe</h3>
+                <p>Relax between driving shifts in our student lounge featuring complimentary fresh coffee, microwave stations, and high-speed campus Wi-Fi.</p>
+            </div>
+            <div class="campus-amenity-card fade-up">
+                <div class="campus-amenity-icon"><i class="fas fa-book-reader"></i></div>
+                <h3>Quiet Study & Review</h3>
+                <p>Quiet breakout rooms where instructors hold one-on-one tutoring sessions to reinforce pre-trip inspection memorization and logbook rules.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 7: INSTRUCTOR PREVIEW -->
+<section class="section">
     <div class="container">
         <div class="section-header fade-up">
             <span class="section-label">Expert Team</span>
@@ -402,12 +499,12 @@
                     <div class="carrier-stat-strip">
                         <div class="cstat-item">
                             <strong>200+</strong>
-                            <span>Partner Carriers</span>
+                            <span>Partner </span>
                         </div>
                         <div class="cstat-sep"></div>
                         <div class="cstat-item">
                             <strong>96%</strong>
-                            <span>Placed in 30 Days</span>
+                            <span>Placed</span>
                         </div>
                         <div class="cstat-sep"></div>
                         <div class="cstat-item">
@@ -460,18 +557,6 @@
             </div>
         </div>
 
-        <!-- Carrier Partner Badges Strip -->
-        <div class="carrier-partner-strip fade-up">
-            <span class="partner-strip-label">Top Hiring Carriers:</span>
-            <div class="partner-logos-pills">
-                <span class="partner-pill">Schneider</span>
-                <span class="partner-pill">Swift Transportation</span>
-                <span class="partner-pill">Werner Enterprises</span>
-                <span class="partner-pill">Sysco Logistics</span>
-                <span class="partner-pill">Kenan Advantage Group</span>
-                <span class="partner-pill">US Xpress</span>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -510,7 +595,7 @@
                     <div class="alumni-card-icon"><i class="fas fa-arrows-split-up-and-left"></i></div>
                     <span class="alumni-card-badge">Direct Dispatch</span>
                 </div>
-                <h3>Career Transition Assistance</h3>
+                <h3>Career Assistance</h3>
                 <p>Ready to move into hazmat tanker, heavy haul, dedicated local routes, or dispatcher roles? Our career team facilitates lateral carrier transfers for life.</p>
                 <div class="alumni-card-perk"><i class="fas fa-check-circle"></i> Lifetime Recruiter Network</div>
             </div>
@@ -704,5 +789,43 @@
 
 <div id="footer-placeholder"></div>
 <script src="components.js"></script>
+<script>
+window.setHeroTrack = function(track) {
+    var btnA = document.getElementById('btnTrackClassA');
+    var btnB = document.getElementById('btnTrackClassB');
+    var titleEl = document.getElementById('heroTrackTitle');
+    var durationEl = document.getElementById('heroTrackDuration');
+    var payEl = document.getElementById('heroTrackPay');
+    var seatEl = document.getElementById('heroTrackSeat');
+    var endorseEl = document.getElementById('heroTrackEndorse');
+    var prehireEl = document.getElementById('heroTrackPrehire');
+    var fleetTagEl = document.getElementById('heroTrackFleetTag');
+    var ctaEl = document.getElementById('heroTrackCta');
+
+    if (track === 'A') {
+        if (btnA) { btnA.classList.add('active'); btnA.setAttribute('aria-selected', 'true'); }
+        if (btnB) { btnB.classList.remove('active'); btnB.setAttribute('aria-selected', 'false'); }
+        if (titleEl) titleEl.textContent = 'Class A Commercial Tractor-Trailer';
+        if (durationEl) durationEl.textContent = '4 Weeks (160h)';
+        if (payEl) payEl.textContent = '$68,000 – $85,000';
+        if (seatEl) seatEl.textContent = '120+ Seat Hours';
+        if (endorseEl) endorseEl.textContent = 'Air Brakes, Tanker';
+        if (prehireEl) prehireEl.innerHTML = '<i class="fas fa-handshake"></i> <span><strong>Average 3.2 Pre-Hire Offers</strong> per student during Week 2</span>';
+        if (fleetTagEl) fleetTagEl.innerHTML = '<i class="fas fa-truck"></i> Freightliner Cascadia';
+        if (ctaEl) ctaEl.innerHTML = '<i class="fas fa-clipboard-check"></i> Check Class A Eligibility';
+    } else {
+        if (btnB) { btnB.classList.add('active'); btnB.setAttribute('aria-selected', 'true'); }
+        if (btnA) { btnA.classList.remove('active'); btnA.setAttribute('aria-selected', 'false'); }
+        if (titleEl) titleEl.textContent = 'Class B Heavy Straight Truck & Bus';
+        if (durationEl) durationEl.textContent = '3 Weeks';
+        if (payEl) payEl.textContent = '$54,000 – $66,000';
+        if (seatEl) seatEl.textContent = '90+ Seat Hours';
+        if (endorseEl) endorseEl.textContent = 'Passenger & School Bus';
+        if (prehireEl) prehireEl.innerHTML = '<i class="fas fa-handshake"></i> <span><strong>Average 2.8 Pre-Hire Offers</strong> per student during Week 2</span>';
+        if (fleetTagEl) fleetTagEl.innerHTML = '<i class="fas fa-bus"></i> Straight Truck & Bus';
+        if (ctaEl) ctaEl.innerHTML = '<i class="fas fa-clipboard-check"></i> Check Class B Eligibility';
+    }
+};
+</script>
 </body>
 </html>
