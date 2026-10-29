@@ -53,6 +53,13 @@
                     <a href="#" style="width:36px;height:36px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:0.3s;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" style="width:36px;height:36px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:0.3s;" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
+                <div class="contact-campus-image">
+                    <img src="assets/images/contact-campus-facility.jpg" alt="RoadMaster CDL Training Memphis Campus and Admissions Center" loading="lazy">
+                    <div class="contact-campus-badge">
+                        <i class="fas fa-building-circle-check"></i>
+                        <span>Memphis Main Campus &amp; Driving Range</span>
+                    </div>
+                </div>
             </div>
             <div class="contact-form-card fade-up">
                 <h3>Send Us a Message</h3>
@@ -99,46 +106,62 @@
 </section>
 
 <!-- SECTION 3: MAP -->
-<section style="padding:0;">
-    <div style="width:100%;height:360px;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-        <div style="text-align:center;">
-            <i class="fas fa-map-location-dot" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:1rem;display:block;"></i>
-            <p style="color:var(--text-muted);font-size:0.9375rem;font-weight:500;">Interactive Map — 4520 Highway 61 S, Memphis, TN 38109</p>
-            <p style="color:var(--text-muted);font-size:0.8125rem;margin-top:0.25rem;">Embed your Google Maps iframe here</p>
+<section class="section live-map-section" style="padding-top:0;">
+    <div class="container">
+        <div class="live-map-wrapper fade-up">
+            <iframe
+                src="https://maps.google.com/maps?q=4520+Highway+61+S,+Memphis,+TN+38109&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                width="100%"
+                height="440"
+                style="border:0; display:block; width:100%;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="RoadMaster CDL Training Memphis Campus Location Map">
+            </iframe>
+            <div class="map-overlay-card">
+                <div class="map-overlay-header">
+                    <span class="map-overlay-badge"><i class="fas fa-location-dot"></i> Training Campus</span>
+                    <span class="map-overlay-status"><span class="map-pulse-dot"></span> Open Today</span>
+                </div>
+                <h4>RoadMaster CDL Memphis</h4>
+                <p class="map-overlay-address">4520 Highway 61 South, Memphis, TN 38109</p>
+                <div class="map-overlay-actions">
+                    <a href="https://maps.google.com/?q=4520+Highway+61+S,+Memphis,+TN+38109" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                        <i class="fas fa-diamond-turn-right"></i> Get Directions
+                    </a>
+                    <a href="tel:8005550123" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-phone"></i> Call Campus
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- SECTION 4: QUICK CONTACT CARDS -->
+<!-- SECTION 4: CAMPUS VISIT — Split -->
 <section class="section">
     <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-label">Quick Contact</span>
-            <h2>Reach the Right Department</h2>
-            <p>Connect directly with the team that can best help you.</p>
-        </div>
-        <div class="offset-features" style="grid-template-columns:repeat(3,1fr);">
-            <div class="offset-feature fade-up">
-                <div class="of-icon"><i class="fas fa-user-plus"></i></div>
-                <h4>Admissions</h4>
-                <p>Questions about enrollment, requirements, or scheduling?</p>
-                <a href="tel:8005550123" class="link-primary" style="margin-top:0.5rem;display:inline-block;">(800) 555-0123 ext. 1</a>
+        <div class="split-content">
+            <div class="split-image slide-left">
+                <img src="assets/images/home2-student-campus.jpg" alt="RoadMaster CDL campus student lounge and classroom building">
             </div>
-            <div class="offset-feature fade-up">
-                <div class="of-icon"><i class="fas fa-briefcase"></i></div>
-                <h4>Career Services</h4>
-                <p>Job placement assistance and career opportunity questions?</p>
-                <a href="tel:8005550123" class="link-primary" style="margin-top:0.5rem;display:inline-block;">(800) 555-0123 ext. 2</a>
-            </div>
-            <div class="offset-feature fade-up">
-                <div class="of-icon"><i class="fas fa-dollar-sign"></i></div>
-                <h4>Financial Aid</h4>
-                <p>Tuition financing, payment plans, VA benefits, or grants?</p>
-                <a href="tel:8005550123" class="link-primary" style="margin-top:0.5rem;display:inline-block;">(800) 555-0123 ext. 3</a>
+            <div class="split-text slide-right">
+                <span class="section-label">Visit Our Campus</span>
+                <h2>See Our Facility in Person</h2>
+                <p>Located on a spacious 20-acre campus, our training facility features dedicated driving ranges, modern classrooms, and a fleet of 30+ commercial vehicles.</p>
+                <ul class="check-list">
+                    <li><i class="fas fa-check"></i> Free guided campus tours available daily</li>
+                    <li><i class="fas fa-check"></i> Meet instructors and current students</li>
+                    <li><i class="fas fa-check"></i> View our training vehicles and equipment</li>
+                </ul>
+                <a href="tel:8005550123" class="btn btn-primary"><i class="fas fa-calendar"></i> Schedule a Tour</a>
             </div>
         </div>
     </div>
 </section>
+
+
 
 <!-- SECTION 5: FAQ -->
 <section class="section section-alt">
@@ -174,37 +197,35 @@
     </div>
 </section>
 
-<!-- SECTION 6: CAMPUS VISIT — Split -->
-<section class="section">
+<!-- SECTION 6: CTA -->
+<section class="cta-split-section">
     <div class="container">
-        <div class="split-content">
-            <div class="split-image slide-left">
-                <img src="assets/images/placeholder-student-lounge.svg" alt="RoadMaster CDL campus student lounge and classroom building">
+        <div class="cta-split-card reverse fade-up">
+            <div class="cta-split-glow"></div>
+            <div class="cta-split-visual">
+                <img src="assets/images/cta-contact.jpg" alt="Friendly CDL admissions counselor speaking with prospective student in modern academy office" loading="lazy">
+                <div class="cta-split-float-badge">
+                    <i class="fas fa-door-open"></i>
+                    <div>
+                        <strong>Walk-Ins Welcome</strong>
+                        <span>Mon–Fri 8:00 AM – 5:00 PM</span>
+                    </div>
+                </div>
             </div>
-            <div class="split-text slide-right">
-                <span class="section-label">Visit Our Campus</span>
-                <h2>See Our Facility in Person</h2>
-                <p>Located on a spacious 20-acre campus, our training facility features dedicated driving ranges, modern classrooms, and a fleet of 30+ commercial vehicles.</p>
-                <ul class="check-list">
-                    <li><i class="fas fa-check"></i> Free guided campus tours available daily</li>
-                    <li><i class="fas fa-check"></i> Meet instructors and current students</li>
-                    <li><i class="fas fa-check"></i> View our training vehicles and equipment</li>
-                    <li><i class="fas fa-check"></i> Same-day enrollment available after tour</li>
-                </ul>
-                <a href="tel:8005550123" class="btn btn-primary"><i class="fas fa-calendar"></i> Schedule a Tour</a>
+            <div class="cta-split-content">
+                <span class="cta-split-badge"><i class="fas fa-handshake"></i> Personal Admissions Support</span>
+                <h2>Ready to Take the First Step?</h2>
+                <p>Contact our admissions team today. We'll answer all your questions, guide you through tuition financing, and help you find the right program.</p>
+                <div class="cta-split-perks">
+                    <div class="cta-split-perk-item"><i class="fas fa-circle-check"></i> <span>Free 1-on-1 Career Planning & Loan Consultation</span></div>
+                    <div class="cta-split-perk-item"><i class="fas fa-circle-check"></i> <span>Same-Day Application Review & Pre-Hire Evaluation</span></div>
+                    <div class="cta-split-perk-item"><i class="fas fa-circle-check"></i> <span>In-Person Facility & Driving Range Tours</span></div>
+                </div>
+                <div class="cta-split-actions">
+                    <a href="tel:8005550123" class="btn btn-primary btn-lg"><i class="fas fa-phone"></i> Call (800) 555-0123</a>
+                    <a href="programs.html" class="btn btn-secondary btn-lg"><i class="fas fa-graduation-cap"></i> View Programs</a>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- SECTION 7: CTA -->
-<section class="cta-section">
-    <div class="container">
-        <h2 class="fade-up">Ready to Take the First Step?</h2>
-        <p class="fade-up">Contact our admissions team today. We'll answer all your questions and help you find the right program.</p>
-        <div class="cta-actions fade-up">
-            <a href="tel:8005550123" class="btn btn-primary btn-lg"><i class="fas fa-phone"></i> Call (800) 555-0123</a>
-            <a href="programs.html" class="btn btn-secondary btn-lg"><i class="fas fa-graduation-cap"></i> View Programs</a>
         </div>
     </div>
 </section>

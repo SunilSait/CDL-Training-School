@@ -18,14 +18,51 @@
 <div class="fullscreen-topbar">
     <a href="index.html" class="nav-logo" aria-label="RoadMaster CDL Home">
         <svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#151210"/><stop offset="100%" stop-color="#231E1B"/></linearGradient></defs>
-            <rect width="100" height="100" rx="18" fill="url(#logoBg)"/>
-            <path d="M20 62 L20 48 Q20 38 30 38 L70 38 Q80 38 80 48 L80 62 Z" fill="none" stroke="#C2410C" stroke-width="4"/>
-            <circle cx="32" cy="66" r="8" fill="none" stroke="#C2410C" stroke-width="3.5"/>
-            <circle cx="68" cy="66" r="8" fill="none" stroke="#C2410C" stroke-width="3.5"/>
-            <rect x="24" y="44" width="16" height="10" rx="2" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
-            <path d="M44 44 L56 44 L60 54 L44 54 Z" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
-        </svg>
+  <defs>
+    <linearGradient id="rmLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="45%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#C2410C"/>
+    </linearGradient>
+    <linearGradient id="rmGlassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
+  <!-- Base Squircle Badge -->
+  <rect width="100" height="100" rx="22" fill="url(#rmLogoGrad)"/>
+  <rect x="1.5" y="1.5" width="97" height="97" rx="20.5" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- DOT Roof Clearance Lights (Class 8 Signature) -->
+  <circle cx="38" cy="16.5" r="2.2" fill="#FEF08A"/>
+  <circle cx="44" cy="15.5" r="2.2" fill="#FEF08A"/>
+  <circle cx="50" cy="15" r="2.5" fill="#FEF08A"/>
+  <circle cx="56" cy="15.5" r="2.2" fill="#FEF08A"/>
+  <circle cx="62" cy="16.5" r="2.2" fill="#FEF08A"/>
+
+  <!-- Aerodynamic Cab Roof Fairing -->
+  <path d="M31 23 C40 19 60 19 69 23 L73 31 L27 31 Z" fill="#FFFFFF"/>
+
+  <!-- Windshield with Sunvisor Cap -->
+  <path d="M28 33 L72 33 L68 47 C58 48 42 48 32 47 Z" fill="url(#rmGlassGrad)"/>
+  <!-- Specular Reflection on Windshield -->
+  <path d="M33 35 L40 35 L35 45 L30 45 Z" fill="#FFFFFF" fill-opacity="0.35"/>
+
+  <!-- Truck Hood & Cab Body -->
+  <path d="M23 49 L77 49 L75 74 C75 76 73 78 71 78 L29 78 C27 78 25 76 25 74 Z" fill="#FFFFFF"/>
+
+  <!-- Heavy Duty Commercial Grille -->
+  <rect x="35" y="51" width="30" height="23" rx="3.5" fill="#0F172A"/>
+  <path d="M39 55 H61 M39 60 H61 M39 65 H61 M41 70 H59" stroke="#EA580C" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Dual Safety Projector Headlights -->
+  <rect x="26.5" y="55" width="6" height="12" rx="2" fill="#FEF08A"/>
+  <rect x="67.5" y="55" width="6" height="12" rx="2" fill="#FEF08A"/>
+
+  <!-- Heavy Duty Bumper -->
+  <path d="M19 76 L81 76 L78 84 C78 86 76 87.5 74 87.5 L26 87.5 C24 87.5 22 86 22 84 Z" fill="#E2E8F0"/>
+  <rect x="37" y="79" width="26" height="4.5" rx="2" fill="#0F172A"/>
+</svg>
         <div class="nav-logo-text">
             <span class="brand-top">CDL Training</span>
             <span class="brand-bottom">RoadMaster</span>
