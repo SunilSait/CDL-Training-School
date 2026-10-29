@@ -1303,13 +1303,17 @@ p { font-weight: 400; color: var(--text-secondary); line-height: 1.7; }
 }
 @media (max-width: 640px) {
     .hero-2 {
-        padding: 5.5rem 0 2.5rem;
+        padding: 3.5rem 0 2.5rem;
     }
     .hero-2-title {
         font-size: 2.1rem;
     }
     .hero-2-float-pill {
         display: none;
+    }
+    .hero-2-specs-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.65rem !important;
     }
     .hero-2-metric-ribbon {
         grid-template-columns: 1fr;
@@ -4526,6 +4530,7 @@ select.form-input:focus {
     align-items: center;
     justify-content: center;
     height: 2rem;
+    color: var(--secondary) !important;
 }
 .dash-material-card h4 {
     margin: 0 0 0.35rem 0;
