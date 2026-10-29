@@ -324,28 +324,31 @@ function renderFooter() {
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <a href="index.html">Home</a>
+                    <a href="home2.html">Home 2 — Premium</a>
                     <a href="programs.html">Programs</a>
                     <a href="instructors.html">Instructors</a>
                     <a href="job-placement.html">Job Placement</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Programs</h4>
-                    <a href="programs.html">Class A CDL</a>
-                    <a href="programs.html">Class B CDL</a>
-                    <a href="programs.html">HazMat Endorsement</a>
-                    <a href="programs.html">Passenger Endorsement</a>
-                    <a href="programs.html">Refresher Courses</a>
+                    <a href="contact.html">Contact Us</a>
                 </div>
 
                 <div class="footer-col">
                     <h4>Resources</h4>
-                    <a href="login.html">Student Portal</a>
                     <a href="dashboard.html">Dashboard</a>
-                    <a href="coming-soon.html">Blog</a>
-                    <a href="coming-soon.html">FAQ</a>
-                    <a href="coming-soon.html">Careers</a>
+                    <a href="coming-soon.html">Coming Soon</a>
+                    <a href="404.html">404 Page</a>
+                    <a href="login.html">Sign In</a>
+                    <a href="signup.html">Sign Up</a>
+                </div>
+
+                <div class="footer-col footer-newsletter-col">
+                    <div class="footer-newsletter-card">
+                        <h4>Stay Updated</h4>
+                        <p>Subscribe for CDL training tips, class schedules, and carrier placement updates delivered to your inbox.</p>
+                        <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to RoadMaster updates!');">
+                            <input type="email" class="footer-newsletter-input" placeholder="your@email.com" required aria-label="Email address for newsletter">
+                            <button type="submit" class="btn btn-primary footer-newsletter-btn">Subscribe</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -819,6 +822,129 @@ function initHeroSlider() {
 }
 
 
+
+/* ---- HOME 2 HERO 3-SLIDE CAROUSEL (5s Interval) ---- */
+function initHome2HeroSlider() {
+    const slider = document.getElementById('home2HeroSlider');
+    if (!slider) return;
+
+    const slides = Array.from(slider.querySelectorAll('.hero-2-slide'));
+    const indicators = Array.from(slider.querySelectorAll('.hero-indicator'));
+    const prevBtn = document.getElementById('home2HeroPrevBtn');
+    const nextBtn = document.getElementById('home2HeroNextBtn');
+
+    if (slides.length === 0) return;
+
+    let currentIndex = 0;
+    let timer = null;
+    let isHovered = false;
+    const SLIDE_DURATION = 5000;
+
+    function goToSlide(index) {
+        if (index < 0) {
+            currentIndex = slides.length - 1;
+        } else if (index >= slides.length) {
+            currentIndex = 0;
+        } else {
+            currentIndex = index;
+        }
+
+        slides.forEach((slide, idx) => {
+            const isActive = idx === currentIndex;
+            slide.classList.toggle('active', isActive);
+            slide.setAttribute('aria-hidden', !isActive);
+        });
+
+        indicators.forEach((ind, idx) => {
+            const isActive = idx === currentIndex;
+            ind.classList.toggle('active', isActive);
+            ind.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            const fill = ind.querySelector('.hero-indicator-fill');
+            if (fill) {
+                fill.style.animation = 'none';
+                void fill.offsetWidth; // Reflow
+                if (isActive) {
+                    fill.style.animation = '';
+                }
+            }
+        });
+    }
+
+    function startTimer() {
+        stopTimer();
+        timer = setInterval(() => {
+            if (!isHovered) {
+                goToSlide(currentIndex + 1);
+            }
+        }, SLIDE_DURATION);
+    }
+
+    function stopTimer() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    function resetTimer() {
+        stopTimer();
+        startTimer();
+    }
+
+    // Indicator navigation
+    indicators.forEach((ind, idx) => {
+        ind.addEventListener('click', () => {
+            goToSlide(idx);
+            resetTimer();
+        });
+    });
+
+    // Arrow navigation
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+            goToSlide(isRTL ? currentIndex + 1 : currentIndex - 1);
+            resetTimer();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+            goToSlide(isRTL ? currentIndex - 1 : currentIndex + 1);
+            resetTimer();
+        });
+    }
+
+    // Pause on hover
+    slider.addEventListener('mouseenter', () => { isHovered = true; });
+    slider.addEventListener('mouseleave', () => { isHovered = false; });
+
+    // Touch swipe
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+        if (Math.abs(diff) > 40) {
+            if ((diff > 0 && !isRTL) || (diff < 0 && isRTL)) {
+                goToSlide(currentIndex + 1);
+            } else {
+                goToSlide(currentIndex - 1);
+            }
+            resetTimer();
+        }
+    }, { passive: true });
+
+    // Initial trigger
+    goToSlide(0);
+    startTimer();
+}
+
 /* ---- HOME 2 HERO FAST-TRACK CDL SELECTOR ---- */
 function initHome2HeroSwitcher() {
     var btnA = document.getElementById('btnTrackClassA');
@@ -851,6 +977,7 @@ document.addEventListener('DOMContentLoaded', function() {
     animateCounters();
     initTestimonialsSection();
     initHeroSlider();
+    initHome2HeroSlider();
     initHome2HeroSwitcher();
 });
 

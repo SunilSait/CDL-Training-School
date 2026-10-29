@@ -163,14 +163,14 @@
                 </div>
 
                 <!-- Quick Action Shortcuts -->
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem;">
+                <div class="dash-quick-shortcuts">
                     <button onclick="document.querySelector('[data-tab=\'schedule\']').click();" class="dash-panel" style="margin-bottom:0;text-align:left;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;cursor:pointer;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition);" onmouseover="this.style.borderColor='var(--secondary)';this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';">
                         <div style="width:42px;height:42px;border-radius:10px;background:rgba(234,88,12,0.12);display:flex;align-items:center;justify-content:center;color:var(--secondary);font-size:1.1rem;flex-shrink:0;">
                             <i class="fas fa-calendar-plus"></i>
                         </div>
                         <div>
                             <strong style="display:block;font-size:0.875rem;color:var(--text);">Book Driving Slot</strong>
-                            <span style="font-size:0.75rem;color:var(--text-muted);">Reserve road or yard bay</span>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">Reserve road</span>
                         </div>
                     </button>
                     <button onclick="document.querySelector('[data-tab=\'materials\']').click();" class="dash-panel" style="margin-bottom:0;text-align:left;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;cursor:pointer;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition);" onmouseover="this.style.borderColor='var(--secondary)';this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';">
@@ -178,7 +178,7 @@
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <div>
-                            <strong style="display:block;font-size:0.875rem;color:var(--text);">Practice Exam Bank</strong>
+                            <strong style="display:block;font-size:0.875rem;color:var(--text);">Practice Exam</strong>
                             <span style="font-size:0.75rem;color:var(--text-muted);">50-question mock test</span>
                         </div>
                     </button>
@@ -243,7 +243,7 @@
                         <span style="font-size:0.8125rem;color:#10b981;font-weight:600;"><i class="fas fa-shield-halved"></i> TPR Registry Verified</span>
                     </div>
                     <div class="dash-panel-body">
-                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;">
+                        <div class="eldt-roadmap-grid">
                             <div style="background:var(--bg-input);padding:1rem;border-radius:var(--radius);border:1px solid var(--border);">
                                 <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
                                     <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);">STEP 1</span>
@@ -257,7 +257,7 @@
                                     <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);">STEP 2</span>
                                     <span class="dash-status active" style="font-size:0.7rem;padding:0.15rem 0.45rem;">Issued</span>
                                 </div>
-                                <strong style="display:block;font-size:0.875rem;margin-bottom:0.25rem;">Commercial Permit</strong>
+                                <strong style="display:block;font-size:0.875rem;margin-bottom:0.25rem;">Commercial</strong>
                                 <span style="font-size:0.75rem;color:var(--text-muted);">Class A + Air Brakes</span>
                             </div>
                             <div style="background:var(--bg-input);padding:1rem;border-radius:var(--radius);border:1px solid var(--border);">
@@ -281,7 +281,7 @@
                                     <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);">STEP 5</span>
                                     <span class="dash-status pending" style="font-size:0.7rem;padding:0.15rem 0.45rem;">54% Done</span>
                                 </div>
-                                <strong style="display:block;font-size:0.875rem;margin-bottom:0.25rem;">Road & Night Driving</strong>
+                                <strong style="display:block;font-size:0.875rem;margin-bottom:0.25rem;">Road Driving</strong>
                                 <span style="font-size:0.75rem;color:var(--text-muted);">I-40 / I-55 Routes</span>
                             </div>
                             
@@ -355,6 +355,9 @@
                                     <tr><td data-label="Test">Combination Vehicles</td><td data-label="Score">90%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
                                     <tr><td data-label="Test">100-Pt Pre-Trip Walkaround</td><td data-label="Score">96%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
                                     <tr><td data-label="Test">Cargo Securement & Flatbed</td><td data-label="Score">86%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Test">Defensive Driving & Smith 5-Keys</td><td data-label="Score">94%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Test">HazMat (H) Mock Certification</td><td data-label="Score">88%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
+                                    <tr><td data-label="Test">Coupling & Uncoupling Air Lines</td><td data-label="Score">98%</td><td data-label="Status"><span class="dash-status active">Passed</span></td></tr>
                                 </tbody>
                             </table>
 </div>
@@ -385,10 +388,10 @@
                                 </div>
                             </div>
                             <div style="margin-top:1.15rem;position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
-                                <img src="assets/images/dashboard-assigned-rig-104.jpg" alt="2024 Freightliner Cascadia Rig 104 in Training Bay 4" style="width:100%;height:155px;object-fit:cover;display:block;">
-                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent, rgba(0,0,0,0.85));padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;">
-                                    <span style="color:#FFFFFF;font-size:0.8125rem;font-weight:600;"><i class="fas fa-truck-front" style="color:var(--secondary);margin-right:0.4rem;"></i> Assigned Rig #104 &bull; Bay 4</span>
-                                    <span class="dash-status active" style="font-size:0.7rem;background:rgba(16,185,129,0.25);border:none;color:#34d399;">Inspected</span>
+                                <img src="assets/images/dashboard-assigned-rig-104.jpg" alt="2024 Freightliner Cascadia Rig 104 in Training Bay 4" style="width:100%;height:260px;object-fit:cover;object-position:center;display:block;">
+                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top, rgba(15, 12, 10, 0.95) 0%, rgba(15, 12, 10, 0.75) 60%, transparent 100%);padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;">
+                                    <span style="color:#FFFFFF;font-size:0.8125rem;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.8);"><i class="fas fa-truck-front" style="color:var(--secondary);margin-right:0.4rem;"></i> Assigned Rig #104 &bull; Bay 4</span>
+                                    <span class="dash-status active" style="font-size:0.75rem;font-weight:700;background:#10b981;border:none;color:#FFFFFF;box-shadow:0 2px 6px rgba(16,185,129,0.4);padding:0.25rem 0.65rem;">Inspected</span>
                                 </div>
                             </div>
                         </div>
@@ -433,7 +436,7 @@
                         <span style="font-size:0.8125rem;color:var(--text-muted);font-weight:600;">132.0 / 182 Total Hours (72%)</span>
                     </div>
                     <div class="dash-panel-body">
-                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
+                        <div class="endorsement-hub-grid">
                             <div>
                                 <div class="progress-bar-container">
                                     <div class="progress-label"><span>Behind-the-Wheel (Public Roads & Highway)</span><span>44.0 / 70 hrs (63%)</span></div>
@@ -668,7 +671,7 @@
                         <span style="font-size:0.8125rem;color:var(--text-muted);">Boost your starting salary by up to $15,000/yr with endorsements</span>
                     </div>
                     <div class="dash-panel-body">
-                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
+                        <div class="endorsement-hub-grid">
                             <div style="background:var(--bg-input);padding:1.1rem;border-radius:var(--radius);border:1px solid var(--border);">
                                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
                                     <strong style="font-size:0.9375rem;"><i class="fas fa-radiation" style="color:#EA580C;margin-right:0.4rem;"></i> HazMat (H)</strong>
@@ -682,12 +685,12 @@
                                     <strong style="font-size:0.9375rem;"><i class="fas fa-droplet" style="color:#3b82f6;margin-right:0.4rem;"></i> Tanker (N)</strong>
                                     <span class="dash-status active" style="font-size:0.75rem;">96% Ready</span>
                                 </div>
-                                <p style="font-size:0.8125rem;color:var(--text-muted);margin:0 0 0.85rem;">Surge dynamics, baffles vs smooth bore, outage space, emergency roll prevention.</p>
+                                <p style="font-size:0.8125rem;color:var(--text-muted);margin:0 0 0.85rem;">Surge dynamics, baffles vs smooth bore and emergency roll prevention.</p>
                                 <button class="btn btn-primary btn-sm w-full"><i class="fas fa-check"></i> Eligible for DMV Add-on</button>
                             </div>
                             <div style="background:var(--bg-input);padding:1.1rem;border-radius:var(--radius);border:1px solid var(--border);">
                                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                                    <strong style="font-size:0.9375rem;"><i class="fas fa-trailer" style="color:#10b981;margin-right:0.4rem;"></i> Doubles / Triples (T)</strong>
+                                    <strong style="font-size:0.9375rem;"><i class="fas fa-trailer" style="color:#10b981;margin-right:0.4rem;"></i> Doubles </strong>
                                     <span class="dash-status active" style="font-size:0.75rem;">92% Ready</span>
                                 </div>
                                 <p style="font-size:0.8125rem;color:var(--text-muted);margin:0 0 0.85rem;">Converter dollies, crack-the-whip mitigation, coupling sequence. </p>
@@ -717,14 +720,14 @@
                     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;">
                         <i class="fas fa-circle-question" style="font-size:1.5rem;color:#3b82f6;"></i>
                         <div>
-                            <strong style="display:block;font-size:1.125rem;color:var(--text);">480 / 650 Questions</strong>
-                            <span style="font-size:0.75rem;color:var(--text-muted);">Practice Bank Attempted</span>
+                            <strong style="display:block;font-size:1.125rem;color:var(--text);">480 / 650</strong>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">Practice Questions Bank Attempted</span>
                         </div>
                     </div>
                     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;">
                         <i class="fas fa-chart-line" style="font-size:1.5rem;color:#10b981;"></i>
                         <div>
-                            <strong style="display:block;font-size:1.125rem;color:var(--text);">94.2% Average Score</strong>
+                            <strong style="display:block;font-size:1.125rem;color:var(--text);">94.2% Ave Score</strong>
                             <span style="font-size:0.75rem;color:var(--text-muted);">Ready for DMV Written Exam</span>
                         </div>
                     </div>
@@ -750,23 +753,23 @@
                     <div class="dash-panel dash-material-card">
                         <div class="dash-panel-body">
                             <i class="fas fa-file-pdf dash-material-icon" style="color:var(--secondary);"></i>
-                            <h4>100-Point Pre-Trip Checklist</h4>
-                            <p>Engine compartment, coupling systems, and full-vehicle walkaround inspection guide.</p>
+                            <h4>Pre-Trip Checklist</h4>
+                            <p>Engine compartment, coupling systems, and full-vehicle walkaround guide.</p>
                             <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (1.5 MB)</button>
                         </div>
                     </div>
                     <div class="dash-panel dash-material-card">
                         <div class="dash-panel-body">
                             <i class="fas fa-video dash-material-icon" style="color:var(--secondary);"></i>
-                            <h4>Backing Maneuvers Masterclass</h4>
-                            <p>In-cab and drone training for straight-line, offset backing, and 90-degree alley docking.</p>
+                            <h4>Backing Maneuvers</h4>
+                            <p>In-cab and drone training for straight-line, offset backing, and 90-degree docking.</p>
                             <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Watch Video (28 mins)</button>
                         </div>
                     </div>
                     <div class="dash-panel dash-material-card">
                         <div class="dash-panel-body">
                             <i class="fas fa-file-pdf dash-material-icon" style="color:var(--secondary);"></i>
-                            <h4>HOS &amp; ELD Compliance Workbook</h4>
+                            <h4>HOS &amp; ELD Compliance</h4>
                             <p>FMCSA 11-hour driving limits, 14-hour duty windows, 34-hour restarts, and ELD logs.</p>
                             <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (3.1 MB)</button>
                         </div>
@@ -774,7 +777,7 @@
                     <div class="dash-panel dash-material-card">
                         <div class="dash-panel-body">
                             <i class="fas fa-clipboard-question dash-material-icon" style="color:var(--secondary);"></i>
-                            <h4>Interactive Practice Test Bank</h4>
+                            <h4> Practice Test Bank</h4>
                             <p>650+ simulated state questions with instant answer explanations and scoring.</p>
                             <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Start Practice (50 Qs)</button>
                         </div>
@@ -782,8 +785,8 @@
                     <div class="dash-panel dash-material-card">
                         <div class="dash-panel-body">
                             <i class="fas fa-circle-play dash-material-icon" style="color:#3b82f6;"></i>
-                            <h4>In-Cab &amp; Air Brake 3-Step Video</h4>
-                            <p>Step-by-step video demonstration of mandatory governor, alarm, and button pop-out checks.</p>
+                            <h4>In-Cab &amp; Air Brake Video</h4>
+                            <p>Step-by-step air brake video demonstration of mandatory governor, alarm and button.</p>
                             <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-play"></i> Watch Video (18 mins)</button>
                         </div>
                     </div>
@@ -798,7 +801,7 @@
                     <div class="dash-panel dash-material-card">
                         <div class="dash-panel-body">
                             <i class="fas fa-mountain dash-material-icon" style="color:#10b981;"></i>
-                            <h4>Mountain Driving &amp; Jake Brake</h4>
+                            <h4>Mountain Driving </h4>
                             <p>Steep downhill descent speeds, gear selection, brake fade mitigation, and runaway ramps.</p>
                             <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (2.1 MB)</button>
                         </div>
@@ -806,7 +809,7 @@
                     <div class="dash-panel dash-material-card">
                         <div class="dash-panel-body">
                             <i class="fas fa-headphones dash-material-icon" style="color:#a855f7;"></i>
-                            <h4>CDL Audio Lectures &amp; Audiobooks</h4>
+                            <h4>CDL Audio Lectures</h4>
                             <p>High-yield audio lessons and memory mnemonics for pre-trip components and braking.</p>
                             <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-volume-high"></i> Listen to Audio (1 hr 12m)</button>
                         </div>
@@ -814,7 +817,7 @@
                     <div class="dash-panel dash-material-card">
                         <div class="dash-panel-body">
                             <i class="fas fa-droplet dash-material-icon" style="color:#0ea5e9;"></i>
-                            <h4>Tanker Surge &amp; Liquid Bulk</h4>
+                            <h4>Tanker Surge</h4>
                             <p>Liquid surge physics, baffle mechanics, outage allowances, and tanker steering safety.</p>
                             <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (3.4 MB)</button>
                         </div>
@@ -822,7 +825,7 @@
                     <div class="dash-panel dash-material-card">
                         <div class="dash-panel-body">
                             <i class="fas fa-map-location-dot dash-material-icon" style="color:#f59e0b;"></i>
-                            <h4>Commercial Atlas &amp; Routing</h4>
+                            <h4>Commercial Atlas </h4>
                             <p>Low-clearance bridge charts, restricted truck routes, hazmat corridors, and weigh stations.</p>
                             <button class="btn btn-secondary btn-sm w-full"><i class="fas fa-download"></i> Download PDF (4.8 MB)</button>
                         </div>
@@ -989,7 +992,7 @@
                                 <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:var(--radius);padding:0.75rem 1rem;display:flex;align-items:center;justify-content:space-between;">
                                     <div style="display:flex;align-items:center;gap:0.6rem;">
                                         <i class="fas fa-circle-check" style="color:#10b981;"></i>
-                                        <span style="font-size:0.8125rem;color:var(--text);">Auto-Pay is <strong>Active</strong> for Nov 1 ($1,200)</span>
+                                        <span style="font-size:0.8125rem;color:var(--text);">Auto-Pay is <strong>Active</strong></span>
                                     </div>
                                     <span style="font-size:0.75rem;color:#10b981;font-weight:600;">Scheduled</span>
                                 </div>
@@ -1004,13 +1007,13 @@
                                 <i class="fas fa-file-invoice" style="color:var(--secondary);font-size:1.1rem;"></i>
                                 <h3 style="margin:0;">Tax Documents &amp; Statements</h3>
                             </div>
-                            <span class="dash-status active" style="font-size:0.7rem;"><i class="fas fa-shield-check"></i> IRS Form 1098-T</span>
+                            <span class="dash-status active" style="font-size:0.7rem;"><i class="fas fa-shield-check"></i> IRS Form 1098</span>
                         </div>
                         <div class="dash-panel-body">
                             <div style="display:flex;flex-direction:column;gap:0.875rem;">
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg-input);padding:0.875rem 1rem;border-radius:var(--radius);border:1px solid var(--border);">
                                     <div>
-                                        <strong style="display:block;font-size:0.875rem;">Annual Form 1098-T</strong>
+                                        <strong style="display:block;font-size:0.875rem;">Annual Form 1098</strong>
                                         <span style="font-size:0.75rem;color:var(--text-muted);">Tax year 2026 tuition tax credit statement</span>
                                     </div>
                                     <button class="btn btn-secondary btn-sm"><i class="fas fa-file-pdf"></i> Download</button>
@@ -1101,15 +1104,12 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;font-weight:600;display:block;margin-bottom:0.2rem;">Primary Instructor & Bay</span>
-                                    <strong style="font-size:0.875rem;">Mike Reynolds &bull; South Yard Bay 4</strong>
                                 </div>
                             </div>
                             <div style="margin-top:1.15rem;position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
-                                <img src="assets/images/dashboard-student-cohort.jpg" alt="Cohort 2026-A4 Class A CDL Student Driver" style="width:100%;height:160px;object-fit:cover;display:block;">
-                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent, rgba(0,0,0,0.85));padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;">
-                                    <span style="color:#FFFFFF;font-size:0.8125rem;font-weight:600;"><i class="fas fa-graduation-cap" style="color:var(--secondary);margin-right:0.4rem;"></i> Cohort 2026-A4 &bull; Class A CDL</span>
-                                    <span class="dash-status active" style="font-size:0.7rem;background:rgba(16,185,129,0.25);border:none;color:#34d399;">On Track</span>
+                                <img src="assets/images/dashboard-student-cohort.jpg" alt="Cohort 2026-A4 Class A CDL Student Driver" style="width:100%;height:260px;object-fit:cover;object-position:center;display:block;">
+                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top, rgba(15, 12, 10, 0.95) 0%, rgba(15, 12, 10, 0.75) 60%, transparent 100%);padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;">
+                                    <span class="dash-status active" style="font-size:0.75rem;font-weight:700;background:#10b981;border:none;color:#FFFFFF;box-shadow:0 2px 6px rgba(16,185,129,0.4);padding:0.25rem 0.65rem;">On Track</span>
                                 </div>
                             </div>
                         </div>
@@ -1142,7 +1142,7 @@
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg-input);padding:0.75rem 1rem;border-radius:var(--radius);border:1px solid var(--border);">
                                     <div>
                                         <strong style="display:block;font-size:0.875rem;">State Driver's License</strong>
-                                        <span style="font-size:0.75rem;color:var(--text-muted);">Tennessee Class D Operator License</span>
+                                        <span style="font-size:0.75rem;color:var(--text-muted);">Class D Operator License</span>
                                     </div>
                                     <span class="dash-status active" style="font-size:0.7rem;">Verified</span>
                                 </div>
