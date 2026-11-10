@@ -9,18 +9,17 @@
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
-        if (!window.location.hash) {
-            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-            if (document.documentElement) document.documentElement.scrollTop = 0;
-            if (document.body) document.body.scrollTop = 0;
-        }
-        window.addEventListener('pageshow', function() {
+        function resetScrollToTop() {
             if (!window.location.hash) {
                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                 if (document.documentElement) document.documentElement.scrollTop = 0;
                 if (document.body) document.body.scrollTop = 0;
             }
-        });
+        }
+        resetScrollToTop();
+        window.addEventListener('pageshow', resetScrollToTop);
+        window.addEventListener('load', resetScrollToTop);
+        document.addEventListener('DOMContentLoaded', resetScrollToTop);
 
         const savedDark = localStorage.getItem('cdl-dark');
         if (savedDark === '1') {

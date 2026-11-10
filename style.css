@@ -165,7 +165,11 @@ p { font-weight: 400; color: var(--text-secondary); line-height: 1.7; }
 .btn:hover i {
     transform: translateX(3px);
 }
-.w-full { width: 100%; }
+.w-full,
+.btn-block {
+    width: 100%;
+    display: flex;
+}
 
 /* ==============================================
    NAVBAR
@@ -1147,11 +1151,21 @@ p { font-weight: 400; color: var(--text-secondary); line-height: 1.7; }
     flex-shrink: 0;
 }
 .hero-2-card-btn {
-    padding: 0.85rem 1.25rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 0.95rem 1.5rem;
     font-size: 0.95rem;
     font-weight: 700;
-    border-radius: var(--radius-md);
-    box-shadow: 0 6px 18px rgba(234, 88, 12, 0.3);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.35);
+    transition: var(--transition);
+}
+.hero-2-card-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(234, 88, 12, 0.45);
 }
 .hero-2-card-footnote {
     text-align: center;
@@ -5855,11 +5869,15 @@ select.form-input:focus {
     font-size: 1rem;
     flex-shrink: 0;
 }
+.faculty-content p {
+    margin-bottom: 2rem;
+}
 .faculty-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
+    margin-top: 1.75rem;
 }
 
 /* --- JOB PLACEMENT: Route & Carrier Matching Matrix --- */
