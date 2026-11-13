@@ -440,6 +440,15 @@ p { font-weight: 400; color: var(--text-secondary); line-height: 1.7; }
     max-width: 680px;
     margin: 0 auto 3.5rem;
 }
+.section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--secondary);
+    margin-bottom: 0.75rem;
+}
 .section-header .section-label {
     display: inline-block;
     font-size: 0.75rem;
@@ -2512,10 +2521,16 @@ html:not(.dark) .hero-2-ribbon-tile .ribbon-data p {
 /* ==============================================
    INSTRUCTOR CARDS
    ============================================== */
+.home2-team-section .container {
+    max-width: 1320px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 .instructors-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    width: 100%;
 }
 .instructor-card {
     background: var(--bg-card);
@@ -5782,22 +5797,57 @@ select.form-input:focus {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
+    margin-top: 3.5rem;
+    padding: 1.75rem 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
 }
 .mcred-stat {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+.mcred-stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -0.75rem;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: var(--border);
+}
+.mcred-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-lg);
+    background: rgba(234, 88, 12, 0.1);
+    border: 1px solid rgba(234, 88, 12, 0.2);
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+}
+.mcred-info {
+    display: flex;
+    flex-direction: column;
 }
 .mcred-stat strong {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 800;
+    line-height: 1.2;
     color: var(--secondary);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.2rem;
 }
 .mcred-stat span {
-    font-size: 0.8125rem;
+    font-size: 0.85rem;
+    font-weight: 500;
     color: var(--text-muted);
 }
 
@@ -6466,7 +6516,8 @@ select.form-input:focus {
     .faculty-perks-list { grid-template-columns: 1fr; }
     .route-matrix-grid { grid-template-columns: 1fr; }
     .onboarding-grid { grid-template-columns: 1fr; }
-    .master-creds-stats { grid-template-columns: 1fr; gap: 1rem; }
+    .master-creds-stats { grid-template-columns: 1fr; gap: 1rem; padding: 1.25rem; }
+    .mcred-stat:not(:last-child)::after { display: none; }
     .onboarding-banner-split {
         padding: 1.5rem 1rem;
         gap: 1.75rem;
@@ -9189,6 +9240,44 @@ html[dir="rtl"] .beam-sweep-2 {
     line-height: 1.6;
     color: var(--text-secondary);
     margin: 0;
+    min-height: 6.4em;
+}
+
+/* 3x2 Matrix Layout for Specialty Endorsements on Tablets and Desktops */
+.prog-endorse-features {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    max-width: 100% !important;
+    gap: 1.75rem !important;
+    margin: 0 auto !important;
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+    .prog-endorse-features {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.15rem !important;
+    }
+    .prog-endorse-card {
+        max-width: 100% !important;
+    }
+    .prog-endorse-body {
+        padding: 1.15rem 1rem 1.35rem !important;
+    }
+    .prog-endorse-body h4 {
+        font-size: 1.05rem !important;
+    }
+    .prog-endorse-body p {
+        font-size: 0.8125rem !important;
+        line-height: 1.5 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .prog-endorse-features {
+        grid-template-columns: 1fr !important;
+        max-width: 440px !important;
+        gap: 1.5rem !important;
+    }
 }
 
 
